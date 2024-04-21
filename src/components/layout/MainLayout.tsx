@@ -1,6 +1,8 @@
+import { FC } from "react";
+
 import { useRoutes } from "react-router-dom";
-import { routes } from "../../routes";
 import { Grid, ThemeProvider } from "@mui/material";
+
 import {
   experimental_extendTheme as materialExtendTheme,
   Experimental_CssVarsProvider as MaterialCssVarsProvider,
@@ -8,18 +10,23 @@ import {
   createTheme,
 } from "@mui/material/styles";
 
-const MainLayout = () => {
+import { routes } from "../../routes";
+import { layoutSX } from "../../helper/styleObjects/main";
+import { COLOR_TEXT } from "../../helper/constants/colors";
+
+const MainLayout: FC = () => {
   const children = useRoutes(routes);
 
-  const themeMUI = createTheme({});
+  const themeMUI = createTheme({
+    typography: { fontFamily: "Garamond", allVariants: { color: COLOR_TEXT } },
+  });
+
   const materialTheme = materialExtendTheme(themeMUI);
 
   return (
     <ThemeProvider theme={themeMUI}>
       <MaterialCssVarsProvider theme={{ [MATERIAL_THEME_ID]: materialTheme }}>
-        <Grid sx={{ width: "100%", height: "100vh", maxWidth: "1200px" }}>
-          {children}
-        </Grid>
+        <Grid sx={layoutSX}>{children}</Grid>
       </MaterialCssVarsProvider>
     </ThemeProvider>
   );

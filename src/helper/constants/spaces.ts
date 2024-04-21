@@ -1,0 +1,9 @@
+export const SPACE_L1 = "50px";
+export const SPACE_L2 = "40px";
+export const SPACE_L3 = "38px";
+export const SPACE_M1 = "28px";
+export const SPACE_M2 = "22px";
+export const SPACE_M3 = "18px";
+export const SPACE_S1 = "12px";
+export const SPACE_S2 = "8px";
+export const SPACE_S3 = "6px";
