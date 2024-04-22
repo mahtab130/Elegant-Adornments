@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 import { useRoutes } from "react-router-dom";
-import { Grid, ThemeProvider } from "@mui/material";
+import { ThemeProvider } from "@mui/material";
 
 import {
   experimental_extendTheme as materialExtendTheme,
@@ -11,13 +11,18 @@ import {
 } from "@mui/material/styles";
 
 import { routes } from "../../routes";
-import { layoutSX } from "../../helper/styleObjects/main";
-import { COLOR_TEXT } from "../../helper/constants/colors";
+import { COLOR_PRIMARY, COLOR_TEXT } from "../../helper/constants/colors";
 
 const MainLayout: FC = () => {
   const children = useRoutes(routes);
 
   const themeMUI = createTheme({
+    palette: { primary: { main: COLOR_PRIMARY } },
+    // components: {
+    //   MuiButton: {
+    //     styleOverrides: { colorPrimary: { ":hover": COLOR_SECEONDRY } },
+    //   },
+    // },
     typography: { fontFamily: "Garamond", allVariants: { color: COLOR_TEXT } },
   });
 
@@ -26,7 +31,7 @@ const MainLayout: FC = () => {
   return (
     <ThemeProvider theme={themeMUI}>
       <MaterialCssVarsProvider theme={{ [MATERIAL_THEME_ID]: materialTheme }}>
-        <Grid sx={layoutSX}>{children}</Grid>
+        {children}
       </MaterialCssVarsProvider>
     </ThemeProvider>
   );

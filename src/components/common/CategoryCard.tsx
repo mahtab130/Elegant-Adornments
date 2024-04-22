@@ -1,0 +1,21 @@
+import { memo } from "react";
+
+import { Box, Grid, Typography } from "@mui/material";
+
+import { categoryCardSX } from "../../helper/styleObjects/common";
+
+import vector from "../../assets/images/Vector-2.webp";
+
+export const CategoryCard = memo<ICategoryCard>(({ image, name }) => {
+  return (
+    <Grid sx={categoryCardSX}>
+      <Grid className="title-wrapper">
+        <Typography className="title">{name}</Typography>
+        <Box component="img" className="vector" src={vector} />
+      </Grid>
+      <Grid>
+        <Box component="img" className="image" src={image} />
+      </Grid>
+    </Grid>
+  );
+});
