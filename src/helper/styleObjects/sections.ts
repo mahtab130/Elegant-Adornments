@@ -8,17 +8,8 @@ import {
   SPACE_M1,
   SPACE_M2,
 } from "../constants/spaces";
-import {
-  COLOR_TEXT,
-  COLOR_TITLE,
-  COLOR_PRIMARY,
-  COLOR_SECEONDRY,
-} from "../constants/colors";
-import {
-  FONT_BODY_LARGE,
-  FONT_BODY_MEDIUM,
-  FONT_HEADING_LARGE,
-} from "../constants/fonts";
+import { FONT_BODY_MEDIUM, FONT_HEADING_LARGE } from "../constants/fonts";
+import { COLOR_TEXT, COLOR_TITLE, COLOR_PRIMARY } from "../constants/colors";
 
 export const homeSectionSX: SxProps<Theme> = {
   "&.container": {
@@ -31,7 +22,7 @@ export const homeSectionSX: SxProps<Theme> = {
     position: "relative",
     flexDirection: "column",
     "& .texts-wrapper": {
-      mt: "95px",
+      mt: SPACE_L3,
       pt: SPACE_L1,
       display: "flex",
       position: "relative",
@@ -100,23 +91,6 @@ export const productSectionSX: SxProps<Theme> = {
   "& .products-container": {
     width: "100%",
     maxWidth: "1400px",
-    "& .title-product": {
-      width: "280px",
-      display: "flex",
-      fontWeight: "700",
-      position: "relative",
-      alignItems: "center",
-      fontSize: FONT_BODY_LARGE,
-      justifyContent: "space-between",
-      borderBottom: "1px solid" + COLOR_SECEONDRY,
-      "& .vector-image": {
-        left: "-60px",
-        width: "150px",
-        height: "150px",
-        bottom: "-40px",
-        position: "absolute",
-      },
-    },
     "& .product-cards-wrapper": {
       mt: SPACE_M1,
       width: "100%",
@@ -130,31 +104,14 @@ export const categorySectionSX: SxProps<Theme> = {
   width: "100%",
   my: SPACE_L1,
   display: "flex",
-  justifyContent: "center",
   minHeight: "600px",
+  justifyContent: "center",
   "& .category-container": {
     width: "100%",
     display: "flex",
     maxWidth: "1400px",
     height: "fit-content",
     flexDirection: "column",
-    "& .title-category": {
-      width: "360px",
-      display: "flex",
-      fontWeight: "700",
-      position: "relative",
-      alignItems: "center",
-      fontSize: FONT_BODY_LARGE,
-      justifyContent: "space-between",
-      borderBottom: "1px solid" + COLOR_SECEONDRY,
-      "& .vector-image": {
-        left: "-60px",
-        width: "150px",
-        height: "150px",
-        bottom: "-40px",
-        position: "absolute",
-      },
-    },
     "& .category-cards-wrapper": {
       display: "flex",
       justifyContent: "space-between",

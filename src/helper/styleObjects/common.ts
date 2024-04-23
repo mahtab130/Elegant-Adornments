@@ -17,8 +17,7 @@ export const categoryCardSX: SxProps<Theme> = {
   alignItems: "center",
   justifyContent: "space-between",
   background:
-    "linear-gradient(117.57deg, #568A9E 11.15%, #96B6C3 41.17%, #E3ECEF 65.42%, #D0E2E9 78.3%, #568A9E 97.72%)",
-
+    "linear-gradient(296.92deg, #568A9E 15.8%, #6A99AB 23.43%, #76A3B4 28.59%, #6D9FB1 35.91%, #6A9BAE 44.85%, #568A9E 59.37%, #568A9E 67.78%, #568A9E 75.24%, #568A9E 83.27%)",
   "& .title-wrapper": {
     py: SPACE_L3,
     display: "flex",
