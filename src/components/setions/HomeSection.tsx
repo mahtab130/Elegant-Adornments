@@ -4,28 +4,31 @@ import { Grid, Box, Typography } from "@mui/material";
 
 import { Navbar } from "../common/Navbar";
 import { CustomButton } from "../controller/CustomButton";
-import { homeSectionSX } from "../../helper/styleObjects/sections";
+import { homeSectionSX } from "../../helper/styleObjects/homeSection";
 
-import Vector from "../../assets/images/Vector.webp";
-import backImage from "../../assets/images/back-image.webp";
+import Vector from "../../assets/images/vectors/Vector.webp";
+import backImage from "../../assets/images/vectors/back-image.webp";
 
 export const HomeSection = memo(() => {
   return (
-    <Grid container sx={homeSectionSX} className="container">
-      <Grid>
-        <Navbar />
-      </Grid>
-      <Grid item xs={12} md={5} className="texts-wrapper">
-        <Box component="img" src={backImage} className="back-image" />
-        <Typography className="title">Elegant Adornments</Typography>
-        <Typography className="subtitle">
-          Elevate your style with our elegant and timelessjewelry pieces,
-          perfect for any occasion.
-        </Typography>
-        <Grid className="button-wrapper">
-          <CustomButton variant="contained" className="button" text="Buy Now" />
+    <Grid sx={homeSectionSX} className="home-wrapper">
+      <Grid className="background-image"></Grid>
+      <Grid container className="container">
+        <Grid>
+          <Navbar />
         </Grid>
-        <Box component="img" src={Vector} className="vector-arrow-img" />
+        <Grid item xs={12} md={5} className="texts-wrapper">
+          <Box component="img" src={backImage} className="back-image" />
+          <Typography className="title">Elegant Adornments</Typography>
+          <Typography className="subtitle">
+            Elevate your style with our elegant and timelessjewelry pieces,
+            perfect for any occasion.
+          </Typography>
+          <Grid className="button-wrapper">
+            <CustomButton text="Buy Now" variant="contained" />
+          </Grid>
+          <Box component="img" src={Vector} className="vector-arrow-img" />
+        </Grid>
       </Grid>
     </Grid>
   );

@@ -4,10 +4,11 @@ import { map } from "lodash";
 import { Box, Grid, Typography } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 
+import { navbarValues } from "../../data/other";
 import { navbarSX } from "../../helper/styleObjects/navbar";
 import { searchIcon, shoppingIcon, userIcon } from "../other/SvgComponent";
 
-import logo from "../../assets/images/logo.webp";
+import logo from "../../assets/images/vectors/logo.webp";
 
 export const Navbar = memo(() => {
   const navigate = useNavigate();
@@ -46,11 +47,3 @@ export const Navbar = memo(() => {
     </Grid>
   );
 });
-
-const navbarValues = [
-  { name: "Home", url: "/" },
-  { name: "Category", url: "/categroy" },
-  { name: "About Us", url: "/about-us" },
-  { name: "Services", url: "/services" },
-  { name: "Blogs", url: "/blogs" },
-];

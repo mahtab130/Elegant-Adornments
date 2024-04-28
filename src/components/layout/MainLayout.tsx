@@ -4,26 +4,25 @@ import { useRoutes } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
 
 import {
+  createTheme,
   experimental_extendTheme as materialExtendTheme,
   Experimental_CssVarsProvider as MaterialCssVarsProvider,
   THEME_ID as MATERIAL_THEME_ID,
-  createTheme,
 } from "@mui/material/styles";
 
 import { routes } from "../../routes";
 import { COLOR_PRIMARY, COLOR_TEXT } from "../../helper/constants/colors";
+import { FONT_WEIGHT_REGULAR } from "../../helper/constants/fonts";
 
 const MainLayout: FC = () => {
   const children = useRoutes(routes);
 
   const themeMUI = createTheme({
     palette: { primary: { main: COLOR_PRIMARY } },
-    // components: {
-    //   MuiButton: {
-    //     styleOverrides: { colorPrimary: { ":hover": COLOR_SECEONDRY } },
-    //   },
-    // },
-    typography: { fontFamily: "Garamond", allVariants: { color: COLOR_TEXT } },
+    typography: {
+      fontFamily: "Garamond",
+      allVariants: { color: COLOR_TEXT, fontWeight: FONT_WEIGHT_REGULAR },
+    },
   });
 
   const materialTheme = materialExtendTheme(themeMUI);

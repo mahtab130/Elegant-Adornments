@@ -1,16 +1,15 @@
 import { SxProps, Theme } from "@mui/material";
 
 import { COLOR_PRIMARY, COLOR_SECEONDRY } from "../constants/colors";
-import { FONT_BODY_SMALL } from "../constants/fonts";
-import { SPACE_L1, SPACE_M2, SPACE_L2, SPACE_S2 } from "../constants/spaces";
+import { FONT_BODY_SMALL, FONT_WEIGHT_BLOD } from "../constants/fonts";
+import { SPACE_H2, SPACE_M2, SPACE_D2, SPACE_S1 } from "../constants/spaces";
 
 export const navbarSX: SxProps<Theme> = {
-  px: SPACE_L1,
+  px: SPACE_H2,
   py: SPACE_M2,
   zIndex: "3000",
   width: "1400px",
   display: "flex",
-  // position: "fixed",
   alignItems: "center",
   borderRadius: "12px",
   justifyContent: "space-between",
@@ -22,13 +21,13 @@ export const navbarSX: SxProps<Theme> = {
     },
   },
   "& .nav-list-wrapper": {
-    gap: SPACE_L2,
+    gap: SPACE_D2,
     display: "flex",
 
     "& .navbar-value-name": {
       zIndex: "20",
       cursor: "pointer",
-      fontWeight: "700",
+      fontWeight: FONT_WEIGHT_BLOD,
       position: "relative",
       fontSize: FONT_BODY_SMALL,
       "&.active": {
@@ -60,7 +59,7 @@ export const navbarSX: SxProps<Theme> = {
     },
   },
   "& .actions-wrapper": {
-    gap: SPACE_S2,
+    gap: SPACE_S1,
     display: "flex",
     alignItems: "center",
     "& .icon-navbar": {

@@ -4,7 +4,7 @@ import { Box, Grid, Typography } from "@mui/material";
 
 import { categoryCardSX } from "../../helper/styleObjects/common";
 
-import vector from "../../assets/images/Vector-2.webp";
+import vector from "../../assets/images/vectors/vector-diamnd.png";
 
 export const CategoryCard = memo<ICategoryCard>(({ image, name }) => {
   return (

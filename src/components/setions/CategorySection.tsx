@@ -4,10 +4,9 @@ import { map } from "lodash";
 import { Grid } from "@mui/material";
 
 import { categoryData } from "../../data/category";
-import { CategoryCard } from "../common/CategoryCard";
-
-import { categorySectionSX } from "../../helper/styleObjects/sections";
 import { CustomTitle } from "../common/CustomTitle";
+import { CategoryCard } from "../common/CategoryCard";
+import { categorySectionSX } from "../../helper/styleObjects/homeSection";
 
 export const CategorySection = memo(() => {
   return (

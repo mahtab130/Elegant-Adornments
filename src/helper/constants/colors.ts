@@ -1,5 +1,9 @@
+export const COLOR_GRAY = "#596673";
 export const COLOR_TEXT = "#2E2E2E";
+export const COLOR_WHITE = "#FFFFFF";
 export const COLOR_TITLE = "#242424";
 export const COLOR_PRIMARY = "#ABDDF0";
 export const COLOR_SECEONDRY = "#568A9E";
+export const COLOR_TEXT_WHITE = "#EAEAEA";
 export const COLOR_BACKGROUND = "#FFFFFF";
+export const COLOR_LIGHT_GRAY = "#D4D4D4";

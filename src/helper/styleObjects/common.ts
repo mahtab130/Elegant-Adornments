@@ -1,97 +1,132 @@
 import { SxProps, Theme } from "@mui/material";
 
-import { SPACE_L3, SPACE_M3, SPACE_S1, SPACE_S3 } from "../constants/spaces";
-import { COLOR_BACKGROUND, COLOR_PRIMARY } from "../constants/colors";
 import {
-  FONT_BODY_MEDIUM,
-  FONT_CAPTION_LARGE,
+  SPACE_H2,
+  SPACE_D1,
+  SPACE_M2,
+  SPACE_M3,
+  SPACE_XS1,
+  SPACE_S2,
+} from "../constants/spaces";
+import {
+  COLOR_TEXT,
+  COLOR_GRAY,
+  COLOR_WHITE,
+  COLOR_PRIMARY,
+  COLOR_SECEONDRY,
+  COLOR_BACKGROUND,
+} from "../constants/colors";
+import {
   FONT_LABEL_LARGE,
+  FONT_WEIGHT_BLOD,
+  FONT_TITLE_SMALL,
+  FONT_BODY_MEDIUM2,
+  FONT_BODY_MEDIUM1,
+  FONT_CAPTION_LARGE,
 } from "../constants/fonts";
 
 export const categoryCardSX: SxProps<Theme> = {
-  px: SPACE_L3,
+  px: SPACE_D1,
   width: "100%",
   display: "flex",
   maxHeight: "175px",
+  overflow: "hidden",
   borderRadius: "16px",
-  alignItems: "center",
+  position: "relative",
   justifyContent: "space-between",
   background:
     "linear-gradient(296.92deg, #568A9E 15.8%, #6A99AB 23.43%, #76A3B4 28.59%, #6D9FB1 35.91%, #6A9BAE 44.85%, #568A9E 59.37%, #568A9E 67.78%, #568A9E 75.24%, #568A9E 83.27%)",
   "& .title-wrapper": {
-    py: SPACE_L3,
+    py: SPACE_D1,
     display: "flex",
-    gap: SPACE_S1,
+    gap: SPACE_XS1,
     flexDirection: "column",
     "& .title": {
-      fontSize: "24px",
-      fontWeight: "700",
+      fontSize: FONT_BODY_MEDIUM1,
+      fontWeight: FONT_WEIGHT_BLOD,
+      color: COLOR_WHITE,
     },
     "& .vector": {
-      width: "60px",
-      height: "65px",
+      left: "-15px",
+      width: "110px",
+      height: "110px",
+      bottom: "-15px",
+      position: "absolute",
     },
   },
   "& .image": {
-    height: "auto",
+    height: "175px",
   },
 };
 
-export const productCardSX: SxProps<Theme> = {
+export const productCardSX = (
+  variant: IProductCard["variant"]
+): SxProps<Theme> => ({
   width: "100%",
   height: "auto",
   overflow: "hidden",
+  cursor: "pointer",
   borderRadius: "14px",
   boxShadow: "0px 1px 2px 0px #1018280D  ",
-  "& .image-wrapper": {
-    width: "100%",
-    display: "flex",
-    height: "370px",
-    alignItems: "center",
-    justifyContent: "center",
-    background:
-      " linear-gradient(154.68deg, #E7EDEF 24.32%, #FFFFFF 45.27%, #FFFFFF 56.96%, #E7EDEF 99.84%)",
-    "& .image-product": {},
-  },
-  "& .texts-wrapper": {
-    p: SPACE_M3,
-    width: "100%",
-    display: "flex",
-    rowGap: SPACE_S1,
-    flexDirection: "column",
-    backgroundColor: COLOR_BACKGROUND,
-    "& .title": {
-      fontWeight: "700",
-      fontSize: FONT_BODY_MEDIUM,
-    },
-    "& .price-wrapper": {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-      "& .add-to-cart": {
-        pr: SPACE_S1,
-        gap: SPACE_S3,
-        display: "flex",
-        fontWeight: "700",
-        cursor: "pointer",
-        position: "relative",
-        alignItems: "center",
-        fontSize: FONT_CAPTION_LARGE,
-        zIndex: "2",
-        "&:hover": {
+  "&:hover": {
+    "& .texts-wrapper": {
+      "& .price-wrapper": {
+        "& .add-to-cart": {
           "&:before": {
             width: "100%",
             height: "40px",
             borderRadius: "50px",
           },
         },
+      },
+    },
+  },
+  "& .image-wrapper": {
+    width: "100%",
+    display: "flex",
+    alignItems: "flex-start",
+    justifyContent: "center",
+    height: variant == "sale" ? "350px" : " 370px",
+    borderRadius: variant == "sale" ? "14px" : "0px",
+    background:
+      " linear-gradient(154.68deg, #E7EDEF 24.32%, #FFFFFF 45.27%, #FFFFFF 56.96%, #E7EDEF 99.84%)",
+    "& .image-product": {
+      height: "300px",
+    },
+  },
+  "& .texts-wrapper": {
+    p: SPACE_M3,
+    width: "100%",
+    display: "flex",
+    rowGap: variant == "sale" ? SPACE_S2 : SPACE_M3,
+    flexDirection: "column",
+    backgroundColor: variant == "sale" ? COLOR_SECEONDRY : COLOR_BACKGROUND,
+    "& .title": {
+      color: variant == "sale" ? COLOR_WHITE : COLOR_TEXT,
+      fontWeight: FONT_WEIGHT_BLOD,
+      fontSize: FONT_BODY_MEDIUM2,
+    },
+    "& .price-wrapper": {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      "& .add-to-cart": {
+        pr: SPACE_M3,
+        gap: SPACE_S2,
+        display: "flex",
+        fontWeight: FONT_WEIGHT_BLOD,
+        cursor: "pointer",
+        position: "relative",
+        alignItems: "center",
+        fontSize: FONT_CAPTION_LARGE,
+        zIndex: "2",
         "& svg": {
           width: "12px",
           height: "12px",
         },
         "&:before": {
-          top: "-12px",
-          left: "-5px",
+          top: "-11px",
+          left: "-8px",
           zIndex: "-2",
           width: "40px",
           content: "''",
@@ -104,9 +139,76 @@ export const productCardSX: SxProps<Theme> = {
         },
       },
       "& .price": {
-        fontWeight: "700",
+        color: variant == "sale" ? COLOR_WHITE : COLOR_TEXT,
+        fontWeight: FONT_WEIGHT_BLOD,
         fontSize: FONT_LABEL_LARGE,
       },
     },
   },
+});
+
+export const blogCardSX: SxProps<Theme> = {
+  width: "400px",
+  height: "auto",
+  overflow: "hidden",
+  borderRadius: "10px",
+  boxShadow: "0px 4px 24px 4px #B5B5B51F , 0px 4px 24px 4px #B5B5B51F",
+  "& .blog-image": {
+    width: "100%",
+    height: "225px",
+  },
+  "& .text-section": {
+    p: SPACE_M2,
+    display: "flex",
+    rowGap: SPACE_H2,
+    flexDirection: "column",
+    justifyContent: "space-between",
+    "& .text-wrapper": {
+      display: "flex",
+      rowGap: SPACE_M2,
+      flexDirection: "column",
+      "& .title": {
+        fontWeight: FONT_WEIGHT_BLOD,
+        fontSize: FONT_BODY_MEDIUM2,
+      },
+      "& .description": {
+        color: COLOR_GRAY,
+        fontSize: FONT_LABEL_LARGE,
+      },
+    },
+    "& .button-wrapper": {
+      width: "100%",
+      display: "flex",
+      justifyContent: "flex-end",
+      "& .button": {
+        width: "fit-content",
+        color: COLOR_SECEONDRY,
+        fontSize: FONT_LABEL_LARGE,
+        textTransform: "capitalize",
+      },
+    },
+  },
 };
+
+export const customTitle = (
+  iconColor?: string,
+  color?: string
+): SxProps<Theme> => ({
+  gap: SPACE_D1,
+  display: "flex",
+  fontWeight: FONT_WEIGHT_BLOD,
+  width: "fit-content",
+  position: "relative",
+  alignItems: "center",
+  fontSize: FONT_TITLE_SMALL,
+  color: color || COLOR_TEXT,
+  justifyContent: "space-between",
+  borderBottom: "2px solid" + (iconColor || COLOR_SECEONDRY),
+  "& .vector-image": {
+    left: "-45px",
+    width: "100px",
+    height: "100px",
+    bottom: "-32px",
+    position: "absolute",
+  },
+});

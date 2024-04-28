@@ -5,7 +5,7 @@ import { Box, Grid } from "@mui/material";
 
 import { productData } from "../../data/product";
 import { ProductCard } from "../common/ProductCard";
-import { productSectionSX } from "../../helper/styleObjects/sections";
+import { productSectionSX } from "../../helper/styleObjects/homeSection";
 
 import { CustomTitle } from "../common/CustomTitle";
 

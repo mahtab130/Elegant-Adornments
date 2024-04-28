@@ -1,0 +1,71 @@
+import { memo } from "react";
+
+import { isString, merge } from "lodash";
+import { Box, Grid, SxProps, Theme } from "@mui/material";
+
+import { CustomTitle } from "./CustomTitle";
+import { SPACE_H2, SPACE_M2 } from "../../helper/constants/spaces";
+
+import vector2 from "../../assets/images/vectors/Vector 2.png";
+import { MAX_WIDTH } from "../../helper/constants/static";
+
+export const ContentSection = memo<IContentSection>(
+  ({ content, image, title, setting }) => {
+    const { reverse, imageWidth, sx } = setting ?? {};
+
+    const mergeSx = merge({}, contentProviderSX(reverse, imageWidth), sx);
+    return (
+      <Grid container sx={mergeSx} className="content-provider">
+        <Grid item xs={12} md={5.5} className="right-section">
+          <CustomTitle title={title} />
+          <Box component="img" className="vector" src={vector2} />
+          <Grid className="content">{content}</Grid>
+        </Grid>
+        <Grid item xs={12} md={6} className="left-section">
+          {isString(image) ? (
+            <Box component="img" className="image" src={image} />
+          ) : (
+            image
+          )}
+        </Grid>
+      </Grid>
+    );
+  }
+);
+
+const contentProviderSX = (
+  reverse?: boolean,
+  imageWidth?: string
+): SxProps<Theme> => ({
+  mx: "auto",
+  width: "100%",
+  display: "flex",
+  my: SPACE_H2,
+  maxWidth: MAX_WIDTH,
+  alignItems: "center",
+  justifyContent: "space-between",
+  flexDirection: reverse ? "row-reverse" : "row",
+  "& .right-section": {
+    display: "flex",
+    rowGap: SPACE_M2,
+    position: "relative",
+    flexDirection: "column",
+    "& .content": {
+      width: "100%",
+    },
+    "& .vector": {
+      width: "100px",
+      top: "0px",
+      position: "absolute",
+      right: "0px",
+    },
+  },
+  "& .left-section": {
+    display: "flex",
+    position: "relative",
+    justifyContent: reverse ? "start" : "end",
+    "& .image": {
+      width: imageWidth || "620px",
+    },
+  },
+});
