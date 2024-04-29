@@ -42,9 +42,9 @@ export const homeSectionSX: SxProps<Theme> = {
     height: "100%",
     position: "absolute",
     backgroundSize: "cover",
-    backgroundImage: `url(${backgroundImage})`,
     backgroundPosition: "right",
     backgroundRepeat: "no-repeat",
+    backgroundImage: `url(${backgroundImage})`,
   },
   "& .container": {
     mx: "auto",
@@ -72,9 +72,10 @@ export const homeSectionSX: SxProps<Theme> = {
         height: "250px",
       },
       "& .title": {
-        fontWeight: FONT_WEIGHT_BLOD,
         lineHeight: "90px",
         color: COLOR_WHITE,
+        animation: "1s ease-out 0s 1 slideInLeft",
+        fontWeight: FONT_WEIGHT_BLOD,
         fontSize: FONT_HEADING_LARGE,
       },
       "& .subtitle": {

@@ -8,26 +8,31 @@ import { ProductCard } from "../common/ProductCard";
 import { bestSellingData } from "../../data/product";
 import { COLOR_WHITE, COLOR_PRIMARY } from "../../helper/constants/colors";
 import { bestSellingSectionSX } from "../../helper/styleObjects/homeSection";
+import { AnimationSlideIn } from "../common/AnimateComponent";
 
 export const BestSellingSection = memo(() => {
   return (
     <Grid sx={bestSellingSectionSX}>
       <Grid className="container">
-        <CustomTitle
-          setting={{ iconColor: COLOR_PRIMARY, color: COLOR_WHITE }}
-          title="Best-selling Products"
-        />
+        <AnimationSlideIn direction="up">
+          <CustomTitle
+            title="Best-selling Products"
+            setting={{ iconColor: COLOR_PRIMARY, color: COLOR_WHITE }}
+          />
+        </AnimationSlideIn>
         <Grid container className="product-cards-wrapper">
-          {map(bestSellingData, ({ id, image, name, price, rate }) => (
+          {map(bestSellingData, ({ id, image, name, price, rate }, index) => (
             <Grid item xs={12} md={2.85} key={id}>
-              <ProductCard
-                variant="sale"
-                id={id}
-                name={name}
-                price={price}
-                image={image}
-                rate={rate}
-              />
+              <AnimationSlideIn direction={index < 2 ? "left" : "right"}>
+                <ProductCard
+                  id={id}
+                  name={name}
+                  variant="sale"
+                  price={price}
+                  image={image}
+                  rate={rate}
+                />
+              </AnimationSlideIn>
             </Grid>
           ))}
         </Grid>

@@ -29,13 +29,18 @@ export const categoryCardSX: SxProps<Theme> = {
   px: SPACE_D1,
   width: "100%",
   display: "flex",
+  cursor: "pointer",
   maxHeight: "175px",
   overflow: "hidden",
   borderRadius: "16px",
   position: "relative",
   justifyContent: "space-between",
+  transition: "all 0.6s",
   background:
     "linear-gradient(296.92deg, #568A9E 15.8%, #6A99AB 23.43%, #76A3B4 28.59%, #6D9FB1 35.91%, #6A9BAE 44.85%, #568A9E 59.37%, #568A9E 67.78%, #568A9E 75.24%, #568A9E 83.27%)",
+  "&:hover": {
+    transform: "translateY(-10px)",
+  },
   "& .title-wrapper": {
     py: SPACE_D1,
     display: "flex",
@@ -80,6 +85,11 @@ export const productCardSX = (
         },
       },
     },
+    "& .image-wrapper": {
+      "& .image-product": {
+        transform: "scale(1.13)",
+      },
+    },
   },
   "& .image-wrapper": {
     width: "100%",
@@ -92,6 +102,7 @@ export const productCardSX = (
       " linear-gradient(154.68deg, #E7EDEF 24.32%, #FFFFFF 45.27%, #FFFFFF 56.96%, #E7EDEF 99.84%)",
     "& .image-product": {
       height: "300px",
+      transition: "all .4s ease",
     },
   },
   "& .texts-wrapper": {
@@ -150,12 +161,26 @@ export const productCardSX = (
 export const blogCardSX: SxProps<Theme> = {
   width: "400px",
   height: "auto",
+  cursor: "pointer",
   overflow: "hidden",
   borderRadius: "10px",
+  "&:hover": {
+    "& .image-wrapper": {
+      "& .blog-image": {
+        transform: "scale(1.1)",
+      },
+    },
+  },
   boxShadow: "0px 4px 24px 4px #B5B5B51F , 0px 4px 24px 4px #B5B5B51F",
-  "& .blog-image": {
+  "& .image-wrapper": {
     width: "100%",
     height: "225px",
+    overflow: "hidden",
+    "& .blog-image": {
+      width: "100%",
+      height: "225px",
+      transition: "all 0.4s",
+    },
   },
   "& .text-section": {
     p: SPACE_M2,
@@ -181,10 +206,14 @@ export const blogCardSX: SxProps<Theme> = {
       display: "flex",
       justifyContent: "flex-end",
       "& .button": {
+        p: "0",
         width: "fit-content",
         color: COLOR_SECEONDRY,
         fontSize: FONT_LABEL_LARGE,
         textTransform: "capitalize",
+        "&:hover": {
+          outline: "none",
+        },
       },
     },
   },

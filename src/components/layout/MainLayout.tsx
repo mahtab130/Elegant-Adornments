@@ -9,8 +9,10 @@ import {
   Experimental_CssVarsProvider as MaterialCssVarsProvider,
   THEME_ID as MATERIAL_THEME_ID,
 } from "@mui/material/styles";
+import { MotionConfig } from "framer-motion";
 
 import { routes } from "../../routes";
+import { FONT_FAMILY } from "../../helper/constants/static";
 import { COLOR_PRIMARY, COLOR_TEXT } from "../../helper/constants/colors";
 import { FONT_WEIGHT_REGULAR } from "../../helper/constants/fonts";
 
@@ -20,7 +22,7 @@ const MainLayout: FC = () => {
   const themeMUI = createTheme({
     palette: { primary: { main: COLOR_PRIMARY } },
     typography: {
-      fontFamily: "Garamond",
+      fontFamily: FONT_FAMILY,
       allVariants: { color: COLOR_TEXT, fontWeight: FONT_WEIGHT_REGULAR },
     },
   });
@@ -30,7 +32,7 @@ const MainLayout: FC = () => {
   return (
     <ThemeProvider theme={themeMUI}>
       <MaterialCssVarsProvider theme={{ [MATERIAL_THEME_ID]: materialTheme }}>
-        {children}
+        <MotionConfig>{children}</MotionConfig>
       </MaterialCssVarsProvider>
     </ThemeProvider>
   );

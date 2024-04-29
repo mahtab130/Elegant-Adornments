@@ -1,8 +1,9 @@
 import { memo } from "react";
 
-import { Box, Grid, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 
 import { arrowRightIcon } from "../other/SvgComponent";
+import { CustomImage } from "../controller/CustomImage";
 import { CustomRating } from "../controller/CustomRating";
 import { COLOR_TEXT } from "../../helper/constants/colors";
 import { productCardSX } from "../../helper/styleObjects/common";
@@ -12,7 +13,7 @@ export const ProductCard = memo<IProductCard>(
     return (
       <Grid sx={productCardSX(variant)}>
         <Grid className="image-wrapper">
-          <Box component="img" src={image} className="image-product" />
+          <CustomImage src={image} className="image-product" />
         </Grid>
         <Grid className="texts-wrapper">
           <Typography className="title">{name}</Typography>

@@ -10,8 +10,10 @@ export const navbarSX: SxProps<Theme> = {
   zIndex: "3000",
   width: "1400px",
   display: "flex",
+
   alignItems: "center",
   borderRadius: "12px",
+  animation: "fadeIn 1s",
   justifyContent: "space-between",
   backgroundColor: COLOR_PRIMARY,
   "& .logo-wrapper": {

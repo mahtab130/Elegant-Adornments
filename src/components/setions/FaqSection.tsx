@@ -15,7 +15,7 @@ export const FaqSection = memo(() => {
     <>
       <Box component="img" src={vector1} className="vector-1" />
       <Box component="img" src={image} className="image" />
-      <Box component="img" sx={{}} src={vector2} className="vector-2" />
+      <Box component="img" src={vector2} className="vector-2" />
     </>
   );
 
@@ -34,7 +34,7 @@ export const FaqSection = memo(() => {
           },
           "& .vector-2": {
             top: "50px",
-            right: "50px",
+            right: "-50px",
             width: "100px",
             height: "40px",
             position: "absolute",

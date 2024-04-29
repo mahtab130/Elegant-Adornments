@@ -199,7 +199,7 @@ const SwiperSectionSx: SxProps<Theme> = {
 
 const customSwiperBlogSX: SxProps<Theme> = {
   mt: SPACE_D1,
-  mx: SPACE_XS1,
+  mr: SPACE_XS1,
   width: "100%",
   position: "relative",
   "& .swiper": {
@@ -207,7 +207,7 @@ const customSwiperBlogSX: SxProps<Theme> = {
     display: "flex",
     justifyContent: "center",
     "& .swiper-wrapper": {
-      height: "540px",
+      height: "570px",
       justifyContent: "space-around",
     },
     "& .swiper-slide": {

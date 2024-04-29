@@ -7,16 +7,21 @@ import { categoryData } from "../../data/category";
 import { CustomTitle } from "../common/CustomTitle";
 import { CategoryCard } from "../common/CategoryCard";
 import { categorySectionSX } from "../../helper/styleObjects/homeSection";
+import { AnimationSlideIn } from "../common/AnimateComponent";
 
 export const CategorySection = memo(() => {
   return (
     <Grid sx={categorySectionSX}>
       <Grid className="category-container">
-        <CustomTitle title="Product Categorization" />
+        <AnimationSlideIn direction="up">
+          <CustomTitle title="Product Categorization" />
+        </AnimationSlideIn>
         <Grid container className="category-cards-wrapper">
-          {map(categoryData, ({ id, image, name }) => (
+          {map(categoryData, ({ id, image, name }, index) => (
             <Grid item xs={12} md={2.85} key={id}>
-              <CategoryCard id={0} name={name} image={image} />
+              <AnimationSlideIn direction={index < 4 ? "left" : "right"}>
+                <CategoryCard id={0} name={name} image={image} />
+              </AnimationSlideIn>
             </Grid>
           ))}
         </Grid>

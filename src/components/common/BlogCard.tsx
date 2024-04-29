@@ -9,7 +9,9 @@ import { blogCardSX } from "../../helper/styleObjects/common";
 export const BlogCard = memo<IBlog>(({ image, description, title }) => {
   return (
     <Grid sx={blogCardSX}>
-      <Box component="img" className="blog-image" src={image} />
+      <Grid className="image-wrapper">
+        <Box component="img" className="blog-image" src={image} />
+      </Grid>
       <Grid className="text-section">
         <Grid className="text-wrapper">
           <Typography className="title">{title}</Typography>

@@ -4,10 +4,11 @@ import { isString, merge } from "lodash";
 import { Box, Grid, SxProps, Theme } from "@mui/material";
 
 import { CustomTitle } from "./CustomTitle";
+import { AnimationSlideIn } from "./AnimateComponent";
+import { MAX_WIDTH } from "../../helper/constants/static";
 import { SPACE_H2, SPACE_M2 } from "../../helper/constants/spaces";
 
 import vector2 from "../../assets/images/vectors/Vector 2.png";
-import { MAX_WIDTH } from "../../helper/constants/static";
 
 export const ContentSection = memo<IContentSection>(
   ({ content, image, title, setting }) => {
@@ -17,16 +18,22 @@ export const ContentSection = memo<IContentSection>(
     return (
       <Grid container sx={mergeSx} className="content-provider">
         <Grid item xs={12} md={5.5} className="right-section">
-          <CustomTitle title={title} />
-          <Box component="img" className="vector" src={vector2} />
-          <Grid className="content">{content}</Grid>
+          <AnimationSlideIn direction="left">
+            <>
+              <CustomTitle title={title} />
+              <Box component="img" className="vector" src={vector2} />
+              <Grid className="content">{content}</Grid>
+            </>
+          </AnimationSlideIn>
         </Grid>
         <Grid item xs={12} md={6} className="left-section">
-          {isString(image) ? (
-            <Box component="img" className="image" src={image} />
-          ) : (
-            image
-          )}
+          <AnimationSlideIn direction="right">
+            {isString(image) ? (
+              <Box component="img" className="image" src={image} />
+            ) : (
+              image
+            )}
+          </AnimationSlideIn>
         </Grid>
       </Grid>
     );
