@@ -2,7 +2,6 @@ import { memo } from "react";
 
 import { Grid, Box, Typography } from "@mui/material";
 
-import { Navbar } from "../common/Navbar";
 import { CustomButton } from "../controller/CustomButton";
 import { homeSectionSX } from "../../helper/styleObjects/homeSection";
 
@@ -15,9 +14,6 @@ export const HomeSection = memo(() => {
     <Grid sx={homeSectionSX} className="home-wrapper">
       <Grid className="background-image"></Grid>
       <Grid container className="container">
-        <AnimationSlideIn direction="up">
-          <Navbar />
-        </AnimationSlideIn>
         <AnimationSlideIn direction="left">
           <Grid item xs={12} md={5} className="texts-wrapper">
             <Box component="img" src={backImage} className="back-image" />

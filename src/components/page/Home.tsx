@@ -2,7 +2,6 @@ import { FC } from "react";
 
 import { Grid } from "@mui/material";
 
-import { Footer } from "../common/Footer";
 import { FaqSection } from "../setions/FaqSection";
 import { BlogSection } from "../setions/BlogSection";
 import { HomeSection } from "../setions/HomeSection";
@@ -26,7 +25,6 @@ const Home: FC = () => {
       <CommentsSection />
       <FaqSection />
       <BlogSection />
-      <Footer />
     </Grid>
   );
 };

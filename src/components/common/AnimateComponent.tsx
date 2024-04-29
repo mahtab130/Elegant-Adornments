@@ -55,16 +55,12 @@ export const AnimationSlideIn = memo<IAnimation>(
 );
 
 export const AnimationFadeIn = memo<IAnimation>(({ children, className }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: "all" });
-
   return (
     <motion.div
-      ref={ref}
       className={className}
       initial={{ opacity: 0 }}
-      animate={{ opacity: isInView ? 1 : 0 }}
-      transition={{ duration: 0.4, delay: 0.4 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
     >
       {children}
     </motion.div>

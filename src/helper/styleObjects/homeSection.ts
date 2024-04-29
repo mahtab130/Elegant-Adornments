@@ -4,11 +4,11 @@ import {
   SPACE_H2,
   SPACE_XS1,
   SPACE_D2,
-  SPACE_D1,
   SPACE_XM1,
   SPACE_M2,
   SPACE_S2,
   SPACE_M3,
+  SPACE_H3,
 } from "../constants/spaces";
 import {
   COLOR_WHITE,
@@ -57,7 +57,7 @@ export const homeSectionSX: SxProps<Theme> = {
     position: "relative",
     flexDirection: "column",
     "& .texts-wrapper": {
-      mt: SPACE_D1,
+      mt: SPACE_H3,
       pt: SPACE_H2,
       display: "flex",
       position: "relative",

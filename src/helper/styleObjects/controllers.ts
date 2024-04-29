@@ -89,7 +89,7 @@ export const textfieldSX = (hasIcon?: boolean): SxProps<Theme> => ({
       },
       "& .MuiInputBase-input    ": {
         "&::placeholder": {
-          opacity: "1",
+          opacity: "0.5",
           color: COLOR_TEXT,
         },
       },
