@@ -11,6 +11,8 @@ interface ICategoryCard {
   id: number;
   name: string;
   image: string;
+  thumbnail?: string;
+  description?: string;
 }
 
 interface IUserComment {

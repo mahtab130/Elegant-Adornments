@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo, useRef, useState } from "react";
 
 import { map } from "lodash";
 import { Box, Grid, Typography } from "@mui/material";
@@ -10,24 +10,40 @@ import { CustomTextfield } from "../controller/CustomTextfield";
 import { searchIcon, shoppingIcon, userIcon } from "../other/SvgComponent";
 
 import logo from "../../assets/images/vectors/logo.webp";
+import { CategoryPaper } from "../controller/CustomPopover";
 
 export const Navbar = memo(() => {
   const [showInput, setShowInput] = useState<boolean>(false);
+  const [openCategoryPopper, setOpenCategoryPopper] = useState<boolean>(false);
+
+  const ref = useRef(null);
+
   const navigate = useNavigate();
   const location = useLocation();
 
   return (
     <Grid className="navbar-wrapper">
-      <Grid className="navbar-container" sx={navbarSX(showInput)}>
+      <Grid
+        className="navbar-container"
+        sx={navbarSX(showInput, openCategoryPopper)}
+      >
         <Grid className="logo-wrapper">
           <Box className="logo" component="img" src={logo} />
         </Grid>
         <Grid className="nav-list-wrapper">
           {map(navbarValues, ({ name, url }) => (
             <Typography
-              onClick={() => navigate(url)}
+              ref={name == "Category" ? ref : null}
+              onClick={() => {
+                if (name == "Category") {
+                  setOpenCategoryPopper(!openCategoryPopper);
+                } else {
+                  navigate(url);
+                }
+              }}
               className={
-                location.pathname == url
+                location.pathname == url ||
+                (name == "Category" && openCategoryPopper)
                   ? "navbar-value-name active"
                   : "navbar-value-name"
               }
@@ -36,6 +52,11 @@ export const Navbar = memo(() => {
             </Typography>
           ))}
         </Grid>
+        <CategoryPaper
+          anchorEl={ref.current}
+          open={openCategoryPopper}
+          setOpen={setOpenCategoryPopper}
+        />
         <Grid className="actions-wrapper">
           <Box
             component="div"

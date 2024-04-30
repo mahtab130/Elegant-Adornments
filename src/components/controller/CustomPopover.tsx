@@ -1,0 +1,232 @@
+import { FC, ReactNode, useState } from "react";
+
+import {
+  Grid,
+  Theme,
+  SxProps,
+  Popover,
+  Typography,
+  PopoverProps,
+  Box,
+} from "@mui/material";
+import { find, map } from "lodash";
+import { categoryData } from "../../data/category";
+import { CustomImage } from "./CustomImage";
+import { CustomButton } from "./CustomButton";
+import {
+  COLOR_PRIMARY,
+  COLOR_SILVER_GRAY,
+  COLOR_TEXT_GRAY,
+  COLOR_WHITE,
+} from "../../helper/constants/colors";
+import {
+  SPACE_D1,
+  SPACE_M1,
+  SPACE_M2,
+  SPACE_M3,
+  SPACE_S1,
+  SPACE_XM1,
+  SPACE_XS1,
+} from "../../helper/constants/spaces";
+import {
+  FONT_BODY_MEDIUM2,
+  FONT_LABEL_LARGE,
+  FONT_LABEL_MEDIUM,
+  FONT_WEIGHT_BLOD,
+} from "../../helper/constants/fonts";
+
+export interface ICustomPopover {
+  open: boolean;
+  sx: SxProps<Theme>;
+  children: ReactNode;
+  anchorEl?: PopoverProps["anchorEl"];
+  onClose: PopoverProps["onClose"];
+  anchorOrigin?: PopoverProps["anchorOrigin"];
+}
+
+export const CustomPopover: FC<ICustomPopover> = ({
+  sx,
+  open,
+  children,
+  anchorEl,
+  onClose,
+  anchorOrigin,
+}) => {
+  return (
+    <Popover
+      sx={sx}
+      open={open}
+      onClose={onClose}
+      anchorEl={anchorEl}
+      anchorOrigin={
+        {
+          vertical: "bottom",
+          horizontal: "left",
+        } || anchorOrigin
+      }
+      className="notification"
+    >
+      {children}
+    </Popover>
+  );
+};
+
+export const CategoryPaper = ({
+  open,
+  anchorEl,
+  setOpen,
+}: {
+  open: ICustomPopover["open"];
+  anchorEl: ICustomPopover["anchorEl"];
+  setOpen: (open: ICustomPopover["open"]) => void;
+}) => {
+  const [categoryId, setCategoryId] = useState<number>(1);
+
+  const {
+    image,
+    description,
+    name,
+    id: currentId,
+  } = find(categoryData, ({ id }) => id == categoryId) ?? {};
+
+  return (
+    <CustomPopover
+      open={open}
+      anchorEl={anchorEl}
+      sx={categoryPopperSX}
+      onClose={() => setOpen(false)}
+    >
+      <Grid className="cotnainer">
+        <Grid className="list-category">
+          {map(categoryData, ({ name, id }) => (
+            <Typography
+              key={id}
+              className={
+                currentId == id ? "category-name active" : "category-name"
+              }
+              onClick={() => setCategoryId(id)}
+            >
+              {name}
+            </Typography>
+          ))}
+        </Grid>
+        <Grid className="category-content">
+          <CustomImage className="image-category" src={image || ""} />
+          <Grid className="text-container">
+            <Typography className="title">
+              {name}
+              <Box component="span" className="border-bottom"></Box>
+            </Typography>
+            <Typography className="description">{description}</Typography>
+            <Grid>
+              <CustomButton
+                className="button"
+                variant="contained"
+                text="See Products"
+              />
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+    </CustomPopover>
+  );
+};
+
+const categoryPopperSX: SxProps<Theme> = {
+  width: "fit-contnet",
+  "& .MuiPaper-root": {
+    mt: SPACE_M1,
+    maxWidth: "822px",
+    borderRadius: "8px",
+    boxShadow: "none",
+    borderTopRightRadius: "0",
+    borderTopLeftRadius: "0",
+    backgroundColor: COLOR_WHITE,
+    "& .cotnainer": {
+      p: SPACE_M2,
+      display: "flex",
+      "& .list-category": {
+        pr: SPACE_M2,
+        display: "flex",
+        rowGap: SPACE_XS1,
+        flexDirection: "column",
+        borderRight: "1px solid" + COLOR_PRIMARY + "80",
+        "& .category-name": {
+          cursor: "pointer",
+          position: "relative",
+          width: "max-content",
+          color: COLOR_TEXT_GRAY,
+          fontSize: FONT_LABEL_LARGE,
+          fontWeight: FONT_WEIGHT_BLOD,
+          borderBottom: "1px solid transparent",
+          "&:before": {
+            right: 0,
+            content: "''",
+            width: "100%",
+            height: "1px",
+            display: "block",
+            bottom: "-2px",
+            position: "absolute",
+            transform: " scaleX(0)",
+            background: COLOR_PRIMARY + "80",
+            transformOrigin: "bottom right",
+            transition: "transform .3s ease",
+          },
+          "&.active": {
+            "&:before": {
+              transform: " scaleX(1)",
+              transformOrigin: "bottom left",
+            },
+          },
+          "&:hover": {
+            "&:before": {
+              transform: " scaleX(1)",
+            },
+          },
+        },
+      },
+      "& .category-content": {
+        mx: SPACE_XM1,
+        gap: SPACE_XM1,
+        display: "flex",
+        alignItems: "center",
+        "& .image-category": {
+          width: "250px",
+          height: "300px",
+          borderRadius: "8px",
+        },
+        "& .text-container": {
+          display: "flex",
+          flexDirection: "column",
+          "& .title": {
+            display: "flex",
+            lineHeight: "20px",
+            width: "fit-content",
+            flexDirection: "column",
+            fontSize: FONT_BODY_MEDIUM2,
+            fontWeight: FONT_WEIGHT_BLOD,
+            "& .border-bottom": {
+              width: "60%",
+              height: "1px",
+              backgroundColor: COLOR_PRIMARY,
+            },
+          },
+          "& .description": {
+            mt: SPACE_XS1,
+            lineHeight: "18px",
+            color: COLOR_SILVER_GRAY,
+            fontWeight: FONT_WEIGHT_BLOD,
+            fontSize: FONT_LABEL_MEDIUM,
+          },
+          "& .button": {
+            mt: SPACE_D1,
+            py: SPACE_S1,
+            px: SPACE_M3,
+            borderRadius: "8px",
+            fontSize: FONT_LABEL_MEDIUM,
+          },
+        },
+      },
+    },
+  },
+};

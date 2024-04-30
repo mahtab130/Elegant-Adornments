@@ -7,3 +7,5 @@ export const COLOR_SECEONDRY = "#568A9E";
 export const COLOR_TEXT_WHITE = "#EAEAEA";
 export const COLOR_BACKGROUND = "#FFFFFF";
 export const COLOR_LIGHT_GRAY = "#D4D4D4";
+export const COLOR_TEXT_GRAY = "#6F6F6F";
+export const COLOR_SILVER_GRAY = "#A1A1A1";

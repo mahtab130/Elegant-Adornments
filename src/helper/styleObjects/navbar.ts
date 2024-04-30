@@ -4,7 +4,10 @@ import { COLOR_PRIMARY, COLOR_SECEONDRY } from "../constants/colors";
 import { FONT_BODY_SMALL, FONT_WEIGHT_BLOD } from "../constants/fonts";
 import { SPACE_H2, SPACE_M2, SPACE_D2, SPACE_S1 } from "../constants/spaces";
 
-export const navbarSX = (showInput?: boolean): SxProps<Theme> => ({
+export const navbarSX = (
+  showInput?: boolean,
+  openCategoryPopper?: boolean
+): SxProps<Theme> => ({
   mx: "auto",
   px: SPACE_H2,
   py: SPACE_M2,
@@ -16,8 +19,9 @@ export const navbarSX = (showInput?: boolean): SxProps<Theme> => ({
   alignItems: "center",
   borderRadius: "12px",
   animation: "fadeIn 1s",
-  justifyContent: "space-between",
   backgroundColor: COLOR_PRIMARY,
+  justifyContent: "space-between",
+  borderBottomRightRadius: openCategoryPopper ? "0" : undefined,
   "& .logo-wrapper": {
     "& .logo": {
       width: "120px",
@@ -31,9 +35,9 @@ export const navbarSX = (showInput?: boolean): SxProps<Theme> => ({
     "& .navbar-value-name": {
       zIndex: "20",
       cursor: "pointer",
-      fontWeight: FONT_WEIGHT_BLOD,
       position: "relative",
       fontSize: FONT_BODY_SMALL,
+      fontWeight: FONT_WEIGHT_BLOD,
       "&.active": {
         "&:before": {
           transform: " scaleX(1)",
