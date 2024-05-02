@@ -92,7 +92,7 @@ export const buttonSX = (customColor?: string): SxProps<Theme> => ({
       boxShadow: "none",
       color: customColor ?? COLOR_PRIMARY,
       backgroundColor: "transparent",
-      outline: "1px solid" + customColor ?? COLOR_PRIMARY,
+      outline: "1px solid " + (customColor ?? COLOR_PRIMARY),
     },
   },
   "&.MuiButton-outlined": {

@@ -3,11 +3,11 @@ import { memo } from "react";
 import { Grid, Box, Typography } from "@mui/material";
 
 import { CustomButton } from "../controller/CustomButton";
+import { AnimationSlideIn } from "../common/AnimateComponent";
 import { homeSectionSX } from "../../helper/styleObjects/homeSection";
 
 import Vector from "../../assets/images/vectors/Vector.webp";
 import backImage from "../../assets/images/vectors/back-image.webp";
-import { AnimationSlideIn } from "../common/AnimateComponent";
 
 export const HomeSection = memo(() => {
   return (

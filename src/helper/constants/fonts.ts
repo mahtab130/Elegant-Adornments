@@ -1,4 +1,5 @@
 // fontSize
+export const FONT_HEADING_XLARGE = "90px"; // used
 export const FONT_HEADING_LARGE = "80px"; // used
 export const FONT_HEADING_MEDIUM = "75px";
 export const FONT_HEADING_SMALL = "62px";
