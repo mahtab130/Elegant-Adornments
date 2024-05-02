@@ -5,16 +5,16 @@ import { Box, Grid, SxProps, Theme } from "@mui/material";
 
 import { CustomTitle } from "./CustomTitle";
 import { AnimationSlideIn } from "./AnimateComponent";
-import { MAX_WIDTH } from "../../helper/constants/static";
-import { SPACE_H2, SPACE_M2 } from "../../helper/constants/spaces";
+import { contentProviderSX } from "../../helper/styleObjects/common";
 
 import vector2 from "../../assets/images/vectors/Vector 2.png";
 
-export const ContentSection = memo<IContentSection>(
+export const ContentSection = memo<IContentSection<SxProps<Theme>>>(
   ({ content, image, title, setting }) => {
     const { reverse, imageWidth, sx } = setting ?? {};
 
     const mergeSx = merge({}, contentProviderSX(reverse, imageWidth), sx);
+
     return (
       <Grid container sx={mergeSx} className="content-provider">
         <Grid item xs={12} md={5.5} className="right-section">
@@ -39,40 +39,3 @@ export const ContentSection = memo<IContentSection>(
     );
   }
 );
-
-const contentProviderSX = (
-  reverse?: boolean,
-  imageWidth?: string
-): SxProps<Theme> => ({
-  mx: "auto",
-  width: "100%",
-  display: "flex",
-  my: SPACE_H2,
-  maxWidth: MAX_WIDTH,
-  alignItems: "center",
-  justifyContent: "space-between",
-  flexDirection: reverse ? "row-reverse" : "row",
-  "& .right-section": {
-    display: "flex",
-    rowGap: SPACE_M2,
-    position: "relative",
-    flexDirection: "column",
-    "& .content": {
-      width: "100%",
-    },
-    "& .vector": {
-      width: "100px",
-      top: "0px",
-      position: "absolute",
-      right: "0px",
-    },
-  },
-  "& .left-section": {
-    display: "flex",
-    position: "relative",
-    justifyContent: reverse ? "start" : "end",
-    "& .image": {
-      width: imageWidth || "620px",
-    },
-  },
-});

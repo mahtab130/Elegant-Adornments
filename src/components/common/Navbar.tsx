@@ -5,12 +5,12 @@ import { Box, Grid, Typography } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { navbarValues } from "../../data/other";
+import { CategoryPaper } from "../controller/CustomPopover";
 import { navbarSX } from "../../helper/styleObjects/navbar";
 import { CustomTextfield } from "../controller/CustomTextfield";
 import { searchIcon, shoppingIcon, userIcon } from "../other/SvgComponent";
 
 import logo from "../../assets/images/vectors/logo.webp";
-import { CategoryPaper } from "../controller/CustomPopover";
 
 export const Navbar = memo(() => {
   const [showInput, setShowInput] = useState<boolean>(false);
@@ -39,6 +39,7 @@ export const Navbar = memo(() => {
                   setOpenCategoryPopper(!openCategoryPopper);
                 } else {
                   navigate(url);
+                  setOpenCategoryPopper(false);
                 }
               }}
               className={

@@ -5,10 +5,9 @@ import { Box, Grid } from "@mui/material";
 
 import { productData } from "../../data/product";
 import { ProductCard } from "../common/ProductCard";
-import { productSectionSX } from "../../helper/styleObjects/homeSection";
-
 import { CustomTitle } from "../common/CustomTitle";
 import { AnimationSlideIn } from "../common/AnimateComponent";
+import { productSectionSX } from "../../helper/styleObjects/homeSection";
 
 export const ProductSection = memo(() => {
   return (

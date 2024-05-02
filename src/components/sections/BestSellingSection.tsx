@@ -6,9 +6,9 @@ import { Grid } from "@mui/material";
 import { CustomTitle } from "../common/CustomTitle";
 import { ProductCard } from "../common/ProductCard";
 import { bestSellingData } from "../../data/product";
+import { AnimationSlideIn } from "../common/AnimateComponent";
 import { COLOR_WHITE, COLOR_PRIMARY } from "../../helper/constants/colors";
 import { bestSellingSectionSX } from "../../helper/styleObjects/homeSection";
-import { AnimationSlideIn } from "../common/AnimateComponent";
 
 export const BestSellingSection = memo(() => {
   return (

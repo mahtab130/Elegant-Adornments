@@ -2,7 +2,7 @@ import image1 from "../assets/images/home/image-blog1.png";
 import image2 from "../assets/images/home/image-blog2.png";
 import image3 from "../assets/images/home/image-blog3.png";
 
-export const blogs: IBlog[] = [
+export const blogs: IBlogCard[] = [
   {
     id: 1,
     title: "Real rhinestones from fakes",

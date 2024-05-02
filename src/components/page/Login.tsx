@@ -1,24 +1,8 @@
 import { FC, memo } from "react";
 
+import { useNavigate } from "react-router-dom";
 import { Box, Grid, SxProps, Theme, Typography } from "@mui/material";
-import { CustomTextfield } from "../controller/CustomTextfield";
-import { CustomButton } from "../controller/CustomButton";
 
-import BackImage from "../../assets/images/back-login.jpg";
-import {
-  COLOR_MEDIUM_GRAY,
-  COLOR_SECEONDRY,
-  COLOR_TEXT_GRAY,
-  COLOR_TEXT_WHITE,
-  COLOR_WHITE,
-} from "../../helper/constants/colors";
-import {
-  FONT_BODY_LARGE,
-  FONT_LABEL_LARGE,
-  FONT_LABEL_MEDIUM,
-  FONT_LABEL_SMALL,
-  FONT_WEIGHT_BLOD,
-} from "../../helper/constants/fonts";
 import {
   SPACE_D1,
   SPACE_D2,
@@ -27,10 +11,27 @@ import {
   SPACE_S2,
   SPACE_S3,
 } from "../../helper/constants/spaces";
+import {
+  COLOR_WHITE,
+  COLOR_SECEONDRY,
+  COLOR_TEXT_GRAY,
+  COLOR_TEXT_WHITE,
+  COLOR_MEDIUM_GRAY,
+} from "../../helper/constants/colors";
+import {
+  FONT_BODY_LARGE,
+  FONT_LABEL_LARGE,
+  FONT_LABEL_SMALL,
+  FONT_WEIGHT_BLOD,
+  FONT_LABEL_MEDIUM,
+} from "../../helper/constants/fonts";
+import { googleIcon } from "../other/SvgComponent";
+import { CustomButton } from "../controller/CustomButton";
 import { AnimationFadeIn } from "../common/AnimateComponent";
 import { CustomCheckbox } from "../controller/CustomCheckbox";
-import { googleIcon } from "../other/SvgComponent";
-import { useNavigate } from "react-router-dom";
+import { CustomTextfield } from "../controller/CustomTextfield";
+
+import BackImage from "../../assets/images/login/back-login.jpg";
 
 interface ILogin {
   isSignUp?: boolean;

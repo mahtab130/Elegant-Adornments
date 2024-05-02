@@ -2,16 +2,16 @@ import { FC } from "react";
 
 import { Grid } from "@mui/material";
 
-import { FaqSection } from "../setions/FaqSection";
-import { BlogSection } from "../setions/BlogSection";
-import { HomeSection } from "../setions/HomeSection";
+import { FaqSection } from "../sections/FaqSection";
+import { BlogSection } from "../sections/BlogSection";
+import { HomeSection } from "../sections/HomeSection";
 import { homeSX } from "../../helper/styleObjects/main";
-import { AboutUsSection } from "../setions/AboutUsSection";
-import { ProductSection } from "../setions/ProductSection";
-import { ServicesSection } from "../setions/ServicesSection";
-import { CommentsSection } from "../setions/CommentsSection";
-import { CategorySection } from "../setions/CategorySection";
-import { BestSellingSection } from "../setions/BestSellingSection";
+import { AboutUsSection } from "../sections/AboutUsSection";
+import { ProductSection } from "../sections/ProductSection";
+import { ServicesSection } from "../sections/ServicesSection";
+import { CommentsSection } from "../sections/CommentsSection";
+import { CategorySection } from "../sections/CategorySection";
+import { BestSellingSection } from "../sections/BestSellingSection";
 
 const Home: FC = () => {
   return (

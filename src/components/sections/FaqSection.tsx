@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useMemo } from "react";
 
 import { Box } from "@mui/material";
 
@@ -11,12 +11,15 @@ import vector1 from "../../assets/images/vectors/vector2.png";
 import vector2 from "../../assets/images/vectors/vector3.png";
 
 export const FaqSection = memo(() => {
-  const imageComponent = (
-    <>
-      <Box component="img" src={vector1} className="vector-1" />
-      <Box component="img" src={image} className="image" />
-      <Box component="img" src={vector2} className="vector-2" />
-    </>
+  const imageComponent = useMemo(
+    () => (
+      <>
+        <Box component="img" src={vector1} className="vector-1" />
+        <Box component="img" src={image} className="image" />
+        <Box component="img" src={vector2} className="vector-2" />
+      </>
+    ),
+    []
   );
 
   return (

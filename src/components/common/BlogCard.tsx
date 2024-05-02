@@ -6,7 +6,7 @@ import { arrowLeft2Icon } from "../other/SvgComponent";
 import { CustomButton } from "../controller/CustomButton";
 import { blogCardSX } from "../../helper/styleObjects/common";
 
-export const BlogCard = memo<IBlog>(({ image, description, title }) => {
+export const BlogCard = memo<IBlogCard>(({ image, description, title }) => {
   return (
     <Grid sx={blogCardSX}>
       <Grid className="image-wrapper">

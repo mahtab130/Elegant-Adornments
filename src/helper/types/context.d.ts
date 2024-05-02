@@ -1,6 +1,6 @@
 interface IMainContext {
   theme: TTheme;
-  toggleTheme: TEmptyVoidFunction;
+  toggleTheme: TEmptyFunctionVoid;
   changeTheme: (theme: TTheme) => void;
 }
 

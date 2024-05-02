@@ -27,7 +27,7 @@ import {
   FONT_BODY_MEDIUM2,
   FONT_WEIGHT_BLOD,
 } from "../../helper/constants/fonts";
-import { BlogCard } from "./BlogCard";
+import { BlogCard } from "../common/BlogCard";
 import { ContentSection } from "../common/ContentSection";
 import { CustomRating } from "../controller/CustomRating";
 import { COLOR_SECEONDRY, COLOR_WHITE } from "../../helper/constants/colors";
@@ -105,7 +105,7 @@ const ContentComment = memo<IContentComment>(
   }
 );
 
-export const CustomSwiperBlog = memo<{ data: IBlog[] }>(({ data }) => {
+export const CustomSwiperBlog = memo<{ data: IBlogCard[] }>(({ data }) => {
   return (
     <Grid sx={customSwiperBlogSX}>
       <Swiper

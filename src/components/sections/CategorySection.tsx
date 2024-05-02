@@ -6,8 +6,8 @@ import { Grid } from "@mui/material";
 import { categoryData } from "../../data/category";
 import { CustomTitle } from "../common/CustomTitle";
 import { CategoryCard } from "../common/CategoryCard";
-import { categorySectionSX } from "../../helper/styleObjects/homeSection";
 import { AnimationSlideIn } from "../common/AnimateComponent";
+import { categorySectionSX } from "../../helper/styleObjects/homeSection";
 
 export const CategorySection = memo(() => {
   return (

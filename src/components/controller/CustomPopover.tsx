@@ -2,22 +2,21 @@ import { FC, ReactNode, useState } from "react";
 
 import {
   Grid,
+  Box,
   Theme,
   SxProps,
   Popover,
   Typography,
   PopoverProps,
-  Box,
 } from "@mui/material";
 import { find, map } from "lodash";
-import { categoryData } from "../../data/category";
-import { CustomImage } from "./CustomImage";
-import { CustomButton } from "./CustomButton";
+import { motion } from "framer-motion";
+
 import {
-  COLOR_PRIMARY,
-  COLOR_SILVER_GRAY,
-  COLOR_TEXT_GRAY,
   COLOR_WHITE,
+  COLOR_PRIMARY,
+  COLOR_TEXT_GRAY,
+  COLOR_SILVER_GRAY,
 } from "../../helper/constants/colors";
 import {
   SPACE_D1,
@@ -29,28 +28,30 @@ import {
   SPACE_XS1,
 } from "../../helper/constants/spaces";
 import {
-  FONT_BODY_MEDIUM2,
   FONT_LABEL_LARGE,
-  FONT_LABEL_MEDIUM,
   FONT_WEIGHT_BLOD,
+  FONT_BODY_MEDIUM2,
+  FONT_LABEL_MEDIUM,
 } from "../../helper/constants/fonts";
-import { motion } from "framer-motion";
+import { CustomImage } from "./CustomImage";
+import { CustomButton } from "./CustomButton";
+import { categoryData } from "../../data/category";
 
 export interface ICustomPopover {
   open: boolean;
   sx: SxProps<Theme>;
   children: ReactNode;
-  anchorEl?: PopoverProps["anchorEl"];
   onClose: PopoverProps["onClose"];
+  anchorEl?: PopoverProps["anchorEl"];
   anchorOrigin?: PopoverProps["anchorOrigin"];
 }
 
 export const CustomPopover: FC<ICustomPopover> = ({
   sx,
   open,
-  children,
-  anchorEl,
   onClose,
+  anchorEl,
+  children,
   anchorOrigin,
 }) => {
   return (
@@ -74,8 +75,8 @@ export const CustomPopover: FC<ICustomPopover> = ({
 
 export const CategoryPaper = ({
   open,
-  anchorEl,
   setOpen,
+  anchorEl,
 }: {
   open: ICustomPopover["open"];
   anchorEl: ICustomPopover["anchorEl"];
@@ -84,9 +85,9 @@ export const CategoryPaper = ({
   const [categoryId, setCategoryId] = useState<number>(1);
 
   const {
+    name,
     image,
     description,
-    name,
     id: currentId,
   } = find(categoryData, ({ id }) => id == categoryId) ?? {};
 
@@ -149,8 +150,8 @@ const categoryPopperSX: SxProps<Theme> = {
   "& .MuiPaper-root": {
     mt: SPACE_M1,
     maxWidth: "822px",
-    borderRadius: "8px",
     boxShadow: "none",
+    borderRadius: "8px",
     borderTopRightRadius: "0",
     borderTopLeftRadius: "0",
     backgroundColor: COLOR_WHITE,

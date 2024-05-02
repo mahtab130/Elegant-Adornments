@@ -3,9 +3,9 @@ import { memo } from "react";
 import { Typography, Box } from "@mui/material";
 
 import { arrowCrookedIcon } from "../other/SvgComponent";
+import { customTitle } from "../../helper/styleObjects/common";
 
 import backImage from "../../assets/images/vectors/back-image-2.png";
-import { customTitle } from "../../helper/styleObjects/common";
 
 export const CustomTitle = memo<ICustomTitle>(({ title, setting }) => {
   const { color, iconColor } = setting ?? {};

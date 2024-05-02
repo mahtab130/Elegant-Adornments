@@ -7,9 +7,9 @@ interface IRating extends Omit<RatingProps, "size"> {
 }
 
 const sizeObj = {
+  small: "16px",
   large: "24px",
   medium: "20px",
-  small: "16px",
 };
 
 export const CustomRating = memo<IRating>(({ size, ...props }) => {

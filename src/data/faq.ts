@@ -1,4 +1,4 @@
-export const faq: IFaq[] = [
+export const faq: IFaqData[] = [
   {
     id: 1,
     title: "Can you accept requests for custom product customization?",

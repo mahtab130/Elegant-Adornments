@@ -1,17 +1,19 @@
-import {
-  Checkbox,
-  CheckboxProps,
-  Grid,
-  SxProps,
-  Theme,
-  Typography,
-} from "@mui/material";
 import { memo } from "react";
-import { COLOR_MEDIUM_GRAY } from "../../helper/constants/colors";
+
 import {
-  FONT_LABEL_MEDIUM,
+  Grid,
+  Theme,
+  SxProps,
+  Checkbox,
+  Typography,
+  CheckboxProps,
+} from "@mui/material";
+
+import {
   FONT_WEIGHT_BLOD,
+  FONT_LABEL_MEDIUM,
 } from "../../helper/constants/fonts";
+import { COLOR_MEDIUM_GRAY } from "../../helper/constants/colors";
 import { SPACE_S2, SPACE_S4 } from "../../helper/constants/spaces";
 import { checkboxEmptyIcon, checkboxFillIcon } from "../other/SvgComponent";
 

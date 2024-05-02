@@ -4,9 +4,9 @@ import { Grid } from "@mui/material";
 
 import { blogs } from "../../data/blogs";
 import { CustomTitle } from "../common/CustomTitle";
-import { CustomSwiperBlog } from "../common/CustomSwiper";
-import { blogSX } from "../../helper/styleObjects/homeSection";
+import { CustomSwiperBlog } from "../controller/CustomSwiper";
 import { AnimationSlideIn } from "../common/AnimateComponent";
+import { blogSX } from "../../helper/styleObjects/homeSection";
 
 export const BlogSection = memo(() => {
   return (

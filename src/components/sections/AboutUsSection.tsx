@@ -4,8 +4,8 @@ import { Grid, Typography } from "@mui/material";
 
 import { ContentSection } from "../common/ContentSection";
 import { CustomButton } from "../controller/CustomButton";
-import { FONT_BODY_MEDIUM2 } from "../../helper/constants/fonts";
 import { COLOR_SECEONDRY } from "../../helper/constants/colors";
+import { FONT_BODY_MEDIUM2 } from "../../helper/constants/fonts";
 import { SPACE_D2, SPACE_D1, SPACE_XS1 } from "../../helper/constants/spaces";
 
 import image from "../../assets/images/home/image-about-us.png";

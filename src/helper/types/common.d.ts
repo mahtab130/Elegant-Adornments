@@ -1,14 +1,3 @@
-interface IContentSection {
-  image: string | JSX.Element;
-  title: string;
-  content: JSX.Element;
-  setting?: {
-    sx?: SxProps<Theme>;
-    reverse?: boolean;
-    imageWidth?: string;
-  };
-}
-
 interface ICustomSwiperComment {
   data: IUserComment[];
 }
@@ -22,5 +11,16 @@ interface ICustomTitle {
   setting?: {
     color?: string;
     iconColor?: string;
+  };
+}
+
+interface IContentSection<TSx = TAny> {
+  image: string | JSX.Element;
+  title: string;
+  content: JSX.Element;
+  setting?: {
+    sx?: TSx;
+    reverse?: boolean;
+    imageWidth?: string;
   };
 }

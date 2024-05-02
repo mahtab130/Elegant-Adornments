@@ -3,8 +3,8 @@ interface IProductCard {
   name: string;
   price: string;
   image: string;
-  variant?: "sale" | "product";
   rate?: number;
+  variant?: "sale" | "product";
 }
 
 interface ICategoryCard {
@@ -24,14 +24,14 @@ interface IUserComment {
   comment: string;
 }
 
-interface IBlog {
+interface IBlogCard {
   id: number;
   image: string;
   title: string;
   description: string;
 }
 
-interface IFaq {
+interface IFaqData {
   id: number;
   title: string;
   description: string;

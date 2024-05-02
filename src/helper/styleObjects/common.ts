@@ -15,6 +15,7 @@ import {
   COLOR_PRIMARY,
   COLOR_SECEONDRY,
   COLOR_BACKGROUND,
+  COLOR_TEXT_WHITE,
 } from "../constants/colors";
 import {
   FONT_LABEL_LARGE,
@@ -23,7 +24,9 @@ import {
   FONT_BODY_MEDIUM2,
   FONT_BODY_MEDIUM1,
   FONT_CAPTION_LARGE,
+  FONT_HEADING_XLARGE,
 } from "../constants/fonts";
+import { MAX_WIDTH } from "../constants/static";
 
 export const categoryCardSX: SxProps<Theme> = {
   px: SPACE_D1,
@@ -34,8 +37,8 @@ export const categoryCardSX: SxProps<Theme> = {
   overflow: "hidden",
   borderRadius: "16px",
   position: "relative",
-  justifyContent: "space-between",
   transition: "all 0.6s",
+  justifyContent: "space-between",
   background:
     "linear-gradient(296.92deg, #568A9E 15.8%, #6A99AB 23.43%, #76A3B4 28.59%, #6D9FB1 35.91%, #6A9BAE 44.85%, #568A9E 59.37%, #568A9E 67.78%, #568A9E 75.24%, #568A9E 83.27%)",
   "&:hover": {
@@ -239,5 +242,71 @@ export const customTitle = (
     height: "100px",
     bottom: "-32px",
     position: "absolute",
+  },
+});
+
+export const contentProviderSX = (
+  reverse?: boolean,
+  imageWidth?: string
+): SxProps<Theme> => ({
+  mx: "auto",
+  width: "100%",
+  display: "flex",
+  my: SPACE_H2,
+  maxWidth: MAX_WIDTH,
+  alignItems: "center",
+  justifyContent: "space-between",
+  flexDirection: reverse ? "row-reverse" : "row",
+  "& .right-section": {
+    display: "flex",
+    rowGap: SPACE_M2,
+    position: "relative",
+    flexDirection: "column",
+    "& .content": {
+      width: "100%",
+    },
+    "& .vector": {
+      width: "100px",
+      top: "0px",
+      position: "absolute",
+      right: "0px",
+    },
+  },
+  "& .left-section": {
+    display: "flex",
+    position: "relative",
+    justifyContent: reverse ? "start" : "end",
+    "& .image": {
+      width: imageWidth || "620px",
+    },
+  },
+});
+
+export const headingPageSX = (image?: string): SxProps<Theme> => ({
+  width: "100%",
+  height: "100vh",
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
+  backgroundImage: `url(${image})`,
+  "& .container": {
+    mx: "auto",
+    height: "100%",
+    display: "flex",
+    maxWidth: "1000px",
+    alignItems: "center",
+    flexDirection: "column",
+    justifyContent: "center",
+    "& .title": {
+      color: COLOR_WHITE,
+      fontWeight: FONT_WEIGHT_BLOD,
+      fontSize: FONT_HEADING_XLARGE,
+    },
+    "& .subtitle": {
+      textAlign: "center",
+      color: COLOR_TEXT_WHITE,
+      fontSize: FONT_BODY_MEDIUM2,
+      fontWeight: FONT_WEIGHT_BLOD,
+    },
   },
 });
