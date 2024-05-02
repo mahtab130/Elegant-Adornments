@@ -54,15 +54,17 @@ export const AnimationSlideIn = memo<IAnimation>(
   }
 );
 
-export const AnimationFadeIn = memo<IAnimation>(({ children, className }) => {
-  return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-    >
-      {children}
-    </motion.div>
-  );
-});
+export const AnimationFadeIn = memo<Omit<IAnimation, "direction">>(
+  ({ children, className }) => {
+    return (
+      <motion.div
+        className={className}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4 }}
+      >
+        {children}
+      </motion.div>
+    );
+  }
+);

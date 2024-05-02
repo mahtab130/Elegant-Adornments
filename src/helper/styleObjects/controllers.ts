@@ -1,11 +1,27 @@
+import { SPACE_S4 } from "./../constants/spaces";
 import { SxProps, Theme } from "@mui/material";
 
-import { SPACE_D1, SPACE_M2, SPACE_M3, SPACE_XS1 } from "../constants/spaces";
-import { FONT_BODY_MEDIUM2, FONT_WEIGHT_BLOD } from "../constants/fonts";
 import {
+  SPACE_D1,
+  SPACE_M2,
+  SPACE_M3,
+  SPACE_S2,
+  SPACE_XS1,
+} from "../constants/spaces";
+import {
+  FONT_BODY_MEDIUM2,
+  FONT_LABEL_MEDIUM,
+  FONT_LABEL_SMALL,
+  FONT_WEIGHT_BLOD,
+} from "../constants/fonts";
+import {
+  COLOR_PLACEHOLDER,
   COLOR_PRIMARY,
   COLOR_SECEONDRY,
   COLOR_TEXT,
+  COLOR_TEXT_GRAY,
+  COLOR_TEXT_WHITE,
+  COLOR_WHITE,
 } from "../constants/colors";
 
 export const customAccordionContentSX = (
@@ -57,40 +73,65 @@ export const customAccordionSX: SxProps<Theme> = {
   },
 };
 
-export const buttonSX: SxProps<Theme> = {
+export const buttonSX = (customColor?: string): SxProps<Theme> => ({
   px: SPACE_D1,
   py: SPACE_XS1,
   fontWeight: FONT_WEIGHT_BLOD,
-  color: COLOR_TEXT,
-  boxShadow: "none",
   lineHeight: SPACE_M2,
+  boxShadow: "none",
   borderRadius: "14px",
   fontSize: FONT_BODY_MEDIUM2,
   textTransform: "capitalize",
   outline: "1px solid transparent",
-  "&:hover": {
-    boxShadow: "none",
-    color: COLOR_PRIMARY,
-    backgroundColor: "transparent",
-    outline: "1px solid" + COLOR_PRIMARY,
+  "&.MuiButton-contained": {
+    transition: "0.3s",
+    color: customColor === COLOR_SECEONDRY ? COLOR_WHITE : COLOR_TEXT,
+    background: customColor,
+    border: `1px solid transparent`,
+    "&:hover": {
+      boxShadow: "none",
+      color: customColor ?? COLOR_PRIMARY,
+      backgroundColor: "transparent",
+      outline: "1px solid" + customColor ?? COLOR_PRIMARY,
+    },
   },
-};
+  "&.MuiButton-outlined": {
+    color: customColor,
+    backgroundColor: COLOR_WHITE,
+    border: `1px solid ${
+      customColor == COLOR_TEXT_GRAY ? COLOR_TEXT_WHITE : customColor
+    }`,
+    "&:hover": {
+      backgroundColor: `${customColor}10`,
+    },
+  },
+});
 
 export const textfieldSX = (hasIcon?: boolean): SxProps<Theme> => ({
-  "&.MuiTextField-root": {
+  display: "flex",
+  flexDirection: "column",
+  "& .label": {
+    mb: SPACE_S2,
+    color: COLOR_TEXT_GRAY,
+    fontSize: FONT_LABEL_MEDIUM,
+    fontWeight: FONT_WEIGHT_BLOD,
+  },
+  "& .MuiTextField-root": {
     width: "100%",
-    height: "50px",
     "& .MuiInputBase-root": {
+      height: "50px",
       overflow: "hidden",
       pr: hasIcon ? "0px" : undefined,
       borderRadius: "12px",
       "& fieldset": {
         border: "none",
       },
-      "& .MuiInputBase-input    ": {
+      "& .MuiInputBase-input": {
         "&::placeholder": {
-          opacity: "0.5",
-          color: COLOR_TEXT,
+          opacity: "1",
+          color: COLOR_PLACEHOLDER,
+          fontSize: FONT_LABEL_SMALL,
+          fontWeight: FONT_WEIGHT_BLOD,
         },
       },
     },
@@ -107,6 +148,15 @@ export const textfieldSX = (hasIcon?: boolean): SxProps<Theme> => ({
           transition: "all 0.4s",
           transform: "scale(1.2)",
         },
+      },
+    },
+    "& .pass-icon": {
+      height: "18px",
+      p: SPACE_S4,
+      cursor: "pointer",
+      "&:hover": {
+        transition: "all 0.4s",
+        transform: "scale(1.2)",
       },
     },
   },

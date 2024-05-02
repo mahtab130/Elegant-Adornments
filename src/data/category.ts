@@ -8,6 +8,13 @@ import earrings from "../assets/images/data/errings-stone.png";
 import necklace from "../assets/images/data/stone-necklace.png";
 
 import categoryRing from "../assets/images/data/category-ring.png";
+import categoryCrown from "../assets/images/data/category-crown.webp";
+import categorySet from "../assets/images/data/category-set.webp";
+import categoryBracelet from "../assets/images/data/category-bracelet.webp";
+import categoryHalfSet from "../assets/images/data/category-half-set.webp";
+import categoryAnkle from "../assets/images/data/category-feet.webp";
+import categoryEarrings from "../assets/images/data/category-earrings.webp";
+import categoryNecklace from "../assets/images/data/category-set.webp";
 
 export const categoryData: ICategoryCard[] = [
   {
@@ -21,7 +28,7 @@ export const categoryData: ICategoryCard[] = [
   {
     id: 2,
     name: "Earrings",
-    image: categoryRing,
+    image: categoryEarrings,
     thumbnail: earrings,
     description:
       "Elevate your look with our exquisite collection of  rings . Each  piece is meticulously  crafted using  the  finest precious  metals  and  sparking  gemstones . Whether  you're  seeking  a classic  solitaire , a  stunning  cocktail  ring,  or  a  delicate  band , our selection  offers something to suit every style and taste.",
@@ -29,7 +36,7 @@ export const categoryData: ICategoryCard[] = [
   {
     id: 3,
     name: "Bracelet",
-    image: categoryRing,
+    image: categoryBracelet,
     thumbnail: bracelet,
     description:
       "Elevate your look with our exquisite collection of  rings . Each  piece is meticulously  crafted using  the  finest precious  metals  and  sparking  gemstones . Whether  you're  seeking  a classic  solitaire , a  stunning  cocktail  ring,  or  a  delicate  band , our selection  offers something to suit every style and taste.",
@@ -37,7 +44,7 @@ export const categoryData: ICategoryCard[] = [
   {
     id: 4,
     name: "Necklaces",
-    image: categoryRing,
+    image: categoryNecklace,
     thumbnail: necklace,
     description:
       "Elevate your look with our exquisite collection of  rings . Each  piece is meticulously  crafted using  the  finest precious  metals  and  sparking  gemstones . Whether  you're  seeking  a classic  solitaire , a  stunning  cocktail  ring,  or  a  delicate  band , our selection  offers something to suit every style and taste.",
@@ -45,7 +52,7 @@ export const categoryData: ICategoryCard[] = [
   {
     id: 5,
     name: "Ankle jewlery",
-    image: categoryRing,
+    image: categoryAnkle,
     thumbnail: ankle,
     description:
       "Elevate your look with our exquisite collection of  rings . Each  piece is meticulously  crafted using  the  finest precious  metals  and  sparking  gemstones . Whether  you're  seeking  a classic  solitaire , a  stunning  cocktail  ring,  or  a  delicate  band , our selection  offers something to suit every style and taste.",
@@ -53,7 +60,7 @@ export const categoryData: ICategoryCard[] = [
   {
     id: 6,
     name: "Half set",
-    image: categoryRing,
+    image: categoryHalfSet,
     thumbnail: halfSet,
     description:
       "Elevate your look with our exquisite collection of  rings . Each  piece is meticulously  crafted using  the  finest precious  metals  and  sparking  gemstones . Whether  you're  seeking  a classic  solitaire , a  stunning  cocktail  ring,  or  a  delicate  band , our selection  offers something to suit every style and taste.",
@@ -61,7 +68,7 @@ export const categoryData: ICategoryCard[] = [
   {
     id: 7,
     name: "Set",
-    image: categoryRing,
+    image: categorySet,
     thumbnail: set,
     description:
       "Elevate your look with our exquisite collection of  rings . Each  piece is meticulously  crafted using  the  finest precious  metals  and  sparking  gemstones . Whether  you're  seeking  a classic  solitaire , a  stunning  cocktail  ring,  or  a  delicate  band , our selection  offers something to suit every style and taste.",
@@ -69,7 +76,7 @@ export const categoryData: ICategoryCard[] = [
   {
     id: 8,
     name: "Crown",
-    image: categoryRing,
+    image: categoryCrown,
     thumbnail: crown,
     description:
       "Elevate your look with our exquisite collection of  rings . Each  piece is meticulously  crafted using  the  finest precious  metals  and  sparking  gemstones . Whether  you're  seeking  a classic  solitaire , a  stunning  cocktail  ring,  or  a  delicate  band , our selection  offers something to suit every style and taste.",

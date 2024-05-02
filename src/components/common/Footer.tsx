@@ -81,6 +81,7 @@ export const Footer = memo(() => {
                 Get the latest information
               </Typography>
               <CustomTextfield
+                iconEmail
                 endIcon={sendIcon()}
                 className="email-input"
                 placeholder="Email address"

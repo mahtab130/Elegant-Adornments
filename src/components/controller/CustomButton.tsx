@@ -15,12 +15,14 @@ type TCustomButton = ButtonTypeMap<
   ButtonBaseProps &
   DOMAttributes<unknown>;
 
-export const CustomButton = memo<TCustomButton>(({ text, sx, ...props }) => {
-  const mergeSx = merge({}, buttonSX, sx);
+export const CustomButton = memo<TCustomButton>(
+  ({ text, sx, customColor, ...props }) => {
+    const mergeSx = merge({}, buttonSX(customColor), sx);
 
-  return (
-    <Button sx={mergeSx} {...props}>
-      {text}
-    </Button>
-  );
-});
+    return (
+      <Button sx={mergeSx} {...props}>
+        {text}
+      </Button>
+    );
+  }
+);

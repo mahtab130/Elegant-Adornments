@@ -74,7 +74,11 @@ export const Navbar = memo(() => {
               </Box>
             }
           />
-          <Box component="div" className="icon-navbar">
+          <Box
+            component="div"
+            className="icon-navbar"
+            onClick={() => navigate("/login")}
+          >
             {userIcon()}
           </Box>
           <Box component="div" className="icon-navbar">

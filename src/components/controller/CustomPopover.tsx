@@ -34,6 +34,7 @@ import {
   FONT_LABEL_MEDIUM,
   FONT_WEIGHT_BLOD,
 } from "../../helper/constants/fonts";
+import { motion } from "framer-motion";
 
 export interface ICustomPopover {
   open: boolean;
@@ -89,6 +90,8 @@ export const CategoryPaper = ({
     id: currentId,
   } = find(categoryData, ({ id }) => id == categoryId) ?? {};
 
+  const GridMotion = motion(Grid);
+
   return (
     <CustomPopover
       open={open}
@@ -110,9 +113,18 @@ export const CategoryPaper = ({
             </Typography>
           ))}
         </Grid>
-        <Grid className="category-content">
-          <CustomImage className="image-category" src={image || ""} />
-          <Grid className="text-container">
+        <GridMotion
+          xs={12}
+          container
+          initial={{ opacity: 0 }}
+          className="category-content"
+          transition={{ duration: 1 }}
+          animate={categoryId !== undefined ? { opacity: 1 } : { opacity: 0 }}
+        >
+          <Grid item xs={12} md={5.5} className="image-wrapper">
+            <CustomImage className="image-category" src={image || ""} />
+          </Grid>
+          <Grid item xs={12} md={5.9} className="text-container">
             <Typography className="title">
               {name}
               <Box component="span" className="border-bottom"></Box>
@@ -126,7 +138,7 @@ export const CategoryPaper = ({
               />
             </Grid>
           </Grid>
-        </Grid>
+        </GridMotion>
       </Grid>
     </CustomPopover>
   );
@@ -190,10 +202,16 @@ const categoryPopperSX: SxProps<Theme> = {
         gap: SPACE_XM1,
         display: "flex",
         alignItems: "center",
-        "& .image-category": {
+        "& .image-wrapper": {
           width: "250px",
-          height: "300px",
+          height: "340px",
           borderRadius: "8px",
+          overflow: "hidden",
+          "& .image-category": {
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          },
         },
         "& .text-container": {
           display: "flex",

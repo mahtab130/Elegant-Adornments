@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { useRoutes } from "react-router-dom";
+import { useLocation, useRoutes } from "react-router-dom";
 import { Grid, ThemeProvider } from "@mui/material";
 
 import {
@@ -12,15 +12,17 @@ import {
 import { MotionConfig } from "framer-motion";
 
 import { routes } from "../../routes";
-import { FONT_FAMILY } from "../../helper/constants/static";
-import { COLOR_PRIMARY, COLOR_TEXT } from "../../helper/constants/colors";
-import { FONT_WEIGHT_REGULAR } from "../../helper/constants/fonts";
-import { Navbar } from "../common/Navbar";
 import { Footer } from "../common/Footer";
+import { Navbar } from "../common/Navbar";
+import { FONT_FAMILY } from "../../helper/constants/static";
 import { mainLayoutSX } from "../../helper/styleObjects/main";
+import { FONT_WEIGHT_REGULAR } from "../../helper/constants/fonts";
+import { COLOR_PRIMARY, COLOR_TEXT } from "../../helper/constants/colors";
 
 const MainLayout: FC = () => {
   const children = useRoutes(routes);
+
+  const { pathname } = useLocation();
 
   const themeMUI = createTheme({
     palette: { primary: { main: COLOR_PRIMARY } },
@@ -36,10 +38,10 @@ const MainLayout: FC = () => {
     <ThemeProvider theme={themeMUI}>
       <MaterialCssVarsProvider theme={{ [MATERIAL_THEME_ID]: materialTheme }}>
         <MotionConfig>
-          <Grid sx={mainLayoutSX}>
-            <Navbar />
+          <Grid sx={mainLayoutSX} className="main-layout">
+            {emptyContainer.includes(pathname) || <Navbar />}
             {children}
-            <Footer />
+            {emptyContainer.includes(pathname) || <Footer />}
           </Grid>
         </MotionConfig>
       </MaterialCssVarsProvider>
@@ -48,3 +50,5 @@ const MainLayout: FC = () => {
 };
 
 export default MainLayout;
+
+const emptyContainer = ["/sign-up", "/login"];
