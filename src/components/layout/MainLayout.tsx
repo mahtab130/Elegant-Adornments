@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 
 import { useLocation, useRoutes } from "react-router-dom";
 import { Grid, ThemeProvider } from "@mui/material";
@@ -33,6 +33,10 @@ const MainLayout: FC = () => {
   });
 
   const materialTheme = materialExtendTheme(themeMUI);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <ThemeProvider theme={themeMUI}>

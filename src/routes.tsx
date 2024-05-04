@@ -5,7 +5,6 @@ import Login from "./components/page/Login";
 import Blogs from "./components/page/Blogs";
 import AboutUs from "./components/page/AboutUs";
 import Services from "./components/page/Services";
-import Category from "./components/page/Category";
 
 export const routes: RouteObject[] = [
   {
@@ -16,8 +15,15 @@ export const routes: RouteObject[] = [
       { path: "login", element: <Login /> },
       { path: "sign-up", element: <Login isSignUp /> },
       { path: "about-us", element: <AboutUs /> },
-      { path: "category", element: <Category /> },
+      // { path: "category", element: <Category /> },
       { path: "services", element: <Services /> },
+      {
+        path: "products",
+        children: [
+          { index: true, element: <></> },
+          { path: "products/:id", element: <></> },
+        ],
+      },
       {
         path: "*",
         element: <h1>Route Not Found!!</h1>,

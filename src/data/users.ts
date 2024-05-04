@@ -8,7 +8,7 @@ export const usersComment: IUserComment[] = [
     carear: "Accountant",
     comment:
       "Welcome to our exquisite jewelry store,where elegance meets crasmanship Discover a dazzling array of fine jewelry, from  stunning diamond rings to elegant pearl necklaces.",
-    image: user2,
+    image: user1,
     rate: 3,
   },
   {
@@ -17,7 +17,7 @@ export const usersComment: IUserComment[] = [
     carear: "Three star hotel manager",
     comment:
       "Welcome to our exquisite jewelry store,where elegance meets crasmanship Discover a dazzling array of fine jewelry, from  stunning diamond rings to elegant pearl necklaces.",
-    image: user1,
+    image: user2,
     rate: 4,
   },
 ];

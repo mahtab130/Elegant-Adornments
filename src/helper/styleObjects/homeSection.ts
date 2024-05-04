@@ -9,6 +9,7 @@ import {
   SPACE_S2,
   SPACE_M3,
   SPACE_H3,
+  SPACE_D1,
 } from "../constants/spaces";
 import {
   COLOR_WHITE,
@@ -237,6 +238,29 @@ export const contentServicesSX: SxProps<Theme> = {
         lineHeight: SPACE_M3,
         fontSize: FONT_LABEL_LARGE,
       },
+    },
+  },
+};
+
+export const aboutUsSectionSX: SxProps<Theme> = {
+  "& .right-section": {
+    "& .vector": {
+      right: "-130px",
+      top: "-70px",
+    },
+  },
+  "& .description": {
+    mt: SPACE_M2,
+    lineHeight: "22px",
+    fontSize: FONT_BODY_MEDIUM2,
+  },
+  "& .button": {
+    mt: SPACE_D2,
+    px: SPACE_D1,
+    py: SPACE_XS1,
+    "&:hover": {
+      color: COLOR_SECEONDRY,
+      outline: "1px solid" + COLOR_SECEONDRY,
     },
   },
 };

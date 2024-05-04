@@ -1,33 +1,27 @@
 import { memo } from "react";
 
 import { Grid, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
-import { ContentSection } from "../common/ContentSection";
 import { CustomButton } from "../controller/CustomButton";
-import { COLOR_SECEONDRY } from "../../helper/constants/colors";
-import { FONT_BODY_MEDIUM2 } from "../../helper/constants/fonts";
-import { SPACE_D2, SPACE_D1, SPACE_XS1 } from "../../helper/constants/spaces";
+import { ContentSection } from "../common/ContentSection";
+import { aboutUsSectionSX } from "../../helper/styleObjects/homeSection";
 
 import image from "../../assets/images/home/image-about-us.png";
 
 export const AboutUsSection = memo(() => {
+  const navigate = useNavigate();
+
   return (
     <ContentSection
       setting={{
-        sx: {
-          "& .right-section": {
-            "& .vector": {
-              right: "-130px",
-              top: "-70px",
-            },
-          },
-        },
+        sx: aboutUsSectionSX,
       }}
       image={image}
-      title={"Abut Us"}
+      title={"About Us"}
       content={
         <>
-          <Typography sx={{ fontSize: FONT_BODY_MEDIUM2, lineHeight: "22px" }}>
+          <Typography className="description">
             Welcome to our exquisite jewelry store,where elegance meets
             crasmanship Discover a dazzling array of fine jewelry, from stunning
             diamond rings to elegant pearl necklaces. Our curated collection
@@ -39,17 +33,10 @@ export const AboutUsSection = memo(() => {
           </Typography>
           <Grid>
             <CustomButton
-              variant="contained"
-              sx={{
-                mt: SPACE_D2,
-                px: SPACE_D1,
-                py: SPACE_XS1,
-                "&:hover": {
-                  color: COLOR_SECEONDRY,
-                  outline: "1px solid" + COLOR_SECEONDRY,
-                },
-              }}
               text="See More"
+              className="button"
+              variant="contained"
+              onClick={() => navigate("/about-us")}
             />
           </Grid>
         </>
