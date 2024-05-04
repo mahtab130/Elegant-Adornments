@@ -5,6 +5,7 @@ import Login from "./components/page/Login";
 import Blogs from "./components/page/Blogs";
 import AboutUs from "./components/page/AboutUs";
 import Services from "./components/page/Services";
+import Carts from "./components/page/Carts";
 
 export const routes: RouteObject[] = [
   {
@@ -17,6 +18,7 @@ export const routes: RouteObject[] = [
       { path: "about-us", element: <AboutUs /> },
       // { path: "category", element: <Category /> },
       { path: "services", element: <Services /> },
+      { path: "carts", element: <Carts /> },
       {
         path: "products",
         children: [

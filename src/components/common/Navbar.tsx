@@ -82,7 +82,11 @@ export const Navbar = memo(() => {
           >
             {userIcon()}
           </Box>
-          <Box component="div" className="icon-navbar">
+          <Box
+            component="div"
+            className="icon-navbar"
+            onClick={() => navigate("/carts")}
+          >
             {shoppingIcon()}
           </Box>
         </Grid>
