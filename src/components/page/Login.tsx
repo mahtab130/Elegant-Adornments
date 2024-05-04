@@ -78,8 +78,8 @@ const AuthenticationForm = memo<ILogin>(({ isSignUp }) => {
           <CustomTextfield
             className="input"
             variant="outlined"
-            placeholder={"page"}
-            customLabel={"page"}
+            placeholder={"name"}
+            customLabel={"name"}
           />
         ) : null}
         <CustomTextfield
@@ -115,7 +115,8 @@ const AuthenticationForm = memo<ILogin>(({ isSignUp }) => {
           className="button"
           variant="contained"
           customColor={COLOR_SECEONDRY}
-          text="Login"
+          text={isSignUp ? "Sign In" : "Login"}
+          onClick={() => navigate("/")}
         />
         <Typography className="or">
           <Box component="span" className="border"></Box>
