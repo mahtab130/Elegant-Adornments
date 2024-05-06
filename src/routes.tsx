@@ -2,10 +2,11 @@ import { RouteObject } from "react-router-dom";
 
 import Home from "./components/page/Home";
 import Login from "./components/page/Login";
+import Carts from "./components/page/Carts";
 import Blogs from "./components/page/Blogs";
 import AboutUs from "./components/page/AboutUs";
 import Services from "./components/page/Services";
-import Carts from "./components/page/Carts";
+import SearchPage from "./components/page/SearchPage";
 
 export const routes: RouteObject[] = [
   {
@@ -14,17 +15,21 @@ export const routes: RouteObject[] = [
       { index: true, element: <Home /> },
       { path: "blogs", element: <Blogs /> },
       { path: "login", element: <Login /> },
-      { path: "sign-up", element: <Login isSignUp /> },
-      { path: "about-us", element: <AboutUs /> },
-      // { path: "category", element: <Category /> },
-      { path: "services", element: <Services /> },
       { path: "carts", element: <Carts /> },
+      { path: "about-us", element: <AboutUs /> },
+      { path: "services", element: <Services /> },
+      { path: "sign-up", element: <Login isSignUp /> },
+      // { path: "category", element: <Category /> },
       {
         path: "products",
         children: [
           { index: true, element: <></> },
           { path: "products/:id", element: <></> },
         ],
+      },
+      {
+        path: "search",
+        element: <SearchPage />,
       },
       {
         path: "*",

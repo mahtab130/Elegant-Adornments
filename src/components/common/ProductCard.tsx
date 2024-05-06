@@ -17,20 +17,22 @@ export const ProductCard = memo<IProductCard>(
         </Grid>
         <Grid className="texts-wrapper">
           <Typography className="title">{name}</Typography>
-          <Grid className="price-wrapper">
-            {variant == "sale" ? null : (
-              <Typography className="add-to-cart">
-                {arrowRightIcon(COLOR_TEXT)}
-                ADD TO CART
-              </Typography>
-            )}
-            <Typography className="price">{price}</Typography>
-            {variant == "sale" ? (
-              <Grid className="rate">
-                <CustomRating readOnly size="small" value={rate} />
-              </Grid>
-            ) : null}
-          </Grid>
+          {variant == "search" ? null : (
+            <Grid className="price-wrapper">
+              {variant == "sale" ? null : (
+                <Typography className="add-to-cart">
+                  {arrowRightIcon(COLOR_TEXT)}
+                  ADD TO CART
+                </Typography>
+              )}
+              <Typography className="price">{price}</Typography>
+              {variant == "sale" ? (
+                <Grid className="rate">
+                  <CustomRating readOnly size="small" value={rate} />
+                </Grid>
+              ) : null}
+            </Grid>
+          )}
         </Grid>
       </Grid>
     );

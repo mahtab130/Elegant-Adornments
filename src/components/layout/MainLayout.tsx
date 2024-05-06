@@ -18,6 +18,7 @@ import { FONT_FAMILY } from "../../helper/constants/static";
 import { mainLayoutSX } from "../../helper/styleObjects/main";
 import { FONT_WEIGHT_REGULAR } from "../../helper/constants/fonts";
 import { COLOR_PRIMARY, COLOR_TEXT } from "../../helper/constants/colors";
+import { includes } from "lodash";
 
 const MainLayout: FC = () => {
   const children = useRoutes(routes);
@@ -43,9 +44,9 @@ const MainLayout: FC = () => {
       <MaterialCssVarsProvider theme={{ [MATERIAL_THEME_ID]: materialTheme }}>
         <MotionConfig>
           <Grid sx={mainLayoutSX} className="main-layout">
-            {emptyContainer.includes(pathname) || <Navbar />}
+            {includes(emptyContainerNav, pathname) || <Navbar />}
             {children}
-            {emptyContainer.includes(pathname) || <Footer />}
+            {includes(emptyContainerFooter, pathname) || <Footer />}
           </Grid>
         </MotionConfig>
       </MaterialCssVarsProvider>
@@ -55,4 +56,5 @@ const MainLayout: FC = () => {
 
 export default MainLayout;
 
-const emptyContainer = ["/sign-up", "/login"];
+const emptyContainerNav = ["/sign-up", "/login"];
+const emptyContainerFooter = ["/sign-up", "/login", "/search"];

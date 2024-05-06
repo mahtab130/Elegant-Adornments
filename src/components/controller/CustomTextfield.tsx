@@ -52,7 +52,7 @@ export const CustomTextfield = memo<TCustomTextfield>(
 
     const hasIcon = endIcon ? true : false;
     return (
-      <Grid sx={textfieldSX(hasIcon)}>
+      <Grid className="textfield-wrapper" sx={textfieldSX(hasIcon)}>
         {customLabel && (
           <Typography className="label">{customLabel}</Typography>
         )}
@@ -100,11 +100,22 @@ const textfieldSX = (hasIcon?: boolean): SxProps<Theme> => ({
         border: "none",
       },
       "& .MuiInputBase-input": {
+        color: COLOR_PLACEHOLDER,
+        fontSize: FONT_LABEL_SMALL,
+        fontWeight: FONT_WEIGHT_BLOD,
         "&::placeholder": {
           opacity: "1",
           color: COLOR_PLACEHOLDER,
-          fontSize: FONT_LABEL_SMALL,
-          fontWeight: FONT_WEIGHT_BLOD,
+        },
+      },
+      "&.MuiInput-underline ": {
+        "&:before": {
+          borderColor: COLOR_PRIMARY,
+          content: '""',
+          bottom: "6px",
+        },
+        "&:after": {
+          display: "none",
         },
       },
     },

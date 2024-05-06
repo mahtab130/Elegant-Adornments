@@ -99,8 +99,9 @@ export const productCardSX = (
     display: "flex",
     alignItems: "flex-start",
     justifyContent: "center",
-    height: variant == "sale" ? "350px" : " 370px",
-    borderRadius: variant == "sale" ? "14px" : "0px",
+    height:
+      variant == "sale" ? "350px" : variant == "search" ? "320px" : " 370px",
+    borderRadius: variant == "sale" || variant == "search" ? "14px" : "0px",
     background:
       " linear-gradient(154.68deg, #E7EDEF 24.32%, #FFFFFF 45.27%, #FFFFFF 56.96%, #E7EDEF 99.84%)",
     "& .image-product": {
@@ -112,11 +113,16 @@ export const productCardSX = (
     p: SPACE_M3,
     width: "100%",
     display: "flex",
+    textAlign: variant == "search" ? "center" : "unset",
     rowGap: variant == "sale" ? SPACE_S2 : SPACE_M3,
     flexDirection: "column",
-    backgroundColor: variant == "sale" ? COLOR_SECEONDRY : COLOR_BACKGROUND,
+    backgroundColor:
+      variant == "sale" || variant == "search"
+        ? COLOR_SECEONDRY
+        : COLOR_BACKGROUND,
     "& .title": {
-      color: variant == "sale" ? COLOR_WHITE : COLOR_TEXT,
+      color:
+        variant == "sale" || variant == "search" ? COLOR_WHITE : COLOR_TEXT,
       fontWeight: FONT_WEIGHT_BLOD,
       fontSize: FONT_BODY_MEDIUM2,
     },

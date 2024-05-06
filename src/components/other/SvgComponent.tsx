@@ -468,3 +468,45 @@ export const eyeIcon = (color?: string) => (
     />
   </svg>
 );
+
+export const searchOutlineIcon = (color?: string) => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 18 18"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M8.58317 1.29163C4.55609 1.29163 1.2915 4.55622 1.2915 8.58329C1.2915 12.6104 4.55609 15.875 8.58317 15.875C12.6102 15.875 15.8748 12.6104 15.8748 8.58329C15.8748 4.55622 12.6102 1.29163 8.58317 1.29163ZM0.0415039 8.58329C0.0415039 3.86586 3.86574 0.041626 8.58317 0.041626C13.3006 0.041626 17.1248 3.86586 17.1248 8.58329C17.1248 13.3007 13.3006 17.125 8.58317 17.125C3.86574 17.125 0.0415039 13.3007 0.0415039 8.58329ZM15.2246 15.2247C15.4686 14.9806 15.8644 14.9806 16.1084 15.2247L17.7751 16.8913C18.0192 17.1354 18.0192 17.5312 17.7751 17.7752C17.531 18.0193 17.1353 18.0193 16.8912 17.7752L15.2246 16.1086C14.9805 15.8645 14.9805 15.4688 15.2246 15.2247Z"
+      fill={color || "#ABDDF0"}
+    />
+  </svg>
+);
+
+export const clearIcon = (color?: string) => (
+  <svg
+    width="24"
+    height="19"
+    viewBox="0 0 24 19"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M19 4L12 10L5 4"
+      stroke={color || "#ABDDF0"}
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M5 16L12 10L19 16"
+      stroke={color || "#ABDDF0"}
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
