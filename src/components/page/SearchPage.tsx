@@ -21,6 +21,7 @@ const SearchPage: FC = () => {
   const navigate = useNavigate();
 
   const [keyword, setKeyword] = useState<string | undefined>(undefined);
+  console.log("🚀 ~ keyword:", keyword);
 
   const filteredData = useMemo(
     () =>

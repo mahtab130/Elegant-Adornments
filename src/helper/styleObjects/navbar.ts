@@ -1,21 +1,10 @@
 import { SxProps, Theme } from "@mui/material";
 
-import {
-  COLOR_PRIMARY,
-  COLOR_SECEONDRY,
-  COLOR_TEXT,
-} from "../constants/colors";
-import {
-  FONT_BODY_SMALL,
-  FONT_LABEL_LARGE,
-  FONT_WEIGHT_BLOD,
-} from "../constants/fonts";
+import { COLOR_PRIMARY, COLOR_SECEONDRY } from "../constants/colors";
+import { FONT_BODY_SMALL, FONT_WEIGHT_BLOD } from "../constants/fonts";
 import { SPACE_H2, SPACE_M2, SPACE_D2, SPACE_S1 } from "../constants/spaces";
 
-export const navbarSX = (
-  showInput?: boolean,
-  openCategoryPopper?: boolean
-): SxProps<Theme> => ({
+export const navbarSX = (openCategoryPopper?: boolean): SxProps<Theme> => ({
   mx: "auto",
   px: SPACE_H2,
   py: SPACE_M2,
@@ -85,48 +74,6 @@ export const navbarSX = (
       transition: "transform 0.4s",
       "&:hover": {
         transform: "scale(1.2)",
-      },
-      "&.icon-search": {
-        opacity: showInput ? "0" : "1",
-      },
-    },
-    "& .custom-textfield": {
-      top: "0",
-      right: "0",
-      position: "absolute",
-      opacity: showInput ? "1" : "0",
-      transition: "opacity 0.3s ease, transform 0.4s ease",
-      transform: showInput ? "translateX(-60px)" : "translateX(0px)",
-      transformOrigin: showInput ? "bottom left" : "bottom right",
-      "&.MuiTextField-root": {
-        width: "240px",
-        height: "28px",
-        "& .MuiInputBase-root": {
-          p: "0px",
-          display: "flex",
-          overflow: "hidden",
-          alignItems: "end",
-          borderRadius: "0px",
-          borderBottom: "1px solid" + COLOR_SECEONDRY,
-          "& .MuiInputBase-input": {
-            p: "0 0 0 10px",
-            lineHeight: "20px",
-            color: COLOR_TEXT,
-            fontSize: FONT_LABEL_LARGE,
-            "&::placeholder": {
-              opacity: "1",
-              color: COLOR_TEXT + "70",
-            },
-          },
-        },
-        "& .icon-wrapper": {
-          height: "25px",
-          cursor: "pointer",
-          transition: "transform 0.4s",
-          "&:hover": {
-            transform: "scale(1.2)",
-          },
-        },
       },
     },
   },

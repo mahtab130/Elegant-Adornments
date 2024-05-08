@@ -7,13 +7,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { navbarValues } from "../../data/other";
 import { CategoryPaper } from "../controller/CustomPopover";
 import { navbarSX } from "../../helper/styleObjects/navbar";
-import { CustomTextfield } from "../controller/CustomTextfield";
 import { searchIcon, shoppingIcon, userIcon } from "../other/SvgComponent";
 
 import logo from "../../assets/images/vectors/logo.webp";
 
 export const Navbar = memo(() => {
-  const [showInput, setShowInput] = useState<boolean>(false);
   const [openCategoryPopper, setOpenCategoryPopper] = useState<boolean>(false);
 
   const ref = useRef(null);
@@ -23,10 +21,7 @@ export const Navbar = memo(() => {
 
   return (
     <Grid className="navbar-wrapper">
-      <Grid
-        className="navbar-container"
-        sx={navbarSX(showInput, openCategoryPopper)}
-      >
+      <Grid className="navbar-container" sx={navbarSX(openCategoryPopper)}>
         <Grid className="logo-wrapper">
           <Box className="logo" component="img" src={logo} />
         </Grid>
@@ -62,26 +57,11 @@ export const Navbar = memo(() => {
           <Box
             component="div"
             className="icon-navbar icon-search"
-            onClick={() => setShowInput(true)}
+            onClick={() => navigate("/search")}
           >
             {searchIcon()}
           </Box>
-          <CustomTextfield
-            className="custom-textfield"
-            placeholder="Search..."
-            startIcon={
-              <Box className="icon-wrapper" onClick={() => setShowInput(false)}>
-                {searchIcon()}
-              </Box>
-            }
-            // value={searchInput}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                navigate(`/search`);
-              }
-            }}
-            // onChange={handleSearchInputChange}
-          />
+
           <Box
             component="div"
             className="icon-navbar"

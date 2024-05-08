@@ -94,11 +94,11 @@ export const CustomTextfield = memo<TCustomTextfield>(
         ),
       [
         endIcon,
-        handleDeleteClick,
-        handlePasswordVisibility,
         hasDelete,
         iconEmail,
         idPasswordField,
+        handleDeleteClick,
+        handlePasswordVisibility,
       ]
     );
 
@@ -108,7 +108,7 @@ export const CustomTextfield = memo<TCustomTextfield>(
           <Typography className="label">{customLabel}</Typography>
         )}
         <TextField
-          ref={inputRef}
+          inputRef={inputRef}
           onChange={onChange}
           onKeyUp={
             hasDelete && !onChange
