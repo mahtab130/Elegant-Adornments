@@ -1,7 +1,15 @@
 import { SxProps, Theme } from "@mui/material";
 
-import { COLOR_PRIMARY, COLOR_SECEONDRY } from "../constants/colors";
-import { FONT_BODY_SMALL, FONT_WEIGHT_BLOD } from "../constants/fonts";
+import {
+  COLOR_PRIMARY,
+  COLOR_SECEONDRY,
+  COLOR_TEXT,
+} from "../constants/colors";
+import {
+  FONT_BODY_SMALL,
+  FONT_LABEL_LARGE,
+  FONT_WEIGHT_BLOD,
+} from "../constants/fonts";
 import { SPACE_H2, SPACE_M2, SPACE_D2, SPACE_S1 } from "../constants/spaces";
 
 export const navbarSX = (
@@ -103,6 +111,12 @@ export const navbarSX = (
           "& .MuiInputBase-input": {
             p: "0 0 0 10px",
             lineHeight: "20px",
+            color: COLOR_TEXT,
+            fontSize: FONT_LABEL_LARGE,
+            "&::placeholder": {
+              opacity: "1",
+              color: COLOR_TEXT + "70",
+            },
           },
         },
         "& .icon-wrapper": {

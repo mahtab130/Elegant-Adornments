@@ -14,6 +14,19 @@ interface ICustomTitle {
   };
 }
 
+interface IEmptyLastCenterJustify {
+  xs?: number;
+  md?: number;
+  even?: boolean;
+  length: number;
+}
+
+interface INoOptionsComponent {
+  text?: string;
+  imageSrc: string;
+  searchKey?: string;
+}
+
 interface IContentSection<TSx = TAny> {
   image: string | JSX.Element;
   title: string;

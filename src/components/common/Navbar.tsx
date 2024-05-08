@@ -74,6 +74,13 @@ export const Navbar = memo(() => {
                 {searchIcon()}
               </Box>
             }
+            // value={searchInput}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                navigate(`/search`);
+              }
+            }}
+            // onChange={handleSearchInputChange}
           />
           <Box
             component="div"

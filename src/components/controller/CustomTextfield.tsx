@@ -1,4 +1,11 @@
-import { memo, useCallback, useState } from "react";
+import {
+  ChangeEvent,
+  memo,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 import {
   Box,
@@ -21,7 +28,7 @@ import {
   FONT_LABEL_SMALL,
   FONT_LABEL_MEDIUM,
 } from "../../helper/constants/fonts";
-import { eyeIcon } from "../other/SvgComponent";
+import { clearIcon, eyeIcon } from "../other/SvgComponent";
 import { SPACE_S2, SPACE_S4 } from "../../helper/constants/spaces";
 
 export type TCustomTextfield =
@@ -33,45 +40,85 @@ export type TCustomTextfield =
         endIcon?: JSX.Element;
         startIcon?: JSX.Element;
         idPasswordField?: boolean;
+        hasDelete?: boolean;
       };
 
 export const CustomTextfield = memo<TCustomTextfield>(
   ({
     endIcon,
     startIcon,
+    onChange,
+    hasDelete,
     iconEmail,
     customLabel,
     idPasswordField,
     ...props
   }) => {
+    const inputRef = useRef<HTMLInputElement | null>(null);
+
+    const [, keyUp] = useState<HTMLDivElement>();
     const [showPassword, setShowPassword] = useState<boolean>(false);
 
     const handlePasswordVisibility = useCallback(() => {
       setShowPassword((prevState) => !prevState);
     }, []);
 
+    const handleDeleteClick = useCallback(() => {
+      inputRef.current && (inputRef.current.value = "");
+      onChange &&
+        onChange({ target: inputRef.current } as ChangeEvent<
+          HTMLInputElement | HTMLTextAreaElement
+        >);
+      !onChange && keyUp(inputRef.current as HTMLDivElement);
+    }, [onChange]);
+
     const hasIcon = endIcon ? true : false;
+
+    const endIconComponent = useMemo(
+      () =>
+        idPasswordField ? (
+          <Box className="pass-icon" onClick={handlePasswordVisibility}>
+            {eyeIcon()}
+          </Box>
+        ) : hasDelete ? (
+          <Box
+            component="div"
+            className="delete-icon"
+            onClick={handleDeleteClick}
+          >
+            {clearIcon()}
+          </Box>
+        ) : (
+          endIcon &&
+          (iconEmail ? <Box className={"end-icon"}>{endIcon}</Box> : endIcon)
+        ),
+      [
+        endIcon,
+        handleDeleteClick,
+        handlePasswordVisibility,
+        hasDelete,
+        iconEmail,
+        idPasswordField,
+      ]
+    );
+
     return (
       <Grid className="textfield-wrapper" sx={textfieldSX(hasIcon)}>
         {customLabel && (
           <Typography className="label">{customLabel}</Typography>
         )}
         <TextField
+          ref={inputRef}
+          onChange={onChange}
+          onKeyUp={
+            hasDelete && !onChange
+              ? (e) => keyUp(e.target as HTMLDivElement)
+              : undefined
+          }
           {...props}
           type={!idPasswordField || showPassword ? "text" : "password"}
           InputProps={{
-            endAdornment: idPasswordField ? (
-              <Box className="pass-icon" onClick={handlePasswordVisibility}>
-                {eyeIcon()}
-              </Box>
-            ) : (
-              endIcon &&
-              (iconEmail ? (
-                <Box className={"end-icon"}>{endIcon}</Box>
-              ) : (
-                endIcon
-              ))
-            ),
+            endAdornment: endIconComponent,
             startAdornment: <>{startIcon}</>,
           }}
         />
@@ -137,6 +184,14 @@ const textfieldSX = (hasIcon?: boolean): SxProps<Theme> => ({
     "& .pass-icon": {
       height: "18px",
       p: SPACE_S4,
+      cursor: "pointer",
+      "&:hover": {
+        transition: "all 0.4s",
+        transform: "scale(1.2)",
+      },
+    },
+    "& .delete-icon": {
+      height: "20px",
       cursor: "pointer",
       "&:hover": {
         transition: "all 0.4s",
