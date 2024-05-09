@@ -11,7 +11,7 @@ import vector2 from "../../assets/images/vectors/Vector 2.png";
 
 export const ContentSection = memo<IContentSection<SxProps<Theme>>>(
   ({ content, image, title, setting }) => {
-    const { reverse, imageWidth, sx } = setting ?? {};
+    const { reverse, imageWidth, sx, vectorSrc } = setting ?? {};
 
     const mergeSx = merge({}, contentProviderSX(reverse, imageWidth), sx);
 
@@ -21,7 +21,11 @@ export const ContentSection = memo<IContentSection<SxProps<Theme>>>(
           <AnimationSlideIn direction="left">
             <>
               <CustomTitle title={title} />
-              <Box component="img" className="vector" src={vector2} />
+              <Box
+                component="img"
+                className="vector"
+                src={vectorSrc ? vectorSrc : vector2}
+              />
               <Grid className="content">{content}</Grid>
             </>
           </AnimationSlideIn>

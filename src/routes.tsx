@@ -3,17 +3,24 @@ import { RouteObject } from "react-router-dom";
 import Home from "./components/page/Home";
 import Login from "./components/page/Login";
 import Carts from "./components/page/Carts";
-import Blogs from "./components/page/Blogs";
+import Blogs from "./components/page/blogs/Blogs";
 import AboutUs from "./components/page/AboutUs";
 import Services from "./components/page/Services";
 import SearchPage from "./components/page/SearchPage";
+import { BlogDetail } from "./components/page/blogs/BlogDetail";
 
 export const routes: RouteObject[] = [
   {
     path: "/",
     children: [
       { index: true, element: <Home /> },
-      { path: "blogs", element: <Blogs /> },
+      {
+        path: "blogs",
+        children: [
+          { index: true, element: <Blogs /> },
+          { path: "blog/:id", element: <BlogDetail /> },
+        ],
+      },
       { path: "login", element: <Login /> },
       { path: "carts", element: <Carts /> },
       { path: "about-us", element: <AboutUs /> },

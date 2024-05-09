@@ -29,6 +29,7 @@ interface IBlogCard {
   image: string;
   title: string;
   description: string;
+  navigateString?: string;
 }
 
 interface IFaqData {

@@ -35,5 +35,6 @@ interface IContentSection<TSx = TAny> {
     sx?: TSx;
     reverse?: boolean;
     imageWidth?: string;
+    vectorSrc?: string;
   };
 }

@@ -78,7 +78,7 @@ export const CustomTextfield = memo<TCustomTextfield>(
       () =>
         idPasswordField ? (
           <Box className="pass-icon" onClick={handlePasswordVisibility}>
-            {eyeIcon()}
+            {eyeIcon()}fq
           </Box>
         ) : hasDelete ? (
           <Box

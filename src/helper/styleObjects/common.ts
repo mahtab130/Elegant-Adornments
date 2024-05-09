@@ -168,8 +168,9 @@ export const productCardSX = (
 });
 
 export const blogCardSX: SxProps<Theme> = {
-  width: "400px",
+  width: "100%",
   height: "auto",
+  maxWidth: "400px",
   cursor: "pointer",
   overflow: "hidden",
   borderRadius: "10px",

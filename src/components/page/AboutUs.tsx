@@ -11,7 +11,7 @@ import { SPACE_H2, SPACE_M1 } from "../../helper/constants/spaces";
 import image2 from "../../assets/images/aboutUs/image-1.webp";
 import image1 from "../../assets/images/aboutUs/image-2.webp";
 import vector from "../../assets/images/vectors/vector-about-us.png";
-import backgroundImage from "../../assets/images/aboutUs/About-us.webp";
+import backgroundImage from "../../assets/images/aboutUs/about-us-back.png";
 
 const AboutUs: FC = () => {
   return (
