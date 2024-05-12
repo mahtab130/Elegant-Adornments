@@ -7,11 +7,11 @@ import { CustomImage } from "../controller/CustomImage";
 import { ContentSection } from "../common/ContentSection";
 import { servicesSX } from "../../helper/styleObjects/services";
 
-import image1 from "../../assets/images/servieces/image1.png";
-import image2 from "../../assets/images/servieces/image2.png";
-import vector from "../../assets/images/vectors/vector-about-us.png";
-import backgrounImage from "../../assets/images/servieces/services-back.png";
-import vectorGray from "../../assets/images/vectors/vector-crooked-line-gray.png";
+import image1 from "../../assets/images/servieces/image-service-1.webp";
+import image2 from "../../assets/images/servieces/image-service-2.webp";
+import vector from "../../assets/images/vectors/vector-about-us.webp";
+import backgrounImage from "../../assets/images/servieces/services-back.webp";
+import vectorGray from "../../assets/images/vectors/vector-crooked-line-gray.webp";
 
 const Services: FC = () => {
   return (

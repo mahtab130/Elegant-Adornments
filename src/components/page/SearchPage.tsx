@@ -14,7 +14,7 @@ import { searchOutlineIcon } from "../other/SvgComponent";
 import { AnimationSlideIn } from "../common/AnimateComponent";
 import { CustomTextfield } from "../controller/CustomTextfield";
 
-import noOptions from "../../assets/images/vectors/404.png";
+import noOptions from "../../assets/images/vectors/404.webp";
 import { searchSX } from "../../helper/styleObjects/searchPage";
 
 const SearchPage: FC = () => {

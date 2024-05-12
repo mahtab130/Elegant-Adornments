@@ -11,9 +11,9 @@ import { CustomBreadcrumbs } from "../../controller/CustomBreadcrumbs";
 import { bookIcon, clockIcon, dateIcon } from "../../other/SvgComponent";
 import { blogDetailSX, contentBlogSX } from "../../../helper/styleObjects/blog";
 
-import image1 from "../../../assets/images/blogs/blog-detail-1.png";
-import image2 from "../../../assets/images/blogs/blog-detail-2.png";
-import image3 from "../../../assets/images/blogs/blog-detail-3.png";
+import image1 from "../../../assets/images/blogs/blog-detail-1.webp";
+import image2 from "../../../assets/images/blogs/blog-detail-2.webp";
+import image3 from "../../../assets/images/blogs/blog-detail-3.webp";
 
 export const BlogDetail: FC = () => {
   const { id: currentId } = useParams();

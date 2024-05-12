@@ -1,5 +1,5 @@
-import user1 from "../assets/images/home/image-comment.png";
-import user2 from "../assets/images/home/image-faq.png";
+import user1 from "../assets/images/data/user-comment.webp";
+import user2 from "../assets/images/home/image-faq.webp";
 
 export const usersComment: IUserComment[] = [
   {

@@ -6,9 +6,9 @@ import { faq } from "../../data/faq";
 import { ContentSection } from "../common/ContentSection";
 import { CustomAccordion } from "../controller/CustomAccordion";
 
-import image from "../../assets/images/home/image-faq.png";
-import vector1 from "../../assets/images/vectors/vector2.png";
-import vector2 from "../../assets/images/vectors/vector3.png";
+import image from "../../assets/images/home/image-faq.webp";
+import vector1 from "../../assets/images/vectors/vector-flower-orange.webp";
+import vector2 from "../../assets/images/vectors/vector-crooked-line.webp";
 
 export const FaqSection = memo(() => {
   const imageComponent = useMemo(

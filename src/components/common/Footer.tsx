@@ -19,7 +19,7 @@ import { CustomImage } from "../controller/CustomImage";
 import { footerSX } from "../../helper/styleObjects/footer";
 import { CustomTextfield } from "../controller/CustomTextfield";
 
-import logo from "../../assets/images/vectors/logo2.png";
+import logo from "../../assets/images/vectors/logo-white.webp";
 
 export const Footer = memo(() => {
   const navigate = useNavigate();

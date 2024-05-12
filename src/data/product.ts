@@ -1,9 +1,9 @@
-import ring from "../assets/images/data/ring.png";
-import crown from "../assets/images/data/crown2.png";
-import earrings2 from "../assets/images/data/ring3.png";
-import earrings from "../assets/images/data/errings.png";
-import necklace from "../assets/images/data/necklace.png";
-import necklaceSet from "../assets/images/data/set-necklace.png";
+import ring from "../assets/images/data/product-ring.webp";
+import crown from "../assets/images/data/product-home-crown.webp";
+import earrings2 from "../assets/images/data/product-earring-1.webp";
+import earrings from "../assets/images/data/product-earring.webp";
+import necklace from "../assets/images/data/product-necklace.webp";
+import necklaceSet from "../assets/images/data/product-necklace-set.webp";
 
 export const productData: Omit<IProductCard, "variant" | "rate">[] = [
   {

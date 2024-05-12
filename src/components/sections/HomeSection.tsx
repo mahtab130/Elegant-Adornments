@@ -6,8 +6,8 @@ import { CustomButton } from "../controller/CustomButton";
 import { AnimationSlideIn } from "../common/AnimateComponent";
 import { homeSectionSX } from "../../helper/styleObjects/homeSection";
 
-import Vector from "../../assets/images/vectors/Vector.webp";
-import backImage from "../../assets/images/vectors/back-image.webp";
+import Vector from "../../assets/images/vectors/home-vector.webp";
+import backImage from "../../assets/images/vectors/diamond-vector-2.webp";
 
 export const HomeSection = memo(() => {
   return (

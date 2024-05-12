@@ -6,7 +6,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import { ContentSection } from "../common/ContentSection";
 import { contentServicesSX } from "../../helper/styleObjects/homeSection";
 
-import image from "../../assets/images/home/image-service.png";
+import image from "../../assets/images/home/home-services.webp";
 
 export const ServicesSection = memo(() => {
   return (

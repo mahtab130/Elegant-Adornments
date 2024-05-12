@@ -23,7 +23,7 @@ import { CustomTitle } from "../common/CustomTitle";
 import { NoOptionsComponent } from "../common/NoOptions";
 import { MAX_WIDTH } from "../../helper/constants/static";
 
-import noCarts from "../../assets/images/vectors/no-shopping.png";
+import noCarts from "../../assets/images/vectors/no-carts.webp";
 
 const Carts: FC = () => {
   const { items } = useCart();

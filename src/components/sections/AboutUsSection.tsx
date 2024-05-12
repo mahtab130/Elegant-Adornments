@@ -7,7 +7,7 @@ import { CustomButton } from "../controller/CustomButton";
 import { ContentSection } from "../common/ContentSection";
 import { aboutUsSectionSX } from "../../helper/styleObjects/homeSection";
 
-import image from "../../assets/images/home/image-about-us.png";
+import image from "../../assets/images/home/home-about-us.webp";
 
 export const AboutUsSection = memo(() => {
   const navigate = useNavigate();

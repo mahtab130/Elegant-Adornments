@@ -6,10 +6,10 @@ import { HeadingPage } from "../common/HeadingPage";
 import { CustomImage } from "../controller/CustomImage";
 import { ContentSection } from "../common/ContentSection";
 
-import image2 from "../../assets/images/aboutUs/image-1.webp";
-import image1 from "../../assets/images/aboutUs/image-2.webp";
-import vector from "../../assets/images/vectors/vector-about-us.png";
-import backgroundImage from "../../assets/images/aboutUs/about-us-back.png";
+import image2 from "../../assets/images/aboutUs/image-about-us-1.webp";
+import image1 from "../../assets/images/aboutUs/image-about-us-2.webp";
+import vector from "../../assets/images/vectors/vector-about-us.webp";
+import backgroundImage from "../../assets/images/aboutUs/about-us-back.webp";
 import { AboutUsSX } from "../../helper/styleObjects/aboutUs";
 
 const AboutUs: FC = () => {

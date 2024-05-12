@@ -23,7 +23,7 @@ import {
   SPACE_S3,
 } from "../constants/spaces";
 
-import BackImage from "../../assets/images/login/back-login.jpg";
+import BackImage from "../../assets/images/login/back-login.webp";
 
 export const loginSX: SxProps<Theme> = {
   width: "100%",

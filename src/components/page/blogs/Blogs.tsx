@@ -11,7 +11,7 @@ import { AnimationFadeIn } from "../../common/AnimateComponent";
 import { blogSX } from "../../../helper/styleObjects/homeSection";
 import { CustomPagination } from "../../controller/CustomPagination";
 
-import backgrounImage from "../../../assets/images/blogs/blog-back.png";
+import backgrounImage from "../../../assets/images/blogs/blog-back.webp";
 
 const Blogs: FC = () => {
   const [page, setPage] = useState(1);

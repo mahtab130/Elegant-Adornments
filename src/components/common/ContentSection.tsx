@@ -7,7 +7,7 @@ import { CustomTitle } from "./CustomTitle";
 import { AnimationSlideIn } from "./AnimateComponent";
 import { contentProviderSX } from "../../helper/styleObjects/common";
 
-import vector2 from "../../assets/images/vectors/Vector 2.png";
+import vector2 from "../../assets/images/vectors/vector-flower-white.webp";
 
 export const ContentSection = memo<IContentSection<SxProps<Theme>>>(
   ({ content, image, title, setting }) => {
