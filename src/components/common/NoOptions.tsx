@@ -17,7 +17,10 @@ export const NoOptionsComponent = memo<INoOptionsComponent>(
     return (
       <AnimationSlideIn direction="left">
         <Grid sx={noOptionsComponentSX} className="empty-section">
-          <CustomImage className="empty-image" src={imageSrc} />
+          <CustomImage
+            className={searchKey ? "empty-image search" : "empty-image"}
+            src={imageSrc}
+          />
           {searchKey ? (
             <Typography className="keword-not-exist">
               NO result for “{searchKey}”
@@ -57,7 +60,10 @@ const noOptionsComponentSX: SxProps<Theme> = {
     alignItems: "center",
     flexDirection: "column",
     "& .empty-image": {
-      width: "1080px",
+      width: "300px",
+      "&.search": {
+        width: "1080px",
+      },
     },
     "& .keword-not-exist": {
       mt: SPACE_S1,

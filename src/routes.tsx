@@ -18,7 +18,7 @@ export const routes: RouteObject[] = [
         path: "blogs",
         children: [
           { index: true, element: <Blogs /> },
-          { path: "blog/:id", element: <BlogDetail /> },
+          { path: ":id", element: <BlogDetail /> },
         ],
       },
       { path: "login", element: <Login /> },

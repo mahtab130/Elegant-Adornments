@@ -3,6 +3,7 @@ import { SxProps, Theme } from "@mui/material";
 import { COLOR_PRIMARY, COLOR_SECEONDRY } from "../constants/colors";
 import { FONT_BODY_SMALL, FONT_WEIGHT_BLOD } from "../constants/fonts";
 import { SPACE_H2, SPACE_M2, SPACE_D2, SPACE_S1 } from "../constants/spaces";
+import { MAX_WIDTH } from "../constants/static";
 
 export const navbarSX = (openCategoryPopper?: boolean): SxProps<Theme> => ({
   mx: "auto",
@@ -10,8 +11,8 @@ export const navbarSX = (openCategoryPopper?: boolean): SxProps<Theme> => ({
   py: SPACE_M2,
   top: SPACE_H2,
   zIndex: "3000",
-  width: "1400px",
   display: "flex",
+  width: MAX_WIDTH,
   position: "absolute",
   alignItems: "center",
   borderRadius: "12px",

@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from "react";
+import { memo, useCallback, useMemo, useState } from "react";
 
 import {
   Grid,
@@ -19,6 +19,15 @@ import { minusIcon, plusIcon } from "../other/SvgComponent";
 import { COLOR_SECEONDRY, COLOR_TEXT } from "../../helper/constants/colors";
 
 export const CustomAccordion = memo<{ data: IFaqData[] }>(({ data }) => {
+  const [expandedId, setExpandedId] = useState<number | undefined>(undefined);
+
+  const handleExpansion = useCallback(
+    (id: number) => {
+      setExpandedId(expandedId === id ? undefined : id);
+    },
+    [expandedId]
+  );
+
   return (
     <Grid className="accrdion-wrapper" sx={customAccordionSX}>
       {map(data, ({ description, id, title }) => (
@@ -26,40 +35,42 @@ export const CustomAccordion = memo<{ data: IFaqData[] }>(({ data }) => {
           id={id}
           key={id}
           title={title}
+          expandedId={expandedId}
           description={description}
+          handleExpansion={handleExpansion}
         />
       ))}
     </Grid>
   );
 });
 
-const CustomAccordionContent = memo<IFaqData>(({ description, title }) => {
-  const [expanded, setExpanded] = useState<boolean>(false);
+const CustomAccordionContent = memo<IFaqData>(
+  ({ description, title, expandedId, handleExpansion, id }) => {
+    const isExpaneded = useMemo(() => expandedId === id, [expandedId, id]);
 
-  const handleExpansion = useCallback(
-    () => setExpanded((prevExpanded) => !prevExpanded),
-    []
-  );
-
-  return (
-    <Accordion
-      expanded={expanded}
-      sx={customAccordionContentSX(expanded)}
-      onChange={handleExpansion}
-      className="custom-accortion"
-    >
-      <AccordionSummary
-        expandIcon={!expanded ? plusIcon() : minusIcon()}
-        id="header"
+    return (
+      <Accordion
+        expanded={isExpaneded}
+        sx={customAccordionContentSX(isExpaneded)}
+        onChange={() => handleExpansion && handleExpansion(id)}
+        className="custom-accortion"
       >
-        {title}
-      </AccordionSummary>
-      <AccordionDetails>{description}</AccordionDetails>
-    </Accordion>
-  );
-});
+        <AccordionSummary
+          expandIcon={!isExpaneded ? plusIcon() : minusIcon()}
+          id="header"
+        >
+          {title}
+        </AccordionSummary>
+        <AccordionDetails>{description}</AccordionDetails>
+      </Accordion>
+    );
+  }
+);
 
 const customAccordionContentSX = (expanded?: boolean): SxProps<Theme> => ({
+  "&:not(:first-child)": {
+    borderTop: "1px solid " + COLOR_SECEONDRY,
+  },
   "&.MuiAccordion-root": {
     width: "100%",
     boxShadow: "none",
@@ -71,11 +82,11 @@ const customAccordionContentSX = (expanded?: boolean): SxProps<Theme> => ({
       p: "0px",
       py: SPACE_M3,
       minHeight: "auto",
-      borderBottom: expanded ? "none" : "1px solid " + COLOR_SECEONDRY,
+      borderTop: "1px solid transparent",
       "& .MuiAccordionSummary-content": {
         my: "0px",
-        fontWeight: FONT_WEIGHT_BLOD,
         color: COLOR_TEXT,
+        fontWeight: FONT_WEIGHT_BLOD,
         fontSize: FONT_BODY_MEDIUM2,
         "& svg": {
           width: "15px",
@@ -88,6 +99,9 @@ const customAccordionContentSX = (expanded?: boolean): SxProps<Theme> => ({
         p: "0px",
         pb: SPACE_M3,
         borderBottom: "1px solid " + COLOR_SECEONDRY,
+        "&:last-child": {
+          borderBottom: expanded ? "none " : "1px solid " + COLOR_SECEONDRY,
+        },
       },
     },
   },

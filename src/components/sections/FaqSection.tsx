@@ -37,7 +37,7 @@ export const FaqSection = memo(() => {
           },
           "& .vector-2": {
             top: "50px",
-            right: "-50px",
+            right: "0px",
             width: "100px",
             height: "40px",
             position: "absolute",

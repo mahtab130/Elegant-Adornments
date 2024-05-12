@@ -46,6 +46,7 @@ export const AnimationSlideIn = memo<IAnimation>(
         ref={ref}
         animate={controls}
         className={className}
+        style={{ width: "100%" }}
         initial={{ x: obj[direction].x, y: obj[direction].y, opacity: 0 }}
       >
         {children}

@@ -26,7 +26,7 @@ export const ServicesSection = memo(() => {
           "& .right-section": {
             "& .vector": {
               top: "-30px",
-              left: "40%",
+              left: "50%",
             },
           },
         },

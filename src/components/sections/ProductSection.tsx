@@ -1,17 +1,20 @@
 import { memo } from "react";
 
 import { map } from "lodash";
+import { useCart } from "react-use-cart";
 import { Box, Grid } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 import { productData } from "../../data/product";
 import { ProductCard } from "../common/ProductCard";
 import { CustomTitle } from "../common/CustomTitle";
 import { AnimationSlideIn } from "../common/AnimateComponent";
 import { productSectionSX } from "../../helper/styleObjects/homeSection";
-import { useNavigate } from "react-router-dom";
 
 export const ProductSection = memo(() => {
   const navigate = useNavigate();
+
+  const { addItem } = useCart();
 
   return (
     <Grid sx={productSectionSX}>
@@ -24,7 +27,13 @@ export const ProductSection = memo(() => {
           {map(productData, ({ id, image, name, price }, index) => (
             <Grid item xs={12} onClick={() => navigate("/")} md={2.85} key={id}>
               <AnimationSlideIn direction={index < 2 ? "left" : "right"}>
-                <ProductCard id={id} name={name} price={price} image={image} />
+                <ProductCard
+                  id={id}
+                  name={name}
+                  price={price}
+                  image={image}
+                  onClickAddItem={() => addItem(productData[index] as TAny)}
+                />
               </AnimationSlideIn>
             </Grid>
           ))}

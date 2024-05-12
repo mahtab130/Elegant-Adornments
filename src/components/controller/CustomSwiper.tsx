@@ -18,8 +18,8 @@ import {
 import {
   SPACE_H2,
   SPACE_D1,
-  SPACE_XM1,
   SPACE_M2,
+  SPACE_XM1,
   SPACE_XS1,
 } from "../../helper/constants/spaces";
 import {
@@ -127,6 +127,7 @@ export const CustomSwiperBlog = memo<{ data: IBlogCard[] }>(({ data }) => {
               image={image}
               title={title}
               description={description}
+              navigateString={`blogs/${id}`}
             />
           </SwiperSlide>
         ))}
@@ -150,7 +151,7 @@ const SwiperSectionSx: SxProps<Theme> = {
 
       "& .vector-wrapper": {
         top: "45%",
-        right: "-40px",
+        right: "0px",
         width: "100px",
         height: "100px",
         position: "absolute",
@@ -207,7 +208,7 @@ const customSwiperBlogSX: SxProps<Theme> = {
     display: "flex",
     justifyContent: "center",
     "& .swiper-wrapper": {
-      height: "570px",
+      height: "530px",
       justifyContent: "space-around",
     },
     "& .swiper-slide": {

@@ -30,10 +30,16 @@ interface IBlogCard {
   title: string;
   description: string;
   navigateString?: string;
+  writer?: string;
+  date?: string;
+  studyTime?: string;
+  content?: string;
 }
 
 interface IFaqData {
   id: number;
   title: string;
   description: string;
+  expandedId?: number;
+  handleExpansion?: (id: number) => void;
 }

@@ -27,10 +27,10 @@ export const BestSellingSection = memo(() => {
                 <ProductCard
                   id={id}
                   name={name}
-                  variant="sale"
+                  rate={rate}
                   price={price}
                   image={image}
-                  rate={rate}
+                  variant="sale"
                 />
               </AnimationSlideIn>
             </Grid>

@@ -9,7 +9,10 @@ import {
   Experimental_CssVarsProvider as MaterialCssVarsProvider,
   THEME_ID as MATERIAL_THEME_ID,
 } from "@mui/material/styles";
+
+import { includes } from "lodash";
 import { MotionConfig } from "framer-motion";
+import { CartProvider } from "react-use-cart";
 
 import { routes } from "../../routes";
 import { Footer } from "../common/Footer";
@@ -18,7 +21,6 @@ import { FONT_FAMILY } from "../../helper/constants/static";
 import { mainLayoutSX } from "../../helper/styleObjects/main";
 import { FONT_WEIGHT_REGULAR } from "../../helper/constants/fonts";
 import { COLOR_PRIMARY, COLOR_TEXT } from "../../helper/constants/colors";
-import { includes } from "lodash";
 
 const MainLayout: FC = () => {
   const children = useRoutes(routes);
@@ -43,11 +45,13 @@ const MainLayout: FC = () => {
     <ThemeProvider theme={themeMUI}>
       <MaterialCssVarsProvider theme={{ [MATERIAL_THEME_ID]: materialTheme }}>
         <MotionConfig>
-          <Grid sx={mainLayoutSX} className="main-layout">
-            {includes(emptyContainerNav, pathname) || <Navbar />}
-            {children}
-            {includes(emptyContainerFooter, pathname) || <Footer />}
-          </Grid>
+          <CartProvider>
+            <Grid sx={mainLayoutSX} className="main-layout">
+              {includes(emptyContainerNav, pathname) || <Navbar />}
+              {children}
+              {includes(emptyContainerFooter, pathname) || <Footer />}
+            </Grid>
+          </CartProvider>
         </MotionConfig>
       </MaterialCssVarsProvider>
     </ThemeProvider>

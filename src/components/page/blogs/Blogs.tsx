@@ -47,6 +47,7 @@ const Blogs: FC = () => {
         ))}
         <Grid className="pagination-wrapper">
           <CustomPagination
+            hidePrevButton
             siblingCount={1}
             boundaryCount={0}
             count={Math.ceil(blogs.length / itemsPerPage)}
