@@ -1,16 +1,15 @@
 import { FC, useState } from "react";
 
 import { map } from "lodash";
-import { Grid, SxProps, Theme } from "@mui/material";
+import { Grid } from "@mui/material";
 
 import { HeadingPage } from "../../common/HeadingPage";
 
 import { blogs } from "../../../data/blogs";
 import { BlogCard } from "../../common/BlogCard";
-import { MAX_WIDTH } from "../../../helper/constants/static";
 import { AnimationFadeIn } from "../../common/AnimateComponent";
+import { blogSX } from "../../../helper/styleObjects/homeSection";
 import { CustomPagination } from "../../controller/CustomPagination";
-import { SPACE_H3, SPACE_XM1 } from "../../../helper/constants/spaces";
 
 import backgrounImage from "../../../assets/images/blogs/blog-back.png";
 
@@ -40,7 +39,7 @@ const Blogs: FC = () => {
                 image={image}
                 title={title}
                 description={description}
-                navigateString={`blog/${id}`}
+                navigateString={`${id}`}
               />
             </AnimationFadeIn>
           </Grid>
@@ -61,25 +60,3 @@ const Blogs: FC = () => {
 };
 
 export default Blogs;
-
-const blogSX: SxProps<Theme> = {
-  width: "100%",
-  "& .container-body": {
-    "& .animaiton": {
-      width: "fit-content",
-    },
-    mx: "auto",
-    my: SPACE_H3,
-    width: "100%",
-    display: "flex",
-    flexWrap: "wrap",
-    rowGap: SPACE_XM1,
-    justifyContent: "space-between",
-    maxWidth: `calc(${MAX_WIDTH} + -80px)`,
-    "& .pagination-wrapper": {
-      width: "100%",
-      display: "flex",
-      justifyContent: "center",
-    },
-  },
-};

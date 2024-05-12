@@ -33,7 +33,7 @@ interface IBlogCard {
   writer?: string;
   date?: string;
   studyTime?: string;
-  content?: string;
+  content?: JSX.Element;
 }
 
 interface IFaqData {

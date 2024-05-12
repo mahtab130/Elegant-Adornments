@@ -18,8 +18,6 @@ export const blogs: IBlogCard[] = [
     writer: "Mozhdeh Salari",
     date: "9 May 2024",
     studyTime: "5 min",
-    content:
-      "Determining the authenticity of jewelry usually requires precision and experience. For this purpose, different points should be considered. The first point is to check the label and brand of jewelry. Original jewelry usually has authentic brands and complete manufacturer information, such as brand name, metal grade, weight, etc. In contrast, counterfeit jewelry often lacks this information and has invalid brands.The second thing is to check the weight and appearance of the jewelry. Original ornaments are usually heavier and of better quality. Also, their appearance details such as design, how to connect parts and overall beauty can be different from fake samples. The third solution is to conduct a magnetic test. Original gold and silver jewelry are not magnetic. In contrast, some metals used in counterfeit jewelry may have magnetic properties. The fourth is the acid test. Placing a drop of acid on a piece of jewelry can help determine authenticity. Original jewelry usually does not react much to acid. In addition to these cases, checking labeling and manufacturing quality can also be effective in detecting authenticity. In case of doubt, it is always better to buy from reliable and experienced sellers or consult with relevant experts.",
   },
   {
     id: 2,
@@ -30,8 +28,6 @@ export const blogs: IBlogCard[] = [
     writer: "Mahtab Salari",
     date: "5 Aug 2024",
     studyTime: "10 min",
-    content:
-      "Determining the authenticity of jewelry usually requires precision and experience. For this purpose, different points should be considered. The first point is to check the label and brand of jewelry. Original jewelry usually has authentic brands and complete manufacturer information, such as brand name, metal grade, weight, etc. In contrast, counterfeit jewelry often lacks this information and has invalid brands.The second thing is to check the weight and appearance of the jewelry. Original ornaments are usually heavier and of better quality. Also, their appearance details such as design, how to connect parts and overall beauty can be different from fake samples. The third solution is to conduct a magnetic test. Original gold and silver jewelry are not magnetic. In contrast, some metals used in counterfeit jewelry may have magnetic properties.",
   },
   {
     id: 3,
@@ -42,8 +38,6 @@ export const blogs: IBlogCard[] = [
     writer: "Maryam Salari",
     date: "15 July 2024",
     studyTime: "9 min",
-    content:
-      "Determining the authenticity of jewelry usually requires precision and experience. For this purpose, different points should be considered. The first point is to check the label and brand of jewelry. Original jewelry usually has authentic brands and complete manufacturer information, such as brand name, metal grade, weight, etc. In contrast, counterfeit jewelry often lacks this information and has invalid brands.The second thing is to check the weight and appearance of the jewelry. Original ornaments are usually heavier and of better quality. Also, their appearance details such as design, how to connect parts and overall beauty can be different from fake samples. The third solution is to conduct a magnetic test. Original gold and silver jewelry are not magnetic. In contrast, some metals used in counterfeit jewelry may have magnetic properties. The fourth is the acid test. Placing a drop of acid on a piece of jewelry can help determine authenticity. Original jewelry usually does not react much to acid. In addition to these cases, checking labeling and manufacturing quality can also be effective in detecting authenticity. In case of doubt, it is always better to buy from reliable and experienced sellers or consult with relevant experts.Determining the authenticity of jewelry usually requires precision and experience. For this purpose, different points should be considered. The first point is to check the label and brand of jewelry. Original jewelry usually has authentic brands and complete manufacturer information, such as brand name, metal grade, weight, etc. In contrast, counterfeit jewelry often lacks this information and has invalid brands.The second thing is to check the weight and appearance of the jewelry. Original ornaments are usually heavier and of better quality. Also, their appearance details such as design, how to connect parts and overall beauty can be different from fake samples. The third solution is to conduct a magnetic test. Original gold and silver jewelry are not magnetic. In contrast, some metals used in counterfeit jewelry may have magnetic properties. The fourth is the acid test. Placing a drop of acid on a piece of jewelry can help determine authenticity. Original jewelry usually does not react much to acid. In addition to these cases, checking labeling and manufacturing quality can also be effective in detecting authenticity. In case of doubt, it is always better to buy from reliable and experienced sellers or consult with relevant experts.",
   },
   {
     id: 4,
@@ -54,8 +48,6 @@ export const blogs: IBlogCard[] = [
     writer: "Mohammad Salari",
     date: "9 May 2024",
     studyTime: "2 min",
-    content:
-      "Determining the authenticity of jewelry usually requires precision and experience. For this purpose, different points should be considered. The first point is to check the label and brand of jewelry. Original jewelry usually has authentic brands and complete manufacturer information, such as brand name, metal grade, weight, etc. In contrast, counterfeit jewelry often lacks this information and has invalid brands.The second thing is to check the weight and appearance of the jewelry. Original ornaments are usually heavier and of better quality. ",
   },
   {
     id: 5,
@@ -66,8 +58,6 @@ export const blogs: IBlogCard[] = [
     writer: "Elina Salvator",
     date: "30 Aug 2024",
     studyTime: "9 min",
-    content:
-      "Determining the authenticity of jewelry usually requires precision and experience. For this purpose, different points should be considered. The first point is to check the label and brand of jewelry. Original jewelry usually has authentic brands and complete manufacturer information, such as brand name, metal grade, weight, etc. In contrast, counterfeit jewelry often lacks this information and has invalid brands.The second thing is to check the weight and appearance of the jewelry. Original ornaments are usually heavier and of better quality. Also, their appearance details such as design, how to connect parts and overall beauty can be different from fake samples. The third solution is to conduct a magnetic test. Original gold and silver jewelry are not magnetic. In contrast, some metals used in counterfeit jewelry may have magnetic properties. The fourth is the acid test. Placing a drop of acid on a piece of jewelry can help determine authenticity. ",
   },
   {
     id: 6,
@@ -78,8 +68,6 @@ export const blogs: IBlogCard[] = [
     writer: "Miranda Scott",
     date: "9 May 2024",
     studyTime: "13 min",
-    content:
-      "Determining the authenticity of jewelry usually requires precision and experience. For this purpose, different points should be considered. The first point is to check the label and brand of jewelry. Original jewelry usually has authentic brands and complete manufacturer information, such as brand name, metal grade, weight, etc. In contrast, counterfeit jewelry often lacks this information and has invalid brands.The second thing is to check the weight and appearance of the jewelry. Original ornaments are usually heavier and of better quality. Also, their appearance details such as design, how to connect parts and overall beauty can be different from fake samples. The third solution is to conduct a magnetic test. Original gold and silver jewelry are not magnetic. In contrast, some metals used in counterfeit jewelry may have magnetic properties. The fourth is the acid test. Placing a drop of acid on a piece of jewelry can help determine authenticity. Original jewelry usually does not react much to acid. In addition to these cases, checking labeling and manufacturing quality can also be effective in detecting authenticity. In case of doubt, it is always better to buy from reliable and experienced sellers or consult with relevant experts.Determining the authenticity of jewelry usually requires precision and experience. For this purpose, different points should be considered. The first point is to check the label and brand of jewelry. Original jewelry usually has authentic brands and complete manufacturer information, such as brand name, metal grade, weight, etc. In contrast, counterfeit jewelry often lacks this information and has invalid brands.The second thing is to check the weight and appearance of the jewelry. Original ornaments are usually heavier and of better quality. Also, their appearance details such as design, how to connect parts and overall beauty can be different from fake samples. The third solution is to conduct a magnetic test.",
   },
   {
     id: 7,
@@ -90,8 +78,6 @@ export const blogs: IBlogCard[] = [
     writer: "Mahtab Salari",
     date: "5 Aug 2024",
     studyTime: "0 min",
-    content:
-      "Determining the authenticity of jewelry usually requires precision and experience. For this purpose, different points should be considered. The first point is to check the label and brand of jewelry. Original jewelry usually has authentic brands and complete manufacturer information, such as brand name, metal grade, weight, etc. In contrast, counterfeit jewelry often lacks this information and has invalid brands.The second thing is to check the weight and appearance of the jewelry. Original ornaments are usually heavier and of better quality. Also, their appearance details such as design, how to connect parts and overall beauty can be different from fake samples. The third solution is to conduct a magnetic test. Original gold and silver jewelry are not magnetic. In contrast, some metals used in counterfeit jewelry may have magnetic properties. The fourth is the acid test. Placing a drop of acid on a piece of jewelry can help determine authenticity. Original jewelry usually does not react much to acid. In addition to these cases, checking labeling and manufacturing quality can also be effective in detecting authenticity. In case of doubt, it is always better to buy from reliable and experienced sellers or consult with relevant experts.",
   },
   {
     id: 8,
@@ -102,8 +88,6 @@ export const blogs: IBlogCard[] = [
     writer: "Mozhdeh Salari",
     date: "9 May 2024",
     studyTime: "5 min",
-    content:
-      "Determining the authenticity of jewelry usually requires precision and experience. For this purpose, different points should be considered. The first point is to check the label and brand of jewelry. Original jewelry usually has authentic brands and complete manufacturer information, such as brand name, metal grade, weight, etc. In contrast, counterfeit jewelry often lacks this information and has invalid brands.The second thing is to check the weight and appearance of the jewelry. Original ornaments are usually heavier and of better quality. Also, their appearance details such as design, how to connect parts and overall beauty can be different from fake samples.",
   },
   {
     id: 9,
@@ -114,7 +98,5 @@ export const blogs: IBlogCard[] = [
     writer: "Maryam Salari",
     date: "19 July 2024",
     studyTime: "12 min",
-    content:
-      "Determining the authenticity of jewelry usually requires precision and experience. For this purpose, different points should be considered. The first point is to check the label and brand of jewelry. Original jewelry usually has authentic brands and complete manufacturer information, such as brand name, metal grade, weight, etc. In contrast, counterfeit jewelry often lacks this information and has invalid brands.The second thing is to check the weight and appearance of the jewelry. Original ornaments are usually heavier and of better quality. Also, their appearance details such as design, how to connect parts and overall beauty can be different from fake samples. The third solution is to conduct a magnetic test. Original gold and silver jewelry are not magnetic. In contrast, some metals used in counterfeit jewelry may have magnetic properties. The fourth is the acid test. Placing a drop of acid on a piece of jewelry can help determine authenticity. Original jewelry usually does not react much to acid. In addition to these cases, checking labeling and manufacturing quality can also be effective in detecting authenticity. In case of doubt, it is always better to buy from reliable and experienced sellers or consult with relevant experts.Determining the authenticity of jewelry usually requires precision and experience. For this purpose, different points should be considered. The first point is to check the label and brand of jewelry. Original jewelry usually has authentic brands and complete manufacturer information, such as brand name, metal grade, weight, etc. In contrast, counterfeit jewelry often lacks this information and has invalid brands.The second thing is to check the weight and appearance of the jewelry. Original ornaments are usually heavier and of better quality. Also, their appearance details such as design, how to connect parts and overall beauty can be different from fake samples. The third solution is to conduct a magnetic test. Original gold and silver jewelry are not magnetic. In contrast, some metals used in counterfeit jewelry may have magnetic properties. The fourth is the acid test. Placing a drop of acid on a piece of jewelry can help determine authenticity. Original jewelry usually does not react much to acid. In addition to these cases, checking labeling and manufacturing quality can also be effective in detecting authenticity. In case of doubt, it is always better to buy from reliable and experienced sellers or consult with relevant experts.Determining the authenticity of jewelry usually requires precision and experience. For this purpose, different points should be considered. The first point is to check the label and brand of jewelry. Original jewelry usually has authentic brands and complete manufacturer information, such as brand name, metal grade, weight, etc. In contrast, counterfeit jewelry often lacks this information and has invalid brands.The second thing is to check the weight and appearance of the jewelry. Original ornaments are usually heavier and of better quality. Also, their appearance details such as design, how to connect parts and overall beauty can be different from fake samples. The third solution is to conduct a magnetic test. Original gold and silver jewelry are not magnetic. In contrast, some metals used in counterfeit jewelry may have magnetic properties. The fourth is the acid test. Placing a drop of acid on a piece of jewelry can help determine authenticity. Original jewelry usually does not react much to acid. In addition to these cases, checking labeling and manufacturing quality can also be effective in detecting authenticity. In case of doubt, it is always better to buy from reliable and experienced sellers or consult with relevant experts.",
   },
 ];

@@ -1,18 +1,19 @@
-import { Grid, SxProps, Theme } from "@mui/material";
+import { FC } from "react";
+
+import { Grid } from "@mui/material";
 
 import { HeadingPage } from "../common/HeadingPage";
+import { CustomImage } from "../controller/CustomImage";
+import { ContentSection } from "../common/ContentSection";
+import { servicesSX } from "../../helper/styleObjects/services";
 
-import backgrounImage from "../../assets/images/servieces/services-back.png";
 import image1 from "../../assets/images/servieces/image1.png";
 import image2 from "../../assets/images/servieces/image2.png";
-import { FONT_BODY_MEDIUM2 } from "../../helper/constants/fonts";
-import { SPACE_H2, SPACE_M1 } from "../../helper/constants/spaces";
-import { ContentSection } from "../common/ContentSection";
-import { CustomImage } from "../controller/CustomImage";
 import vector from "../../assets/images/vectors/vector-about-us.png";
+import backgrounImage from "../../assets/images/servieces/services-back.png";
 import vectorGray from "../../assets/images/vectors/vector-crooked-line-gray.png";
 
-const Services = () => {
+const Services: FC = () => {
   return (
     <Grid sx={servicesSX}>
       <HeadingPage
@@ -71,37 +72,3 @@ const Services = () => {
 };
 
 export default Services;
-
-const servicesSX: SxProps<Theme> = {
-  width: "100%",
-
-  "& .second-section": {
-    py: SPACE_H2,
-    "& .description": {
-      mt: SPACE_M1,
-      fontSize: FONT_BODY_MEDIUM2,
-      lineHeight: "25px",
-    },
-    "& .vector-wrapper": {
-      width: "100%",
-      height: "130px",
-      position: "relative",
-      "&.two": {
-        justifyContent: "flex-start",
-      },
-      "& .vector-one": {
-        top: "-20px",
-        right: "-30px",
-        width: "460px",
-        position: "absolute",
-      },
-      "& .vector-two": {
-        width: "390px",
-        left: "-90px",
-        top: "0px",
-        position: "absolute",
-        transform: "scaleX(-0.9)",
-      },
-    },
-  },
-};
