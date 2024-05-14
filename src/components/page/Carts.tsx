@@ -1,124 +1,129 @@
 import { FC } from "react";
 
+import { map, slice } from "lodash";
 import { useCart } from "react-use-cart";
-import { Grid, SxProps, Theme, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 
-import {
-  FONT_BODY_LARGE,
-  FONT_WEIGHT_BLOD,
-  FONT_BODY_MEDIUM2,
-} from "../../helper/constants/fonts";
-import {
-  COLOR_SECEONDRY,
-  COLOR_TEXT_GRAY,
-} from "../../helper/constants/colors";
-import {
-  SPACE_H1,
-  SPACE_H3,
-  SPACE_M1,
-  SPACE_M3,
-  SPACE_S2,
-} from "../../helper/constants/spaces";
+import { productData } from "../../data/product";
 import { CustomTitle } from "../common/CustomTitle";
-import { NoOptionsComponent } from "../common/NoOptions";
-import { MAX_WIDTH } from "../../helper/constants/static";
+import { ProfileCard } from "../common/ProfileCard";
+import { ProductCard } from "../common/ProductCard";
+import { cartsSX } from "../../helper/styleObjects/cart";
+import {
+  EmptyLastCenterJustify,
+  NoOptionsComponent,
+} from "../common/NoOptions";
+import { CustomButton } from "../controller/CustomButton";
+import { QuantityComponent } from "../common/CartsComponents";
+import { CustomTextfield } from "../controller/CustomTextfield";
+import { CustomTable, ITableHeadCell } from "../controller/CustomTable";
 
 import noCarts from "../../assets/images/vectors/no-carts.webp";
+import { trashIcon } from "../other/SvgComponent";
+import { COLOR_GRAY } from "../../helper/constants/colors";
 
 const Carts: FC = () => {
-  const { items } = useCart();
-  console.log("🚀 ~ items:", items);
+  const { items, removeItem, updateItemQuantity, totalItems } = useCart();
+  console.log("🚀 ~ totalItems:", totalItems);
+
+  const tableCells: ITableHeadCell<IProductData>[] = [
+    {
+      id: "name",
+      label: "Product",
+      ComponentRow: ({ row: { image, name } }) => (
+        <ProfileCard image={image} name={name} />
+      ),
+    },
+    {
+      id: "id",
+      label: "Quantity",
+      ComponentRow: ({ row: { id, quantity } }) => (
+        <QuantityComponent
+          quantity={quantity || 0}
+          decreaseItem={() => updateItemQuantity(String(id), quantity || 0 - 1)}
+          increaseItem={() => updateItemQuantity(String(id), quantity || 0 + 1)}
+        />
+      ),
+    },
+    {
+      id: "price",
+      label: "Price",
+      ComponentRow: ({ row: { price } }) => <>{`$ ${price}`}</>,
+    },
+    { id: "id", label: "Suptotal" },
+    {
+      id: "id",
+      label: "Operation",
+      ComponentRow: ({ row: { id } }) => (
+        <Box
+          component="span"
+          onClick={() => removeItem(String(id))}
+          sx={{
+            cursor: "pointer",
+            transition: "all 0.3s",
+            "&:hover": { transform: "scale(1.2)" },
+          }}
+        >
+          {trashIcon(COLOR_GRAY)}
+        </Box>
+      ),
+    },
+  ];
 
   return (
     <Grid sx={cartsSX}>
       <Grid className="container">
         <CustomTitle title="Cart" />
         {items?.length > 0 ? (
-          <CartSelected />
+          <CustomTable valueRows={items} tableHeadCell={tableCells} />
         ) : (
           <NoOptionsComponent
             imageSrc={noCarts}
             text="Your shopping cart is empty"
           />
         )}
+        <Grid container className="coupon-wrapper">
+          <Grid item xs={12} md={5.8}>
+            <CustomTextfield
+              iconEmail
+              variant="outlined"
+              endIcon={<Typography>{"Apply"}</Typography>}
+              customLabel="Coupon"
+              placeholder="Coupon Code"
+            />
+          </Grid>
+          <Grid item xs={12} md={5}>
+            <CustomButton
+              className="button"
+              text={"Proceed To Checkout"}
+              variant="contained"
+            />
+          </Grid>
+        </Grid>
+        <Grid className="other-product">
+          <CustomTitle title="You may be interested in" />
+          <Grid container className="other-product-wrapper">
+            {map(slice(productData, 3, 8), ({ id, image, name, price }) => (
+              <Grid item xs={12} key={id} md={2.85}>
+                <ProductCard
+                  id={id}
+                  name={name}
+                  price={price}
+                  image={image}
+                  variant="cart"
+                />
+              </Grid>
+            ))}
+            <EmptyLastCenterJustify
+              even
+              md={2.85}
+              length={map(slice(productData, 3, 8))?.length}
+            />
+          </Grid>
+        </Grid>
       </Grid>
     </Grid>
   );
 };
 
 export default Carts;
-
-const CartSelected = () => {
-  return (
-    <Grid sx={productCartSX}>
-      <Grid className="head">
-        <Typography className="head-text">Product</Typography>
-        <Typography className="head-text">Quantity</Typography>
-        <Typography className="head-text">Price</Typography>
-        <Typography className="head-text">Suptotal</Typography>
-      </Grid>
-      <Grid className="body">
-        <Typography className="body-text">Product</Typography>
-      </Grid>
-    </Grid>
-  );
-};
-
-const productCartSX: SxProps<Theme> = {
-  width: "100%",
-  mt: SPACE_M1,
-  p: SPACE_M3,
-  "& .head": {
-    px: SPACE_H1,
-    pb: SPACE_S2,
-    width: "100%",
-    display: "flex",
-    justifyContent: "space-between",
-    borderBottom: "1px solid " + COLOR_SECEONDRY,
-    "& .head-text": {
-      width: "25%",
-      textAlign: "center",
-      fontSize: FONT_BODY_MEDIUM2,
-      fontWeight: FONT_WEIGHT_BLOD,
-    },
-  },
-  "& .body": {
-    px: SPACE_H1,
-    pb: SPACE_S2,
-    width: "100%",
-    display: "flex",
-    justifyContent: "space-between",
-    "& .body-text": {
-      width: "25%",
-      textAlign: "center",
-      fontSize: FONT_BODY_MEDIUM2,
-      fontWeight: FONT_WEIGHT_BLOD,
-    },
-  },
-};
-
-const cartsSX: SxProps<Theme> = {
-  width: "100%",
-  "& .container": {
-    mx: "auto",
-    mt: SPACE_H3,
-    pt: SPACE_H3,
-    width: "100%",
-    maxWidth: MAX_WIDTH,
-    "& .image-wrapper": {
-      width: "100%",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      "& .carts-image": {
-        width: "300px",
-        height: "300px",
-      },
-      "& .text": {
-        color: COLOR_TEXT_GRAY,
-        fontSize: FONT_BODY_LARGE,
-        fontWeight: FONT_WEIGHT_BLOD,
-      },
-    },
-  },
-};

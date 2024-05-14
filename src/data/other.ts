@@ -5,3 +5,8 @@ export const navbarValues = [
   { name: "Services", url: "/services" },
   { name: "Blogs", url: "/blogs" },
 ];
+
+export const uniqueIdGenerator = () => {
+  let counter = 0;
+  return `id-${counter++}`;
+};

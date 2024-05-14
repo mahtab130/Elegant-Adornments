@@ -25,6 +25,7 @@ import {
   FONT_BODY_MEDIUM1,
   FONT_CAPTION_LARGE,
   FONT_HEADING_XLARGE,
+  FONT_BODY_SMALL,
 } from "../constants/fonts";
 import { MAX_WIDTH } from "../constants/static";
 
@@ -75,7 +76,7 @@ export const productCardSX = (
   overflow: "hidden",
   cursor: "pointer",
   borderRadius: "14px",
-  boxShadow: "0px 1px 2px 0px #1018280D  ",
+  boxShadow: variant == "cart" ? "none" : "0px 1px 2px 0px #1018280D  ",
   "&:hover": {
     "& .texts-wrapper": {
       "& .price-wrapper": {
@@ -100,8 +101,15 @@ export const productCardSX = (
     alignItems: "flex-start",
     justifyContent: "center",
     height:
-      variant == "sale" ? "350px" : variant == "search" ? "320px" : " 370px",
-    borderRadius: variant == "sale" || variant == "search" ? "14px" : "0px",
+      variant == "sale"
+        ? "350px"
+        : variant == "search" || variant == "cart"
+        ? "320px"
+        : " 370px",
+    borderRadius:
+      variant == "sale" || variant == "search" || variant == "cart"
+        ? "14px"
+        : "0px",
     background:
       " linear-gradient(154.68deg, #E7EDEF 24.32%, #FFFFFF 45.27%, #FFFFFF 56.96%, #E7EDEF 99.84%)",
     "& .image-product": {
@@ -113,7 +121,7 @@ export const productCardSX = (
     p: SPACE_M3,
     width: "100%",
     display: "flex",
-    textAlign: variant == "search" ? "center" : "unset",
+    textAlign: variant == "search" || variant == "cart" ? "center" : "unset",
     rowGap: variant == "sale" ? SPACE_S2 : SPACE_M3,
     flexDirection: "column",
     backgroundColor:
@@ -317,3 +325,22 @@ export const headingPageSX = (image?: string): SxProps<Theme> => ({
     },
   },
 });
+
+export const profileCardSX: SxProps<Theme> = {
+  width: "100%",
+  display: "flex",
+  gap: SPACE_XS1,
+  alignItems: "center",
+  "& .profile-image": {
+    width: "80px",
+    height: "80px",
+    borderRadius: "10px",
+    objectFit: "scale-down",
+    background: "linear-gradient(154.68deg, #E7EDEF 24.32%, #E7EDEF 99.84%)",
+  },
+  "& .profile-name": {
+    color: "#686868",
+    fontSize: FONT_BODY_SMALL,
+    fontWeight: FONT_WEIGHT_BLOD,
+  },
+};

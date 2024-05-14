@@ -1,13 +1,14 @@
-interface IProductCard {
+interface IProductData {
   id: number;
   name: string;
-  price: string;
+  price: number;
   image: string;
   rate?: number;
-  variant?: "sale" | "product" | "search";
+  catergoryId?: number;
+  quantity?: number;
 }
 
-interface ICategoryCard {
+interface ICategoryData {
   id: number;
   name: string;
   image: string;
@@ -24,22 +25,18 @@ interface IUserComment {
   comment: string;
 }
 
-interface IBlogCard {
+interface IBlogData {
   id: number;
   image: string;
   title: string;
-  description: string;
-  navigateString?: string;
-  writer?: string;
   date?: string;
+  writer?: string;
   studyTime?: string;
-  content?: JSX.Element;
+  description: string;
 }
 
 interface IFaqData {
   id: number;
   title: string;
   description: string;
-  expandedId?: number;
-  handleExpansion?: (id: number) => void;
 }

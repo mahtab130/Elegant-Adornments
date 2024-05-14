@@ -18,7 +18,7 @@ import { SPACE_M3 } from "../../helper/constants/spaces";
 import { minusIcon, plusIcon } from "../other/SvgComponent";
 import { COLOR_SECEONDRY, COLOR_TEXT } from "../../helper/constants/colors";
 
-export const CustomAccordion = memo<{ data: IFaqData[] }>(({ data }) => {
+export const CustomAccordion = memo<{ data: IFaqCard[] }>(({ data }) => {
   const [expandedId, setExpandedId] = useState<number | undefined>(undefined);
 
   const handleExpansion = useCallback(
@@ -44,7 +44,7 @@ export const CustomAccordion = memo<{ data: IFaqData[] }>(({ data }) => {
   );
 });
 
-const CustomAccordionContent = memo<IFaqData>(
+const CustomAccordionContent = memo<IFaqCard>(
   ({ description, title, expandedId, handleExpansion, id }) => {
     const isExpaneded = useMemo(() => expandedId === id, [expandedId, id]);
 

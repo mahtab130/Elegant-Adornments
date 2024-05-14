@@ -18,7 +18,7 @@ export const ProductCard = memo<
       </Grid>
       <Grid className="texts-wrapper">
         <Typography className="title">{name}</Typography>
-        {variant == "search" ? null : (
+        {variant == "search" || variant == "cart" ? null : (
           <Grid className="price-wrapper">
             {variant == "sale" ? null : (
               <Typography onClick={onClickAddItem} className="add-to-cart">
@@ -26,7 +26,7 @@ export const ProductCard = memo<
                 ADD TO CART
               </Typography>
             )}
-            <Typography className="price">{price}</Typography>
+            <Typography className="price">{`$ ${price}`}</Typography>
             {variant == "sale" ? (
               <Grid className="rate">
                 <CustomRating readOnly size="small" value={rate} />

@@ -38,3 +38,39 @@ interface IContentSection<TSx = TAny> {
     vectorSrc?: string;
   };
 }
+
+interface IProductCard {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+  rate?: number;
+  variant?: "sale" | "product" | "search" | "cart";
+}
+
+interface ICategoryCard {
+  id: number;
+  name: string;
+  image: string;
+  thumbnail?: string;
+  description?: string;
+}
+interface IBlogCard {
+  id: number;
+  image: string;
+  title: string;
+  description: string;
+  navigateString?: string;
+  writer?: string;
+  date?: string;
+  studyTime?: string;
+  content?: JSX.Element;
+}
+
+interface IFaqCard {
+  id: number;
+  title: string;
+  description: string;
+  expandedId?: number;
+  handleExpansion?: (id: number) => void;
+}

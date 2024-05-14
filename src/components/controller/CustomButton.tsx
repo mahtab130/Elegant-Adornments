@@ -23,7 +23,7 @@ import {
 } from "../../helper/constants/fonts";
 import { SPACE_D1, SPACE_XS1, SPACE_M2 } from "../../helper/constants/spaces";
 
-type TCustomButton = ButtonTypeMap<
+export type TCustomButton = ButtonTypeMap<
   {
     text: string;
     customColor?: string;

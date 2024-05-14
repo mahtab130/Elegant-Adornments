@@ -7,8 +7,8 @@ import { HeadingPage } from "../../common/HeadingPage";
 
 import { blogs } from "../../../data/blogs";
 import { BlogCard } from "../../common/BlogCard";
+import { blogSX } from "../../../helper/styleObjects/blog";
 import { AnimationFadeIn } from "../../common/AnimateComponent";
-import { blogSX } from "../../../helper/styleObjects/homeSection";
 import { CustomPagination } from "../../controller/CustomPagination";
 
 import backgrounImage from "../../../assets/images/blogs/blog-back.webp";

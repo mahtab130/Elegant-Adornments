@@ -16,7 +16,7 @@ import categoryAnkle from "../assets/images/data/category-feet.webp";
 import categoryEarrings from "../assets/images/data/category-earrings.webp";
 import categoryNecklace from "../assets/images/data/category-set.webp";
 
-export const categoryData: ICategoryCard[] = [
+export const categoryData: ICategoryData[] = [
   {
     id: 1,
     name: "Ring",
