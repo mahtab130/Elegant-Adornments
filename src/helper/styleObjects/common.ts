@@ -257,6 +257,7 @@ export const customTitle = (
     height: "100px",
     bottom: "-32px",
     position: "absolute",
+    zIndex: 22000,
   },
 });
 
@@ -285,6 +286,7 @@ export const contentProviderSX = (
       top: "0px",
       position: "absolute",
       right: "0px",
+      zIndex: 22000,
     },
   },
   "& .left-section": {

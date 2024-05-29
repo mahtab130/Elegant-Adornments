@@ -21,7 +21,6 @@ const SearchPage: FC = () => {
   const navigate = useNavigate();
 
   const [keyword, setKeyword] = useState<string | undefined>(undefined);
-  console.log("🚀 ~ keyword:", keyword);
 
   const filteredData = useMemo(
     () =>
@@ -35,42 +34,50 @@ const SearchPage: FC = () => {
     <Grid sx={searchSX}>
       <Grid className="container">
         <CustomTextfield
-          hasDelete
           variant="standard"
           placeholder="Search..."
           className="search-input"
+          setting={{ hasDelete: true }}
           startIcon={searchOutlineIcon()}
           onChange={(e) => setKeyword(e.target.value)}
         />
-        {filteredData?.length > 0 ? (
-          <Grid container className="products-wrapper">
-            {map(filteredData, ({ id, image, name, price }, index) => (
-              <Grid
-                item
-                xs={12}
-                key={id}
+        {keyword ? (
+          filteredData?.length > 0 ? (
+            <Grid container className="products-wrapper">
+              {map(filteredData, ({ id, image, name, price }, index) => (
+                <Grid
+                  item
+                  xs={12}
+                  key={id + index}
+                  md={2.85}
+                  onClick={() => navigate("/")}
+                >
+                  <AnimationSlideIn direction={index < 2 ? "left" : "right"}>
+                    <ProductCard
+                      id={id}
+                      name={name}
+                      price={price}
+                      image={image}
+                      variant="search"
+                    />
+                  </AnimationSlideIn>
+                </Grid>
+              ))}
+              <EmptyLastCenterJustify
+                even
                 md={2.85}
-                onClick={() => navigate("/")}
-              >
-                <AnimationSlideIn direction={index < 2 ? "left" : "right"}>
-                  <ProductCard
-                    id={id}
-                    name={name}
-                    price={price}
-                    image={image}
-                    variant="search"
-                  />
-                </AnimationSlideIn>
-              </Grid>
-            ))}
-            <EmptyLastCenterJustify
-              even
-              md={2.85}
-              length={filteredData?.length}
+                length={filteredData?.length}
+              />
+            </Grid>
+          ) : (
+            <NoOptionsComponent
+              imageSize="large"
+              imageSrc={noOptions}
+              searchKey={keyword}
             />
-          </Grid>
+          )
         ) : (
-          <NoOptionsComponent imageSrc={noOptions} searchKey={keyword} />
+          <></>
         )}
       </Grid>
     </Grid>

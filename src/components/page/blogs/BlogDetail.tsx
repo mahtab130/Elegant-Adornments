@@ -44,8 +44,8 @@ export const BlogDetail: FC = () => {
             </Typography>
           </Grid>
           <Grid className="other-info-wrapper">
-            {map(otherInfo, ({ name, icon, title }) => (
-              <Grid className="item">
+            {map(otherInfo, ({ name, icon, title }, index) => (
+              <Grid className="item" key={index}>
                 {icon}
                 <Typography className="name">
                   {title} : {name}

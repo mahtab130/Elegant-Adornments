@@ -62,17 +62,14 @@ export const loginSX: SxProps<Theme> = {
         },
       },
       "& .inputs": {
+        width: "350px",
         display: "flex",
         rowGap: SPACE_M4,
-        width: "350px",
         flexDirection: "column",
         "& .input": {
           "& .MuiInputBase-root": {
             height: "45px",
             borderRadius: "8px",
-            "& fieldset": {
-              border: "1px solid" + COLOR_TEXT_WHITE,
-            },
           },
         },
         "& .checkbox-wrapper": {

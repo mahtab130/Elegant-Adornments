@@ -1,24 +1,27 @@
 import { ElementType, ReactNode, memo, useMemo } from "react";
-import { arrowRight2Icon } from "../other/SvgComponent";
-import {
-  COLOR_LIGHT_GRAY,
-  COLOR_MEDIUM_GRAY,
-  COLOR_TEXT,
-} from "../../helper/constants/colors";
+
 import {
   Box,
+  Theme,
+  SxProps,
   Breadcrumbs,
   BreadcrumbsTypeMap,
-  SxProps,
-  Theme,
 } from "@mui/material";
-import { OverrideProps } from "@mui/material/OverridableComponent";
-import {
-  FONT_LABEL_MEDIUM,
-  FONT_WEIGHT_BLOD,
-} from "../../helper/constants/fonts";
-import { SPACE_S3, SPACE_XS1 } from "../../helper/constants/spaces";
+import { map } from "lodash";
 import { useNavigate } from "react-router-dom";
+import { OverrideProps } from "@mui/material/OverridableComponent";
+
+import {
+  FONT_WEIGHT_BLOD,
+  FONT_LABEL_MEDIUM,
+} from "../../helper/constants/fonts";
+import {
+  COLOR_TEXT,
+  COLOR_LIGHT_GRAY,
+  COLOR_MEDIUM_GRAY,
+} from "../../helper/constants/colors";
+import { arrowRight2Icon } from "../other/SvgComponent";
+import { SPACE_S3, SPACE_XS1 } from "../../helper/constants/spaces";
 
 interface ILocalBreadcrumbs
   extends OverrideProps<BreadcrumbsTypeMap<object, "nav">, ElementType> {
@@ -60,11 +63,11 @@ export const CustomBreadcrumbs = memo<ILocalBreadcrumbs>(
         aria-label="breadcrumb"
         sx={customBreadcrumbsSX}
       >
-        {breadcrumbs.map(({ name, link }, index) => (
+        {map(breadcrumbs, ({ name, link }, index) => (
           <Box
+            key={index}
             className="breadcrumbs-item"
             onClick={() => navigate(link)}
-            key={index}
           >
             {name}
           </Box>

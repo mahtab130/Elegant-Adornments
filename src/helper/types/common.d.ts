@@ -6,6 +6,14 @@ interface IContentComment extends Omit<IUserComment, "id" | "image"> {
   classNames: { prev: string; next: string };
 }
 
+type TStandardSize = "small" | "medium" | "large";
+interface ICustomLabel {
+  label: string;
+  color?: string;
+  required?: boolean;
+  size?: TStandardSize;
+}
+
 interface ICustomTitle {
   title?: string;
   setting?: {
@@ -25,6 +33,7 @@ interface INoOptionsComponent {
   text?: string;
   imageSrc: string;
   searchKey?: string;
+  imageSize?: TStandardSize;
 }
 
 interface IContentSection<TSx = TAny> {

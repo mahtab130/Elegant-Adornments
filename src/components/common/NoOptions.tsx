@@ -13,14 +13,11 @@ import { SPACE_S1 } from "../../helper/constants/spaces";
 import { COLOR_WHITE } from "../../helper/constants/colors";
 
 export const NoOptionsComponent = memo<INoOptionsComponent>(
-  ({ imageSrc, searchKey, text }) => {
+  ({ imageSrc, searchKey, text, imageSize }) => {
     return (
       <AnimationSlideIn direction="left">
-        <Grid sx={noOptionsComponentSX} className="empty-section">
-          <CustomImage
-            className={searchKey ? "empty-image search" : "empty-image"}
-            src={imageSrc}
-          />
+        <Grid sx={noOptionsComponentSX(imageSize)} className="empty-section">
+          <CustomImage className={"empty-image"} src={imageSrc} />
           {searchKey ? (
             <Typography className="keword-not-exist">
               NO result for “{searchKey}”
@@ -53,17 +50,21 @@ export const EmptyLastCenterJustify = memo<IEmptyLastCenterJustify>(
   }
 );
 
-const noOptionsComponentSX: SxProps<Theme> = {
+const noOptionsComponentSX = (imageSize?: TStandardSize): SxProps<Theme> => ({
   "&.empty-section": {
     width: "100%",
     display: "flex",
     alignItems: "center",
     flexDirection: "column",
     "& .empty-image": {
-      width: "300px",
-      "&.search": {
-        width: "1080px",
-      },
+      width:
+        imageSize == "small"
+          ? "300px"
+          : imageSize == "medium"
+          ? "500px"
+          : imageSize == "large"
+          ? "1080px"
+          : "300px",
     },
     "& .keword-not-exist": {
       mt: SPACE_S1,
@@ -77,4 +78,4 @@ const noOptionsComponentSX: SxProps<Theme> = {
       fontWeight: FONT_WEIGHT_BLOD,
     },
   },
-};
+});

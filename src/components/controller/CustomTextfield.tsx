@@ -1,10 +1,10 @@
 import {
-  ChangeEvent,
   memo,
-  useCallback,
-  useMemo,
   useRef,
+  useMemo,
   useState,
+  useCallback,
+  ChangeEvent,
 } from "react";
 
 import {
@@ -13,47 +13,62 @@ import {
   Theme,
   SxProps,
   TextField,
-  Typography,
   TextFieldProps,
   TextFieldVariants,
 } from "@mui/material";
 
 import {
+  COLOR_TEXT,
   COLOR_PRIMARY,
-  COLOR_TEXT_GRAY,
+  COLOR_TEXT_WHITE,
   COLOR_PLACEHOLDER,
 } from "../../helper/constants/colors";
 import {
-  FONT_WEIGHT_BLOD,
   FONT_LABEL_SMALL,
-  FONT_LABEL_MEDIUM,
+  FONT_WEIGHT_BLOD,
 } from "../../helper/constants/fonts";
+import { CustomLabel } from "./CustomLabel";
+import { SPACE_S4 } from "../../helper/constants/spaces";
 import { clearIcon, eyeIcon } from "../other/SvgComponent";
-import { SPACE_S2, SPACE_S4 } from "../../helper/constants/spaces";
 
 export type TCustomTextfield =
   | {
       variant?: TextFieldVariants;
     } & Omit<TextFieldProps, "variant"> & {
-        iconEmail?: boolean;
+        required?: boolean;
         customLabel?: string;
+        type?: "password" | "textArea";
+        setting?: {
+          noBorder?: boolean;
+          labelColor?: string;
+          hasDelete?: boolean;
+          customColor?: string;
+          isIconButton?: boolean;
+          labelSize?: ICustomLabel["size"];
+        };
         endIcon?: JSX.Element;
         startIcon?: JSX.Element;
-        idPasswordField?: boolean;
-        hasDelete?: boolean;
       };
 
 export const CustomTextfield = memo<TCustomTextfield>(
   ({
+    type,
+    setting,
     endIcon,
-    startIcon,
+    required,
     onChange,
-    hasDelete,
-    iconEmail,
+    startIcon,
     customLabel,
-    idPasswordField,
     ...props
   }) => {
+    const {
+      noBorder,
+      labelSize,
+      hasDelete,
+      labelColor,
+      customColor,
+      isIconButton,
+    } = setting ?? {};
     const inputRef = useRef<HTMLInputElement | null>(null);
 
     const [, keyUp] = useState<HTMLDivElement>();
@@ -76,9 +91,9 @@ export const CustomTextfield = memo<TCustomTextfield>(
 
     const endIconComponent = useMemo(
       () =>
-        idPasswordField ? (
+        type == "password" ? (
           <Box className="pass-icon" onClick={handlePasswordVisibility}>
-            {eyeIcon()}fq
+            {eyeIcon()}
           </Box>
         ) : hasDelete ? (
           <Box
@@ -90,24 +105,33 @@ export const CustomTextfield = memo<TCustomTextfield>(
           </Box>
         ) : (
           endIcon &&
-          (iconEmail ? <Box className={"end-icon"}>{endIcon}</Box> : endIcon)
+          (isIconButton ? <Box className={"end-icon"}>{endIcon}</Box> : endIcon)
         ),
       [
+        type,
         endIcon,
         hasDelete,
-        iconEmail,
-        idPasswordField,
+        isIconButton,
         handleDeleteClick,
         handlePasswordVisibility,
       ]
     );
 
     return (
-      <Grid className="textfield-wrapper" sx={textfieldSX(hasIcon)}>
+      <Grid
+        className="textfield-wrapper"
+        sx={textfieldSX(hasIcon, customColor, noBorder)}
+      >
         {customLabel && (
-          <Typography className="label">{customLabel}</Typography>
+          <CustomLabel
+            size={labelSize}
+            color={labelColor}
+            label={customLabel || ""}
+            required={required}
+          />
         )}
         <TextField
+          placeholder={customLabel}
           inputRef={inputRef}
           onChange={onChange}
           onKeyUp={
@@ -116,9 +140,9 @@ export const CustomTextfield = memo<TCustomTextfield>(
               : undefined
           }
           {...props}
-          type={!idPasswordField || showPassword ? "text" : "password"}
+          type={type !== "password" || showPassword ? "text" : "password"}
           InputProps={{
-            endAdornment: endIconComponent,
+            endAdornment: <>{endIconComponent}</>,
             startAdornment: <>{startIcon}</>,
           }}
         />
@@ -127,15 +151,13 @@ export const CustomTextfield = memo<TCustomTextfield>(
   }
 );
 
-const textfieldSX = (hasIcon?: boolean): SxProps<Theme> => ({
+const textfieldSX = (
+  hasIcon?: boolean,
+  customColor?: string,
+  noBorder?: boolean
+): SxProps<Theme> => ({
   display: "flex",
   flexDirection: "column",
-  "& .label": {
-    mb: SPACE_S2,
-    color: COLOR_TEXT_GRAY,
-    fontSize: FONT_LABEL_MEDIUM,
-    fontWeight: FONT_WEIGHT_BLOD,
-  },
   "& .MuiTextField-root": {
     width: "100%",
     "& .MuiInputBase-root": {
@@ -144,10 +166,12 @@ const textfieldSX = (hasIcon?: boolean): SxProps<Theme> => ({
       pr: hasIcon ? "0px" : undefined,
       borderRadius: "12px",
       "& fieldset": {
-        border: "none",
+        border: noBorder
+          ? "none"
+          : "1px solid" + COLOR_TEXT_WHITE || customColor,
       },
       "& .MuiInputBase-input": {
-        color: COLOR_PLACEHOLDER,
+        color: customColor || COLOR_TEXT,
         fontSize: FONT_LABEL_SMALL,
         fontWeight: FONT_WEIGHT_BLOD,
         "&::placeholder": {

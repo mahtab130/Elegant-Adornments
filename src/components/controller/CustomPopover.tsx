@@ -115,6 +115,7 @@ export const CategoryPaper = ({
           ))}
         </Grid>
         <GridMotion
+          item
           xs={12}
           container
           initial={{ opacity: 0 }}

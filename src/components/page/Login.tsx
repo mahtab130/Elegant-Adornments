@@ -61,21 +61,21 @@ const AuthenticationForm = memo<ILogin>(({ isSignUp }) => {
             className="input"
             variant="outlined"
             placeholder={"name"}
-            customLabel={"name"}
+            customLabel="Name"
           />
         ) : null}
         <CustomTextfield
           className="input"
-          customLabel="Email"
-          placeholder="Email"
           variant="outlined"
+          placeholder="Email"
+          customLabel="Email"
         />
         <CustomTextfield
-          idPasswordField
+          type="password"
           className="input"
           variant="outlined"
-          customLabel="Password"
           placeholder="Password"
+          customLabel="Password"
         />
         <Grid className="checkbox-wrapper">
           <CustomCheckbox

@@ -1,8 +1,9 @@
 import { memo, useMemo } from "react";
 
-import { Box } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 
 import { faq } from "../../data/faq";
+import { SPACE_D1 } from "../../helper/constants/spaces";
 import { ContentSection } from "../common/ContentSection";
 import { CustomAccordion } from "../controller/CustomAccordion";
 
@@ -45,7 +46,11 @@ export const FaqSection = memo(() => {
         },
       }}
       title={"Frequently Asked Questions"}
-      content={<CustomAccordion data={faq} />}
+      content={
+        <Grid sx={{ mt: SPACE_D1 }}>
+          <CustomAccordion data={faq} />
+        </Grid>
+      }
     />
   );
 });

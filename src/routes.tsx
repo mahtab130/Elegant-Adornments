@@ -8,6 +8,7 @@ import AboutUs from "./components/page/AboutUs";
 import Services from "./components/page/Services";
 import SearchPage from "./components/page/SearchPage";
 import { BlogDetail } from "./components/page/blogs/BlogDetail";
+import { BillingDetails } from "./components/page/BillingDetails";
 
 export const routes: RouteObject[] = [
   {
@@ -23,6 +24,7 @@ export const routes: RouteObject[] = [
       },
       { path: "login", element: <Login /> },
       { path: "carts", element: <Carts /> },
+      { path: "billing-detail", element: <BillingDetails /> },
       { path: "about-us", element: <AboutUs /> },
       { path: "services", element: <Services /> },
       { path: "sign-up", element: <Login isSignUp /> },

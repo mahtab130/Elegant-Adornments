@@ -18,5 +18,6 @@ export const FONT_CAPTION_MEDIUM = "10px";
 export const FONT_CAPTION_SMALL = "8px";
 
 // fontWeights
-export const FONT_WEIGHT_BLOD = "700";
+export const FONT_WEIGHT_LIGHT = "300";
 export const FONT_WEIGHT_REGULAR = "400";
+export const FONT_WEIGHT_BLOD = "700";

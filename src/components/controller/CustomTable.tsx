@@ -42,8 +42,8 @@ export const CustomTable = memo<ICustomTable>(
       <TableContainer sx={tableContainerSX}>
         <Table>
           <TableHead>
-            {map(tableHeadCell, ({ id, label }) => (
-              <TableRow key={id as number}>
+            {map(tableHeadCell, ({ label }, index) => (
+              <TableRow key={index}>
                 <TableCell>{label}</TableCell>
               </TableRow>
             ))}

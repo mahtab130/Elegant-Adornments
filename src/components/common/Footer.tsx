@@ -40,8 +40,8 @@ export const Footer = memo(() => {
           </AnimationSlideIn>
           <AnimationSlideIn direction="left">
             <Grid className="socail-boxes">
-              {map(socailIcons, (item, key) => (
-                <Box key={key} component="div" className="social-box">
+              {map(socailIcons, (item, index) => (
+                <Box key={index} component="div" className="social-box">
                   {item}
                 </Box>
               ))}
@@ -52,9 +52,9 @@ export const Footer = memo(() => {
           <AnimationSlideIn direction="left" className="navigation-content">
             <>
               <Typography className="title">Navigation</Typography>
-              {map(navbarValues, ({ name, url }, key) => (
+              {map(navbarValues, ({ name, url }, index) => (
                 <Typography
-                  key={key}
+                  key={index}
                   onClick={() => navigate(url)}
                   className="text"
                 >
@@ -81,10 +81,10 @@ export const Footer = memo(() => {
                 Get the latest information
               </Typography>
               <CustomTextfield
-                iconEmail
-                endIcon={sendIcon()}
                 className="email-input"
                 placeholder="Email address"
+                endIcon={sendIcon()}
+                setting={{ noBorder: true, isIconButton: true }}
               />
             </>
           </AnimationSlideIn>

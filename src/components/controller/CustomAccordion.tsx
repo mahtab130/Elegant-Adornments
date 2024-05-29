@@ -68,7 +68,7 @@ const CustomAccordionContent = memo<IFaqCard>(
 );
 
 const customAccordionContentSX = (expanded?: boolean): SxProps<Theme> => ({
-  "&:not(:first-child)": {
+  "&:not(:first-of-type)": {
     borderTop: "1px solid " + COLOR_SECEONDRY,
   },
   "&.MuiAccordion-root": {

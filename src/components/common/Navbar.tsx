@@ -26,8 +26,9 @@ export const Navbar = memo(() => {
           <Box className="logo" component="img" src={logo} />
         </Grid>
         <Grid className="nav-list-wrapper">
-          {map(navbarValues, ({ name, url }) => (
+          {map(navbarValues, ({ name, url }, index) => (
             <Typography
+              key={index}
               ref={name == "Category" ? ref : null}
               onClick={() => {
                 if (name == "Category") {

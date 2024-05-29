@@ -31,8 +31,8 @@ const Blogs: FC = () => {
       />
 
       <Grid container className="container-body">
-        {map(paginatedItems, ({ description, id, image, title }) => (
-          <Grid item xs={12} md={4}>
+        {map(paginatedItems, ({ description, id, image, title }, index) => (
+          <Grid item xs={12} md={4} key={index + id}>
             <AnimationFadeIn className="animaiton">
               <BlogCard
                 id={id}
