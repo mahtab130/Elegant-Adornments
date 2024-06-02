@@ -171,9 +171,9 @@ const textfieldSX = (
           : "1px solid" + COLOR_TEXT_WHITE || customColor,
       },
       "& .MuiInputBase-input": {
-        color: customColor || COLOR_TEXT,
         fontSize: FONT_LABEL_SMALL,
         fontWeight: FONT_WEIGHT_BLOD,
+        color: customColor || COLOR_TEXT,
         "&::placeholder": {
           opacity: "1",
           color: COLOR_PLACEHOLDER,

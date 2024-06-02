@@ -3,12 +3,13 @@ import { RouteObject } from "react-router-dom";
 import Home from "./components/page/Home";
 import Login from "./components/page/Login";
 import Carts from "./components/page/Carts";
-import Blogs from "./components/page/blogs/Blogs";
 import AboutUs from "./components/page/AboutUs";
+import Blogs from "./components/page/blogs/Blogs";
+import Category from "./components/page/Category";
 import Services from "./components/page/Services";
 import SearchPage from "./components/page/SearchPage";
+import BillingDetails from "./components/page/BillingDetails";
 import { BlogDetail } from "./components/page/blogs/BlogDetail";
-import { BillingDetails } from "./components/page/BillingDetails";
 
 export const routes: RouteObject[] = [
   {
@@ -28,7 +29,7 @@ export const routes: RouteObject[] = [
       { path: "about-us", element: <AboutUs /> },
       { path: "services", element: <Services /> },
       { path: "sign-up", element: <Login isSignUp /> },
-      // { path: "category", element: <Category /> },
+      { path: "category", children: [{ path: ":id", element: <Category /> }] },
       {
         path: "products",
         children: [

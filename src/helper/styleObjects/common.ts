@@ -111,7 +111,9 @@ export const productCardSX = (
         ? "14px"
         : "0px",
     background:
-      " linear-gradient(154.68deg, #E7EDEF 24.32%, #FFFFFF 45.27%, #FFFFFF 56.96%, #E7EDEF 99.84%)",
+      variant == "category"
+        ? "linear-gradient(154.68deg, #E7EDEF 24.32%, #E7EDEF 99.84%)"
+        : " linear-gradient(154.68deg, #E7EDEF 24.32%, #FFFFFF 45.27%, #FFFFFF 56.96%, #E7EDEF 99.84%)",
     "& .image-product": {
       height: "300px",
       transition: "all .4s ease",

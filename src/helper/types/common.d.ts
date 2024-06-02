@@ -54,7 +54,7 @@ interface IProductCard {
   price: number;
   image: string;
   rate?: number;
-  variant?: "sale" | "product" | "search" | "cart";
+  variant?: "sale" | "product" | "search" | "cart" | "category";
 }
 
 interface ICategoryCard {

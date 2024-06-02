@@ -36,6 +36,7 @@ import {
 import { CustomImage } from "./CustomImage";
 import { CustomButton } from "./CustomButton";
 import { categoryData } from "../../data/category";
+import { useNavigate } from "react-router-dom";
 
 export interface ICustomPopover {
   open: boolean;
@@ -83,6 +84,7 @@ export const CategoryPaper = ({
   setOpen: (open: ICustomPopover["open"]) => void;
 }) => {
   const [categoryId, setCategoryId] = useState<number>(1);
+  const navigate = useNavigate();
 
   const {
     name,
@@ -137,6 +139,7 @@ export const CategoryPaper = ({
                 className="button"
                 variant="contained"
                 text="See Products"
+                onClick={() => navigate(`/category/${currentId}`)}
               />
             </Grid>
           </Grid>

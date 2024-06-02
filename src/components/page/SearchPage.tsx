@@ -1,6 +1,6 @@
 import { FC, useMemo, useState } from "react";
 
-import { Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { filter, includes, map, toLower } from "lodash";
 
@@ -9,7 +9,7 @@ import {
   EmptyLastCenterJustify,
 } from "../common/NoOptions";
 import { ProductCard } from "../common/ProductCard";
-import { bestSellingData } from "../../data/product";
+import { productData } from "../../data/product";
 import { searchOutlineIcon } from "../other/SvgComponent";
 import { AnimationSlideIn } from "../common/AnimateComponent";
 import { CustomTextfield } from "../controller/CustomTextfield";
@@ -24,7 +24,7 @@ const SearchPage: FC = () => {
 
   const filteredData = useMemo(
     () =>
-      filter(bestSellingData, ({ name }) =>
+      filter(productData, ({ name }) =>
         includes(toLower(name), toLower(keyword))
       ),
     [keyword]
@@ -38,7 +38,7 @@ const SearchPage: FC = () => {
           placeholder="Search..."
           className="search-input"
           setting={{ hasDelete: true }}
-          startIcon={searchOutlineIcon()}
+          startIcon={<Box component="span">{searchOutlineIcon()}</Box>}
           onChange={(e) => setKeyword(e.target.value)}
         />
         {keyword ? (
