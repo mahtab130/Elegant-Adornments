@@ -31,7 +31,7 @@ interface IEmptyLastCenterJustify {
 
 interface INoOptionsComponent {
   text?: string;
-  imageSrc: string;
+  imageSrc?: string;
   searchKey?: string;
   imageSize?: TStandardSize;
 }
@@ -62,6 +62,7 @@ interface ICategoryCard {
   name: string;
   image: string;
   thumbnail?: string;
+  onClick?: () => void;
   description?: string;
 }
 interface IBlogCard {

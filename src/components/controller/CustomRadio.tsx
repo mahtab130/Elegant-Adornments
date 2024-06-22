@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useState } from "react";
 
 import {
   Grid,
@@ -20,9 +20,11 @@ interface ICustomRadio extends RadioProps {
 }
 
 export const CustomRadio = memo<ICustomRadio>(({ label, ...props }) => {
+  const [checked, setChecked] = useState(false);
+
   return (
-    <Grid sx={radioSX}>
-      <Radio {...props} />
+    <Grid sx={radioSX} onClick={() => setChecked(!checked)}>
+      <Radio checked={checked} {...props} />
       <Typography className="label">{label}</Typography>
     </Grid>
   );

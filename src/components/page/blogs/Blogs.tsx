@@ -8,7 +8,7 @@ import { HeadingPage } from "../../common/HeadingPage";
 import { blogs } from "../../../data/blogs";
 import { BlogCard } from "../../common/BlogCard";
 import { blogSX } from "../../../helper/styleObjects/blog";
-import { AnimationFadeIn } from "../../common/AnimateComponent";
+import { AnimationSlideIn } from "../../common/AnimateComponent";
 import { CustomPagination } from "../../controller/CustomPagination";
 
 import backgrounImage from "../../../assets/images/blogs/blog-back.webp";
@@ -33,7 +33,7 @@ const Blogs: FC = () => {
       <Grid container className="container-body">
         {map(paginatedItems, ({ description, id, image, title }, index) => (
           <Grid item xs={12} md={4} key={index + id}>
-            <AnimationFadeIn className="animaiton">
+            <AnimationSlideIn direction="left" className="animaiton">
               <BlogCard
                 id={id}
                 image={image}
@@ -41,7 +41,7 @@ const Blogs: FC = () => {
                 description={description}
                 navigateString={`${id}`}
               />
-            </AnimationFadeIn>
+            </AnimationSlideIn>
           </Grid>
         ))}
         <Grid className="pagination-wrapper">

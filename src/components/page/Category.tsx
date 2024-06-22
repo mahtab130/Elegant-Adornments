@@ -1,6 +1,6 @@
 import { memo, useCallback, useState } from "react";
 
-import { find, map, slice } from "lodash";
+import { filter, find, map, slice } from "lodash";
 import { useParams } from "react-router-dom";
 import { Box, Collapse, Grid, SxProps, Theme, Typography } from "@mui/material";
 
@@ -27,12 +27,18 @@ import { MAX_WIDTH } from "../../helper/constants/static";
 import { COLOR_TEXT } from "../../helper/constants/colors";
 import { EmptyLastCenterJustify } from "../common/NoOptions";
 import { CustomBreadcrumbs } from "../controller/CustomBreadcrumbs";
+import { AnimationSlideIn } from "../common/AnimateComponent";
 
 const Category = () => {
   const { id: currentId } = useParams();
 
-  const { name } =
+  const { name, id } =
     find(categoryData, ({ id }) => id == +(currentId || 0)) ?? {};
+
+  const productsByCategory = filter(
+    productData,
+    ({ catergoryId }) => catergoryId == id
+  );
 
   const filters = [
     {
@@ -100,47 +106,61 @@ const Category = () => {
 
   return (
     <Grid sx={categoryPageSX}>
-      <CustomBreadcrumbs
-        breadcrumbs={[
-          { name: "Home", link: "/" },
-          { name: name || "", link: "/blogs" },
-          { name: "Especially for girls and women", link: "/" },
-        ]}
-      />
-      <Grid container className="container">
-        <Grid xs={12} md={2.8} className="filter-box">
-          <Typography className="title">Filter products</Typography>
-          <Grid className="filter-items-wrapper">
-            {map(filters, ({ name, items }) => (
-              <FilterItems label={name} items={items} />
-            ))}
-            <CustomRadio sx={{ my: SPACE_M3 }} label={"Available goods"} />
+      <AnimationSlideIn direction="left">
+        <CustomBreadcrumbs
+          breadcrumbs={[
+            { name: "Home", link: "/" },
+            { name: name || "", link: "/blogs" },
+            { name: "Especially for girls and women", link: "/" },
+          ]}
+        />
+      </AnimationSlideIn>
+      <AnimationSlideIn direction="left">
+        <Grid container className="container">
+          <Grid xs={12} md={2.8} className="filter-box">
+            <Typography className="title">Filter products</Typography>
+            <Grid className="filter-items-wrapper">
+              {map(filters, ({ name, items }) => (
+                <FilterItems label={name} items={items} />
+              ))}
+              <CustomRadio sx={{ my: SPACE_M3 }} label={"Available goods"} />
+            </Grid>
+          </Grid>
+
+          <Grid xs={12} md={8.6} className="products">
+            {productsByCategory?.length <= 0 ? (
+              <Typography>There is no Option</Typography>
+            ) : (
+              <>
+                <Typography className="title-products">
+                  Especially for girls and women
+                </Typography>
+                <Grid container className="products-wrapper">
+                  {map(
+                    slice(productsByCategory, 9),
+                    ({ id, image, name, price }) => (
+                      <Grid item xs={12} key={id} md={3.8}>
+                        <ProductCard
+                          id={id}
+                          name={name}
+                          price={price}
+                          image={image}
+                          variant="category"
+                        />
+                      </Grid>
+                    )
+                  )}
+                  <EmptyLastCenterJustify
+                    even
+                    md={2.85}
+                    length={map(slice(productsByCategory, 3, 8))?.length}
+                  />
+                </Grid>
+              </>
+            )}
           </Grid>
         </Grid>
-        <Grid xs={12} md={8.6} className="products">
-          <Typography className="title-products">
-            Especially for girls and women
-          </Typography>
-          <Grid container className="products-wrapper">
-            {map(slice(productData, 9), ({ id, image, name, price }) => (
-              <Grid item xs={12} key={id} md={3.8}>
-                <ProductCard
-                  id={id}
-                  name={name}
-                  price={price}
-                  image={image}
-                  variant="category"
-                />
-              </Grid>
-            ))}
-            <EmptyLastCenterJustify
-              even
-              md={2.85}
-              length={map(slice(productData, 3, 8))?.length}
-            />
-          </Grid>
-        </Grid>
-      </Grid>
+      </AnimationSlideIn>
     </Grid>
   );
 };
@@ -158,10 +178,10 @@ const FilterItems = memo<{
   }, [openItem]);
 
   return (
-    <Grid sx={filterItemsSX(openItem)} onClick={handleOpenItems}>
+    <Grid sx={filterItemsSX(openItem)}>
       <Grid className="label-wrapper">
         <Typography className="label">{label}</Typography>
-        <Box component="span" className="icon-arrow">
+        <Box component="span" className="icon-arrow" onClick={handleOpenItems}>
           {arrowDownIcon()}
         </Box>
       </Grid>
@@ -240,6 +260,7 @@ const categoryPageSX: SxProps<Theme> = {
       borderRadius: "14px",
       height: "fit-content",
       boxShadow: "0px 0px 16px 0px #9F9F9F29",
+
       "& .title": {
         p: SPACE_M3,
         borderBottom: "1px solid #D0D0D0",
@@ -249,6 +270,20 @@ const categoryPageSX: SxProps<Theme> = {
       "& .filter-items-wrapper": {
         px: SPACE_M3,
         width: "100%",
+        overflow: "auto",
+        maxHeight: "570px",
+        "::-webkit-scrollbar": {
+          width: "2px",
+          mt: "23px",
+        },
+        "::-webkit-scrollbar-track": {
+          background: "#ABDDF0px",
+        },
+        "::-webkit-scrollbar-thumb": {
+          width: "6px",
+          backgroundColor: "#568A9E90px",
+          borderRadius: "20px",
+        },
       },
     },
     "& .products": {

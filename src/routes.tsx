@@ -34,7 +34,7 @@ export const routes: RouteObject[] = [
         path: "products",
         children: [
           { index: true, element: <></> },
-          { path: "products/:id", element: <></> },
+          { path: ":id", element: <></> },
         ],
       },
       {

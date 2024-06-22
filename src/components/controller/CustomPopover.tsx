@@ -139,7 +139,10 @@ export const CategoryPaper = ({
                 className="button"
                 variant="contained"
                 text="See Products"
-                onClick={() => navigate(`/category/${currentId}`)}
+                onClick={() => {
+                  navigate(`/category/${currentId}`);
+                  setOpen(false);
+                }}
               />
             </Grid>
           </Grid>

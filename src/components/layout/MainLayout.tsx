@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 
 import { useLocation, useRoutes } from "react-router-dom";
 import { Grid, ThemeProvider } from "@mui/material";
@@ -21,6 +21,7 @@ import { FONT_FAMILY } from "../../helper/constants/static";
 import { mainLayoutSX } from "../../helper/styleObjects/main";
 import { FONT_WEIGHT_REGULAR } from "../../helper/constants/fonts";
 import { COLOR_PRIMARY, COLOR_TEXT } from "../../helper/constants/colors";
+import { Loading } from "../common/Loading";
 
 const MainLayout: FC = () => {
   const children = useRoutes(routes);
@@ -37,6 +38,25 @@ const MainLayout: FC = () => {
 
   const materialTheme = materialExtendTheme(themeMUI);
 
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    setIsLoading(true);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, [pathname]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
@@ -46,11 +66,15 @@ const MainLayout: FC = () => {
       <MaterialCssVarsProvider theme={{ [MATERIAL_THEME_ID]: materialTheme }}>
         <MotionConfig>
           <CartProvider>
-            <Grid sx={mainLayoutSX} className="main-layout">
-              {includes(emptyContainerNav, pathname) || <Navbar />}
-              {children}
-              {includes(emptyContainerFooter, pathname) || <Footer />}
-            </Grid>
+            {isLoading ? (
+              <Loading />
+            ) : (
+              <Grid sx={mainLayoutSX} className="main-layout">
+                {includes(emptyContainerNav, pathname) || <Navbar />}
+                {children}
+                {includes(emptyContainerFooter, pathname) || <Footer />}
+              </Grid>
+            )}
           </CartProvider>
         </MotionConfig>
       </MaterialCssVarsProvider>

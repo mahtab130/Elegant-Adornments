@@ -6,9 +6,9 @@ import { categoryCardSX } from "../../helper/styleObjects/common";
 
 import vector from "../../assets/images/vectors/vector-diamond-category.webp";
 
-export const CategoryCard = memo<ICategoryCard>(({ image, name }) => {
+export const CategoryCard = memo<ICategoryCard>(({ image, name, onClick }) => {
   return (
-    <Grid sx={categoryCardSX}>
+    <Grid sx={categoryCardSX} onClick={onClick}>
       <Grid className="title-wrapper">
         <Typography className="title">{name}</Typography>
         <Box component="img" className="vector" src={vector} />

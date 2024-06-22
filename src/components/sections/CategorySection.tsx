@@ -8,8 +8,10 @@ import { CustomTitle } from "../common/CustomTitle";
 import { CategoryCard } from "../common/CategoryCard";
 import { AnimationSlideIn } from "../common/AnimateComponent";
 import { categorySectionSX } from "../../helper/styleObjects/homeSection";
+import { useNavigate } from "react-router-dom";
 
 export const CategorySection = memo(() => {
+  const navigate = useNavigate();
   return (
     <Grid sx={categorySectionSX}>
       <Grid className="category-container">
@@ -20,7 +22,12 @@ export const CategorySection = memo(() => {
           {map(categoryData, ({ id, thumbnail, name }, index) => (
             <Grid item xs={12} md={2.85} key={id}>
               <AnimationSlideIn direction={index < 4 ? "left" : "right"}>
-                <CategoryCard id={0} name={name} image={thumbnail || ""} />
+                <CategoryCard
+                  id={id}
+                  name={name}
+                  onClick={() => navigate(`/category/${id}`)}
+                  image={thumbnail || ""}
+                />
               </AnimationSlideIn>
             </Grid>
           ))}
