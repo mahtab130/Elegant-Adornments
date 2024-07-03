@@ -7,6 +7,7 @@ import {
   SPACE_M3,
   SPACE_XS1,
   SPACE_S2,
+  SPACE_M4,
 } from "../constants/spaces";
 import {
   COLOR_TEXT,
@@ -344,6 +345,29 @@ export const profileCardSX: SxProps<Theme> = {
   },
   "& .profile-name": {
     color: "#686868",
+    fontSize: FONT_BODY_SMALL,
+    fontWeight: FONT_WEIGHT_BLOD,
+  },
+};
+
+export const dialogContentSX: SxProps<Theme> = {
+  width: "100%",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "end",
+  alignItems: "center",
+  mb: SPACE_D1,
+  gap: SPACE_M4,
+  "& .title": {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    fontSize: FONT_BODY_MEDIUM1,
+    fontWeight: FONT_WEIGHT_BLOD,
+    gap: SPACE_XS1,
+  },
+  "& .description": {
+    textAlign: "center",
     fontSize: FONT_BODY_SMALL,
     fontWeight: FONT_WEIGHT_BLOD,
   },

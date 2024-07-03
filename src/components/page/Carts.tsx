@@ -25,6 +25,7 @@ import noCarts from "../../assets/images/vectors/no-carts.webp";
 
 const Carts: FC = () => {
   const { items, removeItem, updateItemQuantity } = useCart();
+  console.log("🚀 ~ items:", items);
   const navigate = useNavigate();
 
   const tableCells: ITableHeadCell<IProductData>[] = [
@@ -40,9 +41,14 @@ const Carts: FC = () => {
       label: "Quantity",
       ComponentRow: ({ row: { id, quantity } }) => (
         <QuantityComponent
+          key={String(id)}
           quantity={quantity || 0}
-          decreaseItem={() => updateItemQuantity(String(id), quantity || 0 - 1)}
-          increaseItem={() => updateItemQuantity(String(id), quantity || 0 + 1)}
+          decreaseItem={() =>
+            updateItemQuantity(String(id), (quantity || 0) - 1)
+          }
+          increaseItem={() =>
+            updateItemQuantity(String(id), (quantity || 0) + 1)
+          }
         />
       ),
     },
@@ -51,7 +57,11 @@ const Carts: FC = () => {
       label: "Price",
       ComponentRow: ({ row: { price } }) => <>{`$ ${price}`}</>,
     },
-    { id: "id", label: "Suptotal" },
+    {
+      id: "id",
+      label: "Suptotal",
+      ComponentRow: ({ row: { itemTotal } }) => <>{`$ ${itemTotal}`}</>,
+    },
     {
       id: "id",
       label: "Operation",

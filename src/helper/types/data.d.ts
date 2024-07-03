@@ -6,6 +6,7 @@ interface IProductData {
   rate?: number;
   catergoryId?: number;
   quantity?: number;
+  itemTotal?: number;
 }
 
 interface ICategoryData {

@@ -1,6 +1,7 @@
 import { memo, useRef, useState } from "react";
 
 import { map } from "lodash";
+import { useCart } from "react-use-cart";
 import { Box, Grid, Typography } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -13,6 +14,7 @@ import logo from "../../assets/images/vectors/logo.webp";
 
 export const Navbar = memo(() => {
   const [openCategoryPopper, setOpenCategoryPopper] = useState<boolean>(false);
+  const { totalItems } = useCart();
 
   const ref = useRef(null);
 
@@ -75,6 +77,7 @@ export const Navbar = memo(() => {
             className="icon-navbar"
             onClick={() => navigate("/carts")}
           >
+            <Box component="span">{totalItems || 0}</Box>
             {shoppingIcon()}
           </Box>
         </Grid>

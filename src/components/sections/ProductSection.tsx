@@ -2,23 +2,15 @@ import { memo, useState } from "react";
 
 import { map, slice } from "lodash";
 import { useCart } from "react-use-cart";
-import { Box, Grid, SxProps, Theme, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { Box, Grid } from "@mui/material";
 
-import {
-  FONT_BODY_SMALL,
-  FONT_WEIGHT_BLOD,
-  FONT_BODY_MEDIUM1,
-} from "../../helper/constants/fonts";
 import { productData } from "../../data/product";
 import { ProductCard } from "../common/ProductCard";
 import { CustomTitle } from "../common/CustomTitle";
-import { heartEyesIcon } from "../other/SvgComponent";
-import { CustomDialog } from "../controller/CustomDialog";
-import { COLOR_PRIMARY } from "../../helper/constants/colors";
 import { AnimationSlideIn } from "../common/AnimateComponent";
+import { ShoppingModalProduct } from "../common/CategoryComponents";
 import { productSectionSX } from "../../helper/styleObjects/homeSection";
-import { SPACE_D1, SPACE_M4, SPACE_XS1 } from "../../helper/constants/spaces";
 
 export const ProductSection = memo(() => {
   const navigate = useNavigate();
@@ -37,7 +29,7 @@ export const ProductSection = memo(() => {
         <Grid container className="product-cards-wrapper">
           {map(
             slice(productData, 0, 4),
-            ({ id, image, name, price, quantity }, index) => (
+            ({ id, image, name, price, quantity, itemTotal }, index) => (
               <Grid
                 item
                 xs={12}
@@ -53,10 +45,10 @@ export const ProductSection = memo(() => {
                     image={image}
                     onClickAddItem={() => {
                       addItem({
-                        itemTotal: 1,
+                        itemTotal: itemTotal,
                         price: price,
                         id: String(id),
-                        quantity: quantity,
+                        quantity: (quantity || 0) + 1,
                         image: image,
                         name: name,
                       });
@@ -69,56 +61,7 @@ export const ProductSection = memo(() => {
           )}
         </Grid>
       </Grid>
-      <CustomDialog
-        open={openModal}
-        dialogAction={{
-          cancelButton: {
-            variant: "outlined",
-            text: "Continue Shopping",
-            customColor: COLOR_PRIMARY,
-            onClick: () => setOpenModal(false),
-          },
-          submitButton: {
-            variant: "contained",
-            text: "Processed To Buy",
-            customColor: COLOR_PRIMARY,
-            onClick: () => navigate("carts"),
-          },
-        }}
-        dialogContent={
-          <Grid sx={dialogContentSX} className="content">
-            <Typography className="title">
-              {heartEyesIcon()} You Have Good Taste!
-            </Typography>
-            <Typography className="description">
-              The product has been successfully added to the cart
-            </Typography>
-          </Grid>
-        }
-      />
+      <ShoppingModalProduct openModal={openModal} setOpenModal={setOpenModal} />
     </Grid>
   );
 });
-
-const dialogContentSX: SxProps<Theme> = {
-  width: "100%",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "end",
-  alignItems: "center",
-  mb: SPACE_D1,
-  gap: SPACE_M4,
-  "& .title": {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    fontSize: FONT_BODY_MEDIUM1,
-    fontWeight: FONT_WEIGHT_BLOD,
-    gap: SPACE_XS1,
-  },
-  "& .description": {
-    textAlign: "center",
-    fontSize: FONT_BODY_SMALL,
-    fontWeight: FONT_WEIGHT_BLOD,
-  },
-};

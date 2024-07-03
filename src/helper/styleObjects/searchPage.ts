@@ -1,7 +1,8 @@
 import { SxProps, Theme } from "@mui/material";
 
-import { COLOR_SECEONDRY } from "../constants/colors";
+import { COLOR_SECEONDRY, COLOR_WHITE } from "../constants/colors";
 import { SPACE_H3, SPACE_D1, SPACE_S1 } from "../constants/spaces";
+import { FONT_BODY_MEDIUM2 } from "../constants/fonts";
 
 export const searchSX: SxProps<Theme> = {
   width: "100%",
@@ -20,6 +21,10 @@ export const searchSX: SxProps<Theme> = {
       width: "100%",
       "& span": {
         pr: SPACE_S1,
+      },
+      "& .MuiInputBase-input": {
+        color: COLOR_WHITE,
+        fontSize: FONT_BODY_MEDIUM2,
       },
     },
     "& .products-wrapper": {

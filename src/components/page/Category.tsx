@@ -28,9 +28,15 @@ import { COLOR_TEXT } from "../../helper/constants/colors";
 import { EmptyLastCenterJustify } from "../common/NoOptions";
 import { CustomBreadcrumbs } from "../controller/CustomBreadcrumbs";
 import { AnimationSlideIn } from "../common/AnimateComponent";
+import { useCart } from "react-use-cart";
+import { ShoppingModalProduct } from "../common/CategoryComponents";
 
 const Category = () => {
   const { id: currentId } = useParams();
+
+  const { addItem } = useCart();
+
+  const [openModal, setOpenModal] = useState<boolean>(false);
 
   const { name, id } =
     find(categoryData, ({ id }) => id == +(currentId || 0)) ?? {};
@@ -138,13 +144,24 @@ const Category = () => {
                 <Grid container className="products-wrapper">
                   {map(
                     slice(productsByCategory, 9),
-                    ({ id, image, name, price }) => (
+                    ({ id, image, name, price, itemTotal, quantity }) => (
                       <Grid item xs={12} key={id} md={3.8}>
                         <ProductCard
                           id={id}
                           name={name}
                           price={price}
                           image={image}
+                          onClickAddItem={() => {
+                            addItem({
+                              itemTotal: itemTotal,
+                              price: price,
+                              id: String(id),
+                              quantity: (quantity || 0) + 1,
+                              image: image,
+                              name: name,
+                            });
+                            setOpenModal(true);
+                          }}
                           variant="category"
                         />
                       </Grid>
@@ -159,6 +176,10 @@ const Category = () => {
               </>
             )}
           </Grid>
+          <ShoppingModalProduct
+            openModal={openModal}
+            setOpenModal={setOpenModal}
+          />
         </Grid>
       </AnimationSlideIn>
     </Grid>

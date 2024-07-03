@@ -43,6 +43,7 @@ export const productData: IProductData[] = [
     catergoryId: 1,
     price: 40.0,
     name: "Engagement Ring",
+    quantity: 0,
   },
   {
     id: 2,
@@ -50,20 +51,23 @@ export const productData: IProductData[] = [
     image: earrings,
     price: 60.0,
     name: "Blue Earring",
+    quantity: 0,
   },
   {
     id: 3,
     catergoryId: 4,
     image: necklace,
-    price: 420.4,
+    price: 420,
     name: "Blue Necklace",
+    quantity: 0,
   },
   {
     id: 4,
     catergoryId: 4,
-    price: 500.59,
+    price: 500,
     image: necklaceSet,
     name: "Necklace and earring set",
+    quantity: 0,
   },
   {
     id: 5,
@@ -71,6 +75,7 @@ export const productData: IProductData[] = [
     catergoryId: 1,
     price: 40.0,
     name: "Engagement Ring",
+    quantity: 0,
   },
   {
     id: 6,
@@ -78,6 +83,7 @@ export const productData: IProductData[] = [
     catergoryId: 1,
     price: 40.0,
     name: "Wedding Ring",
+    quantity: 0,
   },
   {
     id: 7,
@@ -85,6 +91,7 @@ export const productData: IProductData[] = [
     catergoryId: 1,
     price: 40.0,
     name: "Chain Ring",
+    quantity: 0,
   },
   {
     id: 8,
@@ -92,6 +99,7 @@ export const productData: IProductData[] = [
     catergoryId: 1,
     price: 40.0,
     name: "Stone Ring",
+    quantity: 0,
   },
   {
     id: 9,
@@ -99,6 +107,7 @@ export const productData: IProductData[] = [
     catergoryId: 1,
     price: 40.0,
     name: "Butterfly Ring",
+    quantity: 0,
   },
   {
     id: 10,
@@ -106,6 +115,7 @@ export const productData: IProductData[] = [
     catergoryId: 1,
     price: 40.0,
     name: "Engraved Ring",
+    quantity: 0,
   },
   {
     id: 11,
@@ -113,6 +123,7 @@ export const productData: IProductData[] = [
     catergoryId: 1,
     price: 430.0,
     name: "Diamond Zhuping Women's Ring",
+    quantity: 0,
   },
   {
     id: 12,
@@ -120,6 +131,7 @@ export const productData: IProductData[] = [
     catergoryId: 1,
     price: 240.0,
     name: "Diamond Zhuping Women's Ring",
+    quantity: 0,
   },
   {
     id: 13,
@@ -127,6 +139,7 @@ export const productData: IProductData[] = [
     catergoryId: 1,
     price: 440.0,
     name: "Gold Womens Solitair Ring",
+    quantity: 0,
   },
   {
     id: 14,
@@ -134,6 +147,7 @@ export const productData: IProductData[] = [
     catergoryId: 1,
     price: 540.0,
     name: "Gold Women's Solitaire Ring",
+    quantity: 0,
   },
   {
     id: 15,
@@ -141,6 +155,7 @@ export const productData: IProductData[] = [
     catergoryId: 1,
     price: 430.0,
     name: "Gold Zhuping Women's Ring",
+    quantity: 0,
   },
   {
     id: 16,
@@ -148,6 +163,7 @@ export const productData: IProductData[] = [
     catergoryId: 1,
     price: 140.0,
     name: "Gold Zhuping Women's Ring",
+    quantity: 0,
   },
   {
     id: 17,
@@ -155,6 +171,7 @@ export const productData: IProductData[] = [
     catergoryId: 1,
     price: 380.0,
     name: "women's Solitaire Ring",
+    quantity: 0,
   },
   {
     id: 18,
@@ -162,6 +179,7 @@ export const productData: IProductData[] = [
     catergoryId: 1,
     price: 320.0,
     name: "Zhuping Womens Ring",
+    quantity: 0,
   },
   {
     id: 19,
@@ -169,6 +187,7 @@ export const productData: IProductData[] = [
     catergoryId: 1,
     price: 200.0,
     name: "Zhuping Women's Ring",
+    quantity: 0,
   },
   {
     id: 20,
@@ -176,6 +195,7 @@ export const productData: IProductData[] = [
     catergoryId: 1,
     price: 340.0,
     name: "Black Zhuping Women's Ring",
+    quantity: 0,
   },
   {
     id: 21,
@@ -183,6 +203,7 @@ export const productData: IProductData[] = [
     catergoryId: 1,
     price: 3590.0,
     name: "Blue Zhuping Women's Ring",
+    quantity: 0,
   },
   {
     id: 22,
@@ -190,6 +211,7 @@ export const productData: IProductData[] = [
     catergoryId: 1,
     price: 4550.0,
     name: "Green Zhuping Women's Ring",
+    quantity: 0,
   },
   {
     id: 23,
@@ -197,6 +219,7 @@ export const productData: IProductData[] = [
     catergoryId: 1,
     price: 3840.0,
     name: "Purple Zhuping Women's Ring",
+    quantity: 0,
   },
   {
     id: 24,
@@ -204,6 +227,7 @@ export const productData: IProductData[] = [
     catergoryId: 1,
     price: 330.0,
     name: "Simple Zhuping Women's Ring",
+    quantity: 0,
   },
 ];
 
