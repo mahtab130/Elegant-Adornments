@@ -10,6 +10,7 @@ import Services from "./components/page/Services";
 import SearchPage from "./components/page/SearchPage";
 import BillingDetails from "./components/page/BillingDetails";
 import { BlogDetail } from "./components/page/blogs/BlogDetail";
+import Product from "./components/page/Product";
 
 export const routes: RouteObject[] = [
   {
@@ -32,10 +33,7 @@ export const routes: RouteObject[] = [
       { path: "category", children: [{ path: ":id", element: <Category /> }] },
       {
         path: "products",
-        children: [
-          { index: true, element: <></> },
-          { path: ":id", element: <></> },
-        ],
+        children: [{ path: ":id", element: <Product /> }],
       },
       {
         path: "search",

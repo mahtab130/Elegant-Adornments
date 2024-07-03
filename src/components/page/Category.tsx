@@ -1,7 +1,7 @@
 import { memo, useCallback, useState } from "react";
 
 import { filter, find, map, slice } from "lodash";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Box, Collapse, Grid, SxProps, Theme, Typography } from "@mui/material";
 
 import {
@@ -33,6 +33,7 @@ import { ShoppingModalProduct } from "../common/CategoryComponents";
 
 const Category = () => {
   const { id: currentId } = useParams();
+  const navigate = useNavigate();
 
   const { addItem } = useCart();
 
@@ -145,7 +146,13 @@ const Category = () => {
                   {map(
                     slice(productsByCategory, 9),
                     ({ id, image, name, price, itemTotal, quantity }) => (
-                      <Grid item xs={12} key={id} md={3.8}>
+                      <Grid
+                        item
+                        xs={12}
+                        key={id}
+                        md={3.8}
+                        onClick={() => navigate(`/products/${id}`)}
+                      >
                         <ProductCard
                           id={id}
                           name={name}
