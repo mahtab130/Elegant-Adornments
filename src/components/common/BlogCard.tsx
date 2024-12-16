@@ -29,6 +29,7 @@ export const BlogCard = memo<IBlogCard>(
               text={"Read More"}
               className="button"
               endIcon={arrowLeft2Icon()}
+              onClick={() => navigate(navigateString || "")}
             />
           </Grid>
         </Grid>
