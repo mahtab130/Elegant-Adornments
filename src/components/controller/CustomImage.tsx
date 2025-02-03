@@ -3,7 +3,7 @@ import { memo } from "react";
 import { Box, BoxProps } from "@mui/material";
 
 interface ICustomImage extends BoxProps {
-  src: string;
+  src: TAny;
   className?: string;
 }
 
