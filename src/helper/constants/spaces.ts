@@ -1,5 +1,5 @@
 export const SPACE_H3 = "80px";
-export const SPACE_H2 = "50px";
+export const SPACE_H2 = { xs: "22px", md: "50px" };
 export const SPACE_H1 = "48px";
 export const SPACE_D2 = "40px";
 export const SPACE_D1 = "38px";

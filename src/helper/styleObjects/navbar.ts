@@ -18,7 +18,7 @@ export const navbarSX = (openCategoryPopper?: boolean): SxProps<Theme> => ({
   px: SPACE_H2,
   py: SPACE_M2,
   top: SPACE_H2,
-  zIndex: "3000",
+  zIndex: 1000,
   display: "flex",
   width: MAX_WIDTH,
   position: "absolute",
@@ -36,8 +36,7 @@ export const navbarSX = (openCategoryPopper?: boolean): SxProps<Theme> => ({
   },
   "& .nav-list-wrapper": {
     gap: SPACE_D2,
-    display: "flex",
-
+    display: { xs: "none", md: "flex" },
     "& .navbar-value-name": {
       zIndex: "20",
       cursor: "pointer",
@@ -73,7 +72,7 @@ export const navbarSX = (openCategoryPopper?: boolean): SxProps<Theme> => ({
     },
   },
   "& .actions-wrapper": {
-    gap: SPACE_S1,
+    gap: { xs: "14px", md: SPACE_S1 },
     display: "flex",
     position: "relative",
     alignItems: "flex-start",
@@ -101,4 +100,21 @@ export const navbarSX = (openCategoryPopper?: boolean): SxProps<Theme> => ({
       },
     },
   },
+  "& .mobile-menu-icon": {
+    display: { xs: "block", md: "none" }, // 👈 Show only on small screens
+    cursor: "pointer",
+  },
 });
+
+export const drawerSX: SxProps<Theme> = {
+  width: 250,
+  "& .MuiDrawer-paper": {
+    width: 250,
+    backgroundColor: COLOR_PRIMARY,
+    padding: "1rem",
+    display: "flex",
+    flexDirection: "column",
+    gap: "1rem",
+    zIndex: 33,
+  },
+};

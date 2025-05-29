@@ -156,14 +156,15 @@ const categoryPopperSX: SxProps<Theme> = {
   width: "fit-contnet",
   "& .MuiPaper-root": {
     mt: SPACE_M1,
-    maxWidth: "822px",
+    maxWidth: { xs: "390px", md: "822px" },
     boxShadow: "none",
     borderRadius: "8px",
     borderTopRightRadius: "0",
     borderTopLeftRadius: "0",
+    top: { xs: "100px !important", md: "16px" },
     backgroundColor: COLOR_WHITE,
     "& .cotnainer": {
-      p: SPACE_M2,
+      p: { xs: "14px", md: SPACE_M2 },
       display: "flex",
       "& .list-category": {
         pr: SPACE_M2,
@@ -215,6 +216,7 @@ const categoryPopperSX: SxProps<Theme> = {
           height: "340px",
           borderRadius: "8px",
           overflow: "hidden",
+          display: { xs: "none", md: "block" },
           "& .image-category": {
             width: "100%",
             height: "100%",

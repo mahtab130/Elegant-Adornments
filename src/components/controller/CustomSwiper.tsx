@@ -1,7 +1,15 @@
 import { memo, useCallback } from "react";
 
 import { map } from "lodash";
-import { Box, Grid, SxProps, Theme, Typography } from "@mui/material";
+import {
+  Box,
+  Grid,
+  SxProps,
+  Theme,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -33,6 +41,7 @@ import { CustomRating } from "../controller/CustomRating";
 import { COLOR_SECEONDRY, COLOR_WHITE } from "../../helper/constants/colors";
 
 import vectorYellow from "../../assets/images/vectors/vector-flower-orange.webp";
+import { MAX_WIDTH_SWIPER } from "../../helper/constants/static";
 
 export const CustomSwiperComment = memo<ICustomSwiperComment>(({ data }) => {
   const imageComponent = useCallback(
@@ -63,12 +72,18 @@ export const CustomSwiperComment = memo<ICustomSwiperComment>(({ data }) => {
             <ContentSection
               image={imageComponent(image)}
               title={"Customers comments"}
+              setting={{
+                sx: {
+                  "& .left-section": { display: { xs: "none", md: "flex" } },
+                },
+              }}
               content={
                 <ContentComment
                   name={name}
                   rate={rate}
                   carear={carear}
                   comment={comment}
+                  image={image}
                   classNames={{ next: "swiper-next", prev: "swiper-prev" }}
                 />
               }
@@ -81,16 +96,26 @@ export const CustomSwiperComment = memo<ICustomSwiperComment>(({ data }) => {
 });
 
 const ContentComment = memo<IContentComment>(
-  ({ carear, comment, name, rate, classNames: { next, prev } }) => {
+  ({ carear, comment, name, rate, image, classNames: { next, prev } }) => {
+    const theme = useTheme();
+
+    const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
     return (
       <Grid className="content">
         <CustomRating readOnly value={rate} />
         <Typography className="description">{comment}</Typography>
         <Grid className="personal-info">
-          <Typography className="name">
-            {customerIcon()} {name}
-          </Typography>
-          <Typography className="job">{carear}</Typography>
+          {isMobile ? (
+            <Box component="img" className="image-xs" src={image} />
+          ) : (
+            ""
+          )}
+          <Grid className="texts-wrapper">
+            <Typography className="name">
+              {customerIcon()} {name}
+            </Typography>
+            <Typography className="job">{carear}</Typography>
+          </Grid>
         </Grid>
         <Grid className="swip-buttons">
           <Box component="div" className={prev}>
@@ -113,6 +138,20 @@ export const CustomSwiperBlog = memo<{ data: IBlogCard[] }>(({ data }) => {
         className="swiper"
         spaceBetween={20}
         slidesPerView={3}
+        breakpoints={{
+          420: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+        }}
         slidesPerGroup={1}
         pagination={{
           dynamicBullets: true,
@@ -164,11 +203,21 @@ const SwiperSectionSx: SxProps<Theme> = {
         flexDirection: "column",
         "& .description": {
           fontSize: FONT_BODY_MEDIUM2,
-          lineHeight: SPACE_M2,
+          lineHeight: { xs: "28px", md: SPACE_M2 },
         },
         "& .personal-info": {
           display: "flex",
-          flexDirection: "column",
+          flexDirection: { xs: "row", md: "column" },
+          gap: { xs: "12px", md: "0" },
+          "& .image-xs": {
+            width: "60px",
+            height: "60px",
+            borderRadius: "50%",
+          },
+          "& .texts-wrapper": {
+            display: "flex",
+            flexDirection: "column",
+          },
           "& .name": {
             fontSize: FONT_BODY_MEDIUM1,
             fontWeight: FONT_WEIGHT_BLOD,
@@ -204,7 +253,7 @@ const customSwiperBlogSX: SxProps<Theme> = {
   width: "100%",
   position: "relative",
   "& .swiper": {
-    width: "1240px",
+    maxWidth: MAX_WIDTH_SWIPER,
     display: "flex",
     justifyContent: "center",
     "& .swiper-wrapper": {
@@ -242,13 +291,15 @@ const customSwiperBlogSX: SxProps<Theme> = {
     },
   },
   "& .swiper-prev": {
-    left: "30px",
-    bottom: "50%",
+    left: { xs: "68%", md: "30px" },
+    bottom: { xs: "unset", md: "50%" },
+    top: { xs: "-60px", md: "unset" },
     transform: "rotate(180deg)",
   },
   "& .swiper-next": {
-    right: "30px",
-    bottom: "50%",
+    bottom: { xs: "unset", md: "50%" },
+    right: { xs: "20px", md: "30px" },
+    top: { xs: "-60px", md: "unset" },
   },
   "& .swiper-pagination": {
     left: "50%",

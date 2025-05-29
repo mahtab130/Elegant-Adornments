@@ -17,6 +17,7 @@ export const servicesSX: SxProps<Theme> = {
       width: "100%",
       height: "130px",
       position: "relative",
+      display: { xs: "none", md: "block" },
       "&.two": {
         justifyContent: "flex-start",
       },

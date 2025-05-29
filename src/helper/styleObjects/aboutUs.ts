@@ -7,15 +7,18 @@ export const AboutUsSX: SxProps<Theme> = {
   width: "100%",
   "& .second-section": {
     py: SPACE_H2,
+
     "& .description": {
       mt: SPACE_M1,
       fontSize: FONT_BODY_MEDIUM2,
       lineHeight: "25px",
+      textAlign: { xs: "center", md: "unset" },
     },
     "& .vector-wrapper": {
       width: "100%",
       height: "130px",
       position: "relative",
+      display: { xs: "none", md: "block" },
       "&.two": {
         justifyContent: "flex-start",
       },

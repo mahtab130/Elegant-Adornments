@@ -37,6 +37,7 @@ export const cartsSX: SxProps<Theme> = {
       alignItems: "end",
       my: SPACE_D2,
       justifyContent: "space-between",
+      gap: { xs: "18px", md: "0" },
       "& .textfield-wrapper": {
         width: "100%",
         "& .MuiInputBase-root": {

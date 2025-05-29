@@ -24,19 +24,23 @@ import {
 export const footerSX: SxProps<Theme> = {
   py: SPACE_D2,
   mt: SPACE_H2,
-  px: SPACE_H3,
+  px: { xs: "12px", md: SPACE_H3 },
   width: "100%",
   display: "flex",
   flexDirection: "column",
   backgroundColor: COLOR_SECEONDRY,
+
   "& .content": {
     width: "100%",
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: { xs: "center", md: "space-between" },
+    gap: { xs: "20px", md: 0 },
     "& .social-content": {
       display: "flex",
       flexDirection: "column",
       justifyContent: "space-between",
+      alignItems: { xs: "center", md: "unset" },
+      rowGap: "20px",
       "& .logo": {
         width: "150px",
       },
@@ -45,6 +49,7 @@ export const footerSX: SxProps<Theme> = {
         lineHeight: SPACE_M3,
         color: COLOR_LIGHT_GRAY,
         fontSize: FONT_LABEL_LARGE,
+        textAlign: { xs: "center", md: "unset" },
       },
       "& .socail-boxes": {
         width: "230px",
@@ -70,8 +75,9 @@ export const footerSX: SxProps<Theme> = {
     },
     "& .navigation-content": {
       gap: "14px",
-      display: "flex",
+      display: { xs: "none", md: "flex" },
       flexDirection: "column",
+
       "& .title": {
         lineHeight: SPACE_H1,
         fontWeight: FONT_WEIGHT_BLOD,
@@ -105,19 +111,21 @@ export const footerSX: SxProps<Theme> = {
     },
   },
   "& .copyright-text": {
-    mt: SPACE_D2,
-    pt: SPACE_D2,
+    mt: { xs: "18px", md: SPACE_D2 },
+    pt: { xs: "12px", md: SPACE_D2 },
     width: "100%",
     display: "flex",
     justifyContent: "space-between",
+    flexDirection: { xs: "column", md: "row" },
     borderTop: "1px solid" + COLOR_PRIMARY,
+    alignItems: { xs: "center", md: "unset" },
     "& .text": {
       display: "flex",
       fontWeight: FONT_WEIGHT_BLOD,
       gap: "4px",
       alignItems: "center",
       color: COLOR_LIGHT_GRAY,
-      fontSize: FONT_BODY_SMALL,
+      fontSize: { xs: "16px", md: FONT_BODY_SMALL },
       "& span": {
         color: COLOR_PRIMARY,
       },

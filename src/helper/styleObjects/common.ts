@@ -31,7 +31,7 @@ import {
 import { MAX_WIDTH } from "../constants/static";
 
 export const categoryCardSX: SxProps<Theme> = {
-  px: SPACE_D1,
+  px: { xs: "20px", md: SPACE_D1 },
   width: "100%",
   display: "flex",
   cursor: "pointer",
@@ -250,7 +250,7 @@ export const customTitle = (
   width: "fit-content",
   position: "relative",
   alignItems: "center",
-  fontSize: FONT_TITLE_SMALL,
+  fontSize: { xs: "27px", md: FONT_TITLE_SMALL },
   color: color || COLOR_TEXT,
   justifyContent: "space-between",
   borderBottom: "2px solid" + (iconColor || COLOR_SECEONDRY),
@@ -261,6 +261,7 @@ export const customTitle = (
     bottom: "-32px",
     position: "absolute",
     zIndex: 22000,
+    display: { xs: "none", md: "block" },
   },
 });
 
@@ -275,7 +276,11 @@ export const contentProviderSX = (
   maxWidth: MAX_WIDTH,
   alignItems: "center",
   justifyContent: "space-between",
-  flexDirection: reverse ? "row-reverse" : "row",
+
+  flexDirection: reverse
+    ? { xs: "column-reverse", md: "row-reverse" }
+    : { xs: "column", md: "row" },
+  rowGap: { xs: "16px", md: 0 },
   "& .right-section": {
     display: "flex",
     rowGap: SPACE_M2,
@@ -297,7 +302,12 @@ export const contentProviderSX = (
     position: "relative",
     justifyContent: reverse ? "start" : "end",
     "& .image": {
-      width: imageWidth || "620px",
+      width: imageWidth || {
+        xs: "390px",
+        sm: "400px",
+        md: "500px",
+        lg: "620px",
+      },
     },
   },
 });
@@ -320,12 +330,12 @@ export const headingPageSX = (image?: string): SxProps<Theme> => ({
     "& .title": {
       color: COLOR_WHITE,
       fontWeight: FONT_WEIGHT_BLOD,
-      fontSize: FONT_HEADING_XLARGE,
+      fontSize: { xs: "60px", md: FONT_HEADING_XLARGE },
     },
     "& .subtitle": {
       textAlign: "center",
       color: COLOR_TEXT_WHITE,
-      fontSize: FONT_BODY_MEDIUM2,
+      fontSize: { xs: "24px", md: FONT_BODY_MEDIUM2 },
       fontWeight: FONT_WEIGHT_BLOD,
     },
   },

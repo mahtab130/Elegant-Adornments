@@ -25,9 +25,10 @@ import {
   FONT_BODY_MEDIUM2,
   FONT_HEADING_LARGE,
 } from "../constants/fonts";
+import { MAX_WIDTH } from "../constants/static";
 
 import backgroundImage from "../../assets/images/home/background-image.webp";
-import { MAX_WIDTH } from "../constants/static";
+import backgroundImageMobie from "../../assets/images/home/background-image.jpg";
 
 export const homeSectionSX: SxProps<Theme> = {
   width: "100%",
@@ -40,16 +41,21 @@ export const homeSectionSX: SxProps<Theme> = {
     top: "0",
     left: "0",
     width: "100%",
-    height: "100%",
+    height: { xs: "100%", md: "100vh" },
     position: "absolute",
     backgroundSize: "cover",
     backgroundPosition: "right",
     backgroundRepeat: "no-repeat",
-    backgroundImage: `url(${backgroundImage})`,
+    backgroundImage: {
+      xs: `linear-gradient(rgba(0,0,0,0.5)),
+    url(${backgroundImageMobie})`,
+      md: `url(${backgroundImage})`,
+    },
   },
   "& .container": {
-    mx: "auto",
-    my: SPACE_H2,
+    mx: { xs: 0, md: "auto" },
+    mt: SPACE_H2,
+    mb: { xs: "112px", md: SPACE_H2 },
     zIndex: "100",
     width: "100%",
     height: "100vh",
@@ -57,32 +63,39 @@ export const homeSectionSX: SxProps<Theme> = {
     maxWidth: MAX_WIDTH,
     position: "relative",
     flexDirection: "column",
+    alignItems: { xs: "center", md: "normal" },
+    justifyContent: { xs: "center", md: "normal" },
     "& .texts-wrapper": {
-      mt: SPACE_H3,
+      mt: { xs: "0", md: SPACE_H3 },
       pt: SPACE_H2,
       display: "flex",
       position: "relative",
       height: "fit-content",
+      gap: { xs: "24px", md: "0" },
       flexDirection: "column",
       justifyContent: "center",
+      alignItems: { xs: "center", md: "normal" },
       "& .back-image": {
         position: "absolute",
         top: "-60px",
         right: "120px",
         width: "250px",
         height: "250px",
+        display: "none",
       },
       "& .title": {
-        lineHeight: "90px",
+        lineHeight: { xs: "normal", md: "90px" },
         color: COLOR_WHITE,
         animation: "1s ease-out 0s 1 slideInLeft",
         fontWeight: FONT_WEIGHT_BLOD,
         fontSize: FONT_HEADING_LARGE,
+        textAlign: { xs: "center", md: "unset" },
       },
       "& .subtitle": {
         mt: SPACE_XS1,
         color: COLOR_TEXT_WHITE,
         fontSize: FONT_BODY_MEDIUM2,
+        textAlign: { xs: "center", md: "unset" },
       },
       "& .button-wrapper": {
         mt: SPACE_D2,
@@ -90,7 +103,7 @@ export const homeSectionSX: SxProps<Theme> = {
       },
       "& .vector-arrow-img": {
         left: "70px",
-        width: "470px",
+        width: { xs: "0", md: "470px" },
         bottom: "-160px",
         position: "absolute",
       },
@@ -100,7 +113,7 @@ export const homeSectionSX: SxProps<Theme> = {
 
 export const productSectionSX: SxProps<Theme> = {
   width: "100%",
-  height: "100vh",
+  height: { xs: "100%", md: "100vh" },
   display: "flex",
   position: "relative",
   alignItems: "center",
@@ -114,16 +127,20 @@ export const productSectionSX: SxProps<Theme> = {
     height: "580px",
     position: "absolute",
     backgroundColor: COLOR_PRIMARY,
+    display: { xs: "none", md: "block" },
   },
   "& .products-container": {
     width: "100%",
     maxWidth: MAX_WIDTH,
     zIndex: "1",
+    mt: { xs: SPACE_M2, md: "0" },
+    mx: { xs: SPACE_S2, md: "0" },
     "& .product-cards-wrapper": {
       mt: SPACE_XM1,
       width: "100%",
       display: "flex",
-      justifyContent: "space-between",
+      rowGap: { xs: "20px", md: "0" },
+      justifyContent: { xs: "center", md: "space-between" },
     },
   },
 };
@@ -140,10 +157,11 @@ export const categorySectionSX: SxProps<Theme> = {
     maxWidth: MAX_WIDTH,
     height: "fit-content",
     flexDirection: "column",
+    mt: { xs: SPACE_M2, md: "0" },
     "& .category-cards-wrapper": {
       display: "flex",
       justifyContent: "space-between",
-      mt: SPACE_H2,
+      mt: { xs: "35px", md: SPACE_H2 },
       rowGap: SPACE_M2,
     },
   },
@@ -151,7 +169,7 @@ export const categorySectionSX: SxProps<Theme> = {
 
 export const bestSellingSectionSX: SxProps<Theme> = {
   width: "100%",
-  height: "100vh",
+  height: { xs: "100%", md: "100vh" },
   display: "flex",
   alignItems: "center",
   flexDirection: "column",
@@ -161,11 +179,13 @@ export const bestSellingSectionSX: SxProps<Theme> = {
     zIndex: "1",
     width: "100%",
     maxWidth: MAX_WIDTH,
+    my: { xs: "40px", md: "0" },
     "& .product-cards-wrapper": {
       mt: SPACE_XM1,
       width: "100%",
       display: "flex",
-      justifyContent: "space-between",
+      flexDirection: { xs: "column", md: "row" },
+      justifyContent: { xs: "center", md: "space-between" },
     },
   },
 };
@@ -184,7 +204,7 @@ export const contentServicesSX: SxProps<Theme> = {
   width: "100%",
   display: "flex",
   flexDirection: "column",
-  mt: SPACE_XS1,
+  mt: { xs: "38px", md: SPACE_XS1 },
   rowGap: "14px",
   "& .item": {
     display: "flex",
@@ -226,7 +246,7 @@ export const contentServicesSX: SxProps<Theme> = {
       },
     },
     "& .texts-wrapper": {
-      mt: SPACE_XS1,
+      mt: { xs: "0", md: SPACE_XS1 },
       display: "flex",
       flexDirection: "column",
       rowGap: SPACE_S2,
@@ -236,7 +256,7 @@ export const contentServicesSX: SxProps<Theme> = {
       },
       "& .description": {
         lineHeight: SPACE_M3,
-        fontSize: FONT_LABEL_LARGE,
+        fontSize: { xs: "20px", md: FONT_LABEL_LARGE },
       },
     },
   },
@@ -247,12 +267,14 @@ export const aboutUsSectionSX: SxProps<Theme> = {
     "& .vector": {
       right: "-130px",
       top: "-70px",
+      display: { xs: "none", md: "block" },
     },
   },
   "& .description": {
     mt: SPACE_M2,
     lineHeight: "22px",
     fontSize: FONT_BODY_MEDIUM2,
+    textAlign: { xs: "center", md: "start" },
   },
   "& .button": {
     mt: SPACE_D2,

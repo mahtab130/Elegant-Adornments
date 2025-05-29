@@ -27,28 +27,28 @@ export const Footer = memo(() => {
   return (
     <Grid sx={footerSX}>
       <Grid container className="content">
-        <Grid item md={3.3} className="social-content">
+        <Grid item xs={12} md={3.3} className="social-content">
           <AnimationSlideIn direction="left">
-            <CustomImage src={logo} className="logo" />
-          </AnimationSlideIn>
-          <AnimationSlideIn direction="left">
-            <Typography className="description">
-              Our duty is to provide quality and beautiful products to customers
-              and maintain the store environment in a beautiful and pleasant way
-              and create a pleasant shopping experience for customers.
-            </Typography>
-          </AnimationSlideIn>
-          <AnimationSlideIn direction="left">
-            <Grid className="socail-boxes">
-              {map(socailIcons, (item, index) => (
-                <Box key={index} component="div" className="social-box">
-                  {item}
-                </Box>
-              ))}
+            <Grid className="social-content">
+              <CustomImage src={logo} className="logo" />
+
+              <Typography className="description">
+                Our duty is to provide quality and beautiful products to
+                customers and maintain the store environment in a beautiful and
+                pleasant way and create a pleasant shopping experience for
+                customers.
+              </Typography>
+              <Grid className="socail-boxes">
+                {map(socailIcons, (item, index) => (
+                  <Box key={index} component="div" className="social-box">
+                    {item}
+                  </Box>
+                ))}
+              </Grid>
             </Grid>
           </AnimationSlideIn>
         </Grid>
-        <Grid item md={2} className="navigation-content">
+        <Grid item xs={5} md={2} className="navigation-content">
           <AnimationSlideIn direction="left" className="navigation-content">
             <>
               <Typography className="title">Navigation</Typography>
@@ -64,7 +64,7 @@ export const Footer = memo(() => {
             </>
           </AnimationSlideIn>
         </Grid>
-        <Grid item md={2} className="navigation-content">
+        <Grid item xs={5} md={2} className="navigation-content">
           <AnimationSlideIn direction="right" className="navigation-content">
             <>
               <Typography className="title">Contact</Typography>
@@ -90,8 +90,8 @@ export const Footer = memo(() => {
           </AnimationSlideIn>
         </Grid>
       </Grid>
-      <Grid className="copyright-text">
-        <AnimationSlideIn direction="left">
+      <AnimationSlideIn direction="left">
+        <Grid className="copyright-text">
           <Typography className="text">
             Copyright{" "}
             <Box component="span" className="icon">
@@ -99,11 +99,10 @@ export const Footer = memo(() => {
             </Box>{" "}
             2024 <Box component="span">Mozhdeh</Box>. All right reserved.
           </Typography>
-        </AnimationSlideIn>
-        <AnimationSlideIn direction="right">
+
           <Typography className="text">Terms | Privacy poicy</Typography>
-        </AnimationSlideIn>
-      </Grid>
+        </Grid>
+      </AnimationSlideIn>
     </Grid>
   );
 });

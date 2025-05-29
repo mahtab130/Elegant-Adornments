@@ -23,7 +23,14 @@ const Services: FC = () => {
       />
       <Grid className="second-section">
         <ContentSection
-          setting={{ vectorSrc: vectorGray }}
+          setting={{
+            vectorSrc: vectorGray,
+            sx: {
+              "& .left-section": {
+                display: { xs: "none", md: "flex" },
+              },
+            },
+          }}
           image={image1}
           title={"About the store"}
           content={

@@ -63,7 +63,7 @@ const noOptionsComponentSX = (imageSize?: TStandardSize): SxProps<Theme> => ({
           : imageSize == "medium"
           ? "500px"
           : imageSize == "large"
-          ? "1080px"
+          ? { xs: "300px", md: "1080px" }
           : "300px",
     },
     "& .keword-not-exist": {
@@ -76,6 +76,7 @@ const noOptionsComponentSX = (imageSize?: TStandardSize): SxProps<Theme> => ({
       color: COLOR_WHITE,
       fontSize: FONT_BODY_MEDIUM2,
       fontWeight: FONT_WEIGHT_BLOD,
+      textAlign: { xs: "center", md: "unset" },
     },
   },
 });

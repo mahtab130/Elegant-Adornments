@@ -2,7 +2,7 @@ interface ICustomSwiperComment {
   data: IUserComment[];
 }
 
-interface IContentComment extends Omit<IUserComment, "id" | "image"> {
+interface IContentComment extends Omit<IUserComment, "id"> {
   classNames: { prev: string; next: string };
 }
 

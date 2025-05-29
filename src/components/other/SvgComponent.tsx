@@ -690,3 +690,16 @@ export const arrowDownIcon = (color?: string) => (
     />
   </svg>
 );
+export const menuIcon = (color?: string) => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill={color || "#568A9E"}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect y="4" width="24" height="4" />
+    <rect y="11" width="24" height="4" />
+    <rect y="18" width="24" height="4" />
+  </svg>
+);

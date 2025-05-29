@@ -34,7 +34,8 @@ export const loginSX: SxProps<Theme> = {
   backgroundImage: `url(${BackImage})`,
   "& .container": {
     width: "100%",
-    height: "100%",
+    height: { xs: "auto", md: "100%" },
+    py: { xs: "12px", md: 0 },
     display: "flex",
     alignItems: "center",
     flexDirection: "column",
@@ -44,7 +45,7 @@ export const loginSX: SxProps<Theme> = {
       width: "fit-content",
       maxWidth: "350px",
       "& .title-wrapper": {
-        mb: SPACE_D1,
+        mb: { xs: "10px", md: SPACE_D1 },
         width: "100%",
         "& .title": {
           fontSize: FONT_BODY_LARGE,

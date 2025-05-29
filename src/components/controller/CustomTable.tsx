@@ -95,6 +95,7 @@ const tableContainerSX: SxProps<Theme> = {
       width: "100%",
       display: "flex",
     },
+
     "& .MuiTableBody-root": {
       width: "100%",
       display: "flex",
@@ -102,6 +103,7 @@ const tableContainerSX: SxProps<Theme> = {
       "& .MuiTableCell-root": {
         height: "auto",
         maxHeight: "100px",
+        minWidth: "200px",
       },
     },
     "& .MuiTableRow-root": {
@@ -115,6 +117,7 @@ const tableContainerSX: SxProps<Theme> = {
         justifyContent: "center",
         fontSize: FONT_BODY_SMALL + "!important",
         fontWeight: FONT_WEIGHT_BLOD,
+        minWidth: "200px",
       },
     },
   },

@@ -18,9 +18,13 @@ export const ServicesSection = memo(() => {
         reverse: true,
         imageWidth: "100%",
         sx: {
+          "&.content-provider": {
+            flexDirection: { xs: "column", md: "row-reverse" },
+            mt: { xs: "58px", md: 0 },
+          },
           "& .left-section": {
             "& .image": {
-              ml: "-55px",
+              ml: { xs: "-20px", md: "-55px" },
             },
           },
           "& .right-section": {
@@ -45,7 +49,7 @@ const Content = memo(() => {
               <Box component="span">{id}</Box>
             </Typography>
           </Grid>
-          <Grid item xs={10.8} md={10.8} className="texts-wrapper">
+          <Grid item xs={10} md={10.8} className="texts-wrapper">
             <Typography className="title">{title}</Typography>
             <Typography className="description">{description}</Typography>
           </Grid>

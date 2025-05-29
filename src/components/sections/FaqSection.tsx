@@ -35,6 +35,7 @@ export const FaqSection = memo(() => {
             width: "100px",
             height: "100px",
             position: "absolute",
+            display: { xs: "none", md: "block" },
           },
           "& .vector-2": {
             top: "50px",
@@ -42,6 +43,10 @@ export const FaqSection = memo(() => {
             width: "100px",
             height: "40px",
             position: "absolute",
+            display: { xs: "none", md: "block" },
+          },
+          "& .image": {
+            display: { xs: "none", md: "block" },
           },
         },
       }}

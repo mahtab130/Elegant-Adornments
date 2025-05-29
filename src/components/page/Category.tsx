@@ -283,7 +283,7 @@ const categoryPageSX: SxProps<Theme> = {
     "& .filter-box": {
       width: "100%",
       minHeight: "540px",
-      position: "sticky",
+      position: { xs: "unset", md: "sticky" },
       top: "40px",
       borderRadius: "14px",
       height: "fit-content",

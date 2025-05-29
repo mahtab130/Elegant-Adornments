@@ -20,7 +20,7 @@ export const CategorySection = memo(() => {
         </AnimationSlideIn>
         <Grid container className="category-cards-wrapper">
           {map(categoryData, ({ id, thumbnail, name }, index) => (
-            <Grid item xs={12} md={2.85} key={id}>
+            <Grid item xs={12} sm={5.9} md={2.85} key={id}>
               <AnimationSlideIn direction={index < 4 ? "left" : "right"}>
                 <CategoryCard
                   id={id}

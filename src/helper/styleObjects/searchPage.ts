@@ -13,6 +13,7 @@ export const searchSX: SxProps<Theme> = {
   "& .container": {
     mt: SPACE_H3,
     pt: SPACE_H3,
+    mx: { xs: "12px", md: "0" },
     width: "100%",
     display: "flex",
     maxWidth: "1080px",

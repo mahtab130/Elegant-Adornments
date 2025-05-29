@@ -32,7 +32,7 @@ export const ProductSection = memo(() => {
             ({ id, image, name, price, quantity, itemTotal }, index) => (
               <Grid
                 item
-                xs={12}
+                xs={11}
                 onClick={() => navigate("/")}
                 md={2.85}
                 key={id}

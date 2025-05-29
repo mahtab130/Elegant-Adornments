@@ -27,12 +27,12 @@ export const contentBlogSX: SxProps<Theme> = {
     mt: SPACE_M1,
     width: "100%",
     color: "#6A6A6A",
-    fontSize: FONT_BODY_MEDIUM2,
+    fontSize: { xs: "18px !important", md: FONT_BODY_MEDIUM2 },
     fontWeight: FONT_WEIGHT_BLOD,
   },
   "& .title": {
     mt: SPACE_M1,
-    fontSize: FONT_BODY_LARGE,
+    fontSize: { xs: "18px !important", md: FONT_BODY_LARGE },
     fontWeight: FONT_WEIGHT_BLOD,
   },
   "& .bullet-point-wrapper": {
@@ -42,7 +42,7 @@ export const contentBlogSX: SxProps<Theme> = {
     "& .text": {
       color: "#6A6A6A",
       lineHeight: "22px",
-      fontSize: FONT_BODY_MEDIUM2,
+      fontSize: { xs: "17px !important", md: FONT_BODY_MEDIUM2 },
       fontWeight: FONT_WEIGHT_BLOD,
       "&.black": {
         color: COLOR_TEXT,
@@ -61,7 +61,7 @@ export const contentBlogSX: SxProps<Theme> = {
     mt: SPACE_M1,
     justifyContent: "center",
     "& .image": {
-      width: "700px",
+      width: { xs: "390px", md: "700px" },
     },
   },
   "& .image2-wrapper": {
@@ -71,7 +71,7 @@ export const contentBlogSX: SxProps<Theme> = {
     justifyContent: "space-between",
     "& .image": {
       width: "100%",
-      height: "480px",
+      height: { xs: "200px", md: "480px" },
     },
   },
 };
@@ -143,7 +143,9 @@ export const blogSX: SxProps<Theme> = {
     my: SPACE_H3,
     width: "100%",
     display: "flex",
-    flexWrap: "wrap",
+    flexWrap: { xs: "nowrap", md: "wrap" },
+    alignItems: { xs: "center", md: "unset" },
+    flexDirection: { xs: "column" },
     rowGap: SPACE_XM1,
     justifyContent: "space-between",
     maxWidth: `calc(${MAX_WIDTH} + -80px)`,

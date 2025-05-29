@@ -87,7 +87,7 @@ const customAccordionContentSX = (expanded?: boolean): SxProps<Theme> => ({
         my: "0px",
         color: COLOR_TEXT,
         fontWeight: FONT_WEIGHT_BLOD,
-        fontSize: FONT_BODY_MEDIUM2,
+        fontSize: { xs: "25px", md: FONT_BODY_MEDIUM2 },
         "& svg": {
           width: "15px",
           height: "15px",
@@ -97,6 +97,7 @@ const customAccordionContentSX = (expanded?: boolean): SxProps<Theme> => ({
     "& .MuiAccordion-region": {
       "& .MuiAccordionDetails-root": {
         p: "0px",
+        fontSize: { xs: "20px", md: "14px" },
         pb: SPACE_M3,
         borderBottom: "1px solid " + COLOR_SECEONDRY,
         "&:last-child": {

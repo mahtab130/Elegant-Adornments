@@ -24,6 +24,13 @@ const AboutUs: FC = () => {
         <ContentSection
           image={image1}
           title={"About the store"}
+          setting={{
+            sx: {
+              "& .left-section": {
+                display: { xs: "none", md: "flex" },
+              },
+            },
+          }}
           content={
             <>
               <Grid className="description">

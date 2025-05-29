@@ -210,7 +210,8 @@ const productSX: SxProps<Theme> = {
       mt: SPACE_XM1,
       width: "100%",
       display: "flex",
-      justifyContent: "space-between",
+      flexDirection: { xs: "column", md: "row" },
+      justifyContent: { xs: "center", md: "space-between" },
     },
   },
 };
