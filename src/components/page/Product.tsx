@@ -155,7 +155,7 @@ const productSX: SxProps<Theme> = {
         position: "relative",
         justifyContent: "center",
         "& .image": {
-          width: "380px",
+          width: "370px",
           position: "absolute",
         },
       },

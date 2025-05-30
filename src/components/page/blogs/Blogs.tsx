@@ -32,7 +32,7 @@ const Blogs: FC = () => {
 
       <Grid container className="container-body">
         {map(paginatedItems, ({ description, id, image, title }, index) => (
-          <Grid item xs={12} md={4} key={index + id}>
+          <Grid item xs={12} md={3.6} key={index + id}>
             <AnimationSlideIn direction="left" className="animaiton">
               <BlogCard
                 id={id}

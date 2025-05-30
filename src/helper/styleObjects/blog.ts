@@ -61,7 +61,7 @@ export const contentBlogSX: SxProps<Theme> = {
     mt: SPACE_M1,
     justifyContent: "center",
     "& .image": {
-      width: { xs: "390px", md: "700px" },
+      width: { xs: "370px", md: "700px" },
     },
   },
   "& .image2-wrapper": {
@@ -145,7 +145,7 @@ export const blogSX: SxProps<Theme> = {
     display: "flex",
     flexWrap: { xs: "nowrap", md: "wrap" },
     alignItems: { xs: "center", md: "unset" },
-    flexDirection: { xs: "column" },
+    flexDirection: { xs: "column", md: "unset" },
     rowGap: SPACE_XM1,
     justifyContent: "space-between",
     maxWidth: `calc(${MAX_WIDTH} + -80px)`,

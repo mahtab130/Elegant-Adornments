@@ -156,7 +156,7 @@ const categoryPopperSX: SxProps<Theme> = {
   width: "fit-contnet",
   "& .MuiPaper-root": {
     mt: SPACE_M1,
-    maxWidth: { xs: "390px", md: "822px" },
+    maxWidth: { xs: "370px", md: "822px" },
     boxShadow: "none",
     borderRadius: "8px",
     borderTopRightRadius: "0",

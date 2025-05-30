@@ -1,7 +1,7 @@
 export const FONT_FAMILY = "Garamond";
 
 export const MAX_WIDTH = {
-  xs: "400px",
+  xs: "370px",
   sm: "700px",
   md: "1000px",
   lg: "1350px",

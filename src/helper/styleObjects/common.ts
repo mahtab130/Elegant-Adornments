@@ -181,14 +181,14 @@ export const productCardSX = (
 export const blogCardSX: SxProps<Theme> = {
   width: "100%",
   height: "auto",
-  maxWidth: "400px",
+  maxWidth: { xs: "365px", md: "440px" },
   cursor: "pointer",
   overflow: "hidden",
   borderRadius: "10px",
   "&:hover": {
     "& .image-wrapper": {
       "& .blog-image": {
-        transform: "scale(1.1)",
+        transform: { xs: "unset", md: "scale(1.1)" },
       },
     },
   },
@@ -269,7 +269,8 @@ export const contentProviderSX = (
   reverse?: boolean,
   imageWidth?: string
 ): SxProps<Theme> => ({
-  mx: "auto",
+  mx: { xs: "0", md: "auto" },
+  px: { xs: "8px", md: "0" },
   width: "100%",
   display: "flex",
   my: SPACE_H2,
@@ -303,7 +304,7 @@ export const contentProviderSX = (
     justifyContent: reverse ? "start" : "end",
     "& .image": {
       width: imageWidth || {
-        xs: "390px",
+        xs: "370px",
         sm: "400px",
         md: "500px",
         lg: "620px",
