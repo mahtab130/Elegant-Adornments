@@ -75,6 +75,7 @@ const Login: FC = () => {
                 className="input"
                 variant="outlined"
                 placeholder="Email"
+                name="email"
                 customLabel="Email"
                 value={formIK.values.email}
                 onChange={formIK.handleChange}
@@ -91,6 +92,7 @@ const Login: FC = () => {
                 type="password"
                 className="input"
                 variant="outlined"
+                name="password"
                 placeholder="Password"
                 customLabel="Password"
                 value={formIK.values.password}
@@ -113,8 +115,8 @@ const Login: FC = () => {
             </Grid>
             <Grid className="buttons-wrapper">
               <CustomButton
-                disabled={isPending}
                 type="submit"
+                disabled={isPending}
                 className="button"
                 variant="contained"
                 customColor={COLOR_SECEONDRY}

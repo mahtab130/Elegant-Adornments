@@ -15,11 +15,13 @@ import { CustomTextfield } from "../controller/CustomTextfield";
 import { loginSX } from "../../helper/styleObjects/login";
 import { useFormik } from "formik";
 import { validationRegister } from "../../helper/utils/validations/register";
-import { createUser } from "../../helper/services/configs/api";
 import { errorAlert, successAlert } from "../../helper/utils/messege";
+import { useCreateUser } from "../../helper/services/hooks/all";
 
 const Register: FC = () => {
   const navigate = useNavigate();
+
+  const { mutateAsync: userCreate, isPending } = useCreateUser();
 
   const formIK = useFormik({
     initialValues: {
@@ -35,7 +37,7 @@ const Register: FC = () => {
     validationSchema: validationRegister(),
     onSubmit: async (values) => {
       try {
-        const res = await createUser(values);
+        const res = await userCreate(values);
 
         const token = res?.data?.token;
         const user = res?.data?.user;
@@ -76,14 +78,36 @@ const Register: FC = () => {
               <CustomTextfield
                 className="input"
                 variant="outlined"
-                placeholder={"name"}
-                customLabel="Name"
+                placeholder={"first Name"}
+                customLabel="First Name"
+                name="firstName"
+                value={formIK.values.firstName}
+                onChange={formIK.handleChange}
+                errorMessage={
+                  formIK.errors.firstName
+                    ? {
+                        text: formIK.errors.firstName,
+                        type: "error",
+                      }
+                    : undefined
+                }
               />
               <CustomTextfield
                 className="input"
                 variant="outlined"
-                placeholder="Email"
-                customLabel="Email"
+                placeholder="email"
+                customLabel="email"
+                name="email"
+                value={formIK.values.email}
+                onChange={formIK.handleChange}
+                errorMessage={
+                  formIK.errors.email
+                    ? {
+                        text: formIK.errors.email,
+                        type: "error",
+                      }
+                    : undefined
+                }
               />
               <CustomTextfield
                 type="password"
@@ -91,10 +115,23 @@ const Register: FC = () => {
                 variant="outlined"
                 placeholder="Password"
                 customLabel="Password"
+                name="password"
+                value={formIK.values.password}
+                onChange={formIK.handleChange}
+                errorMessage={
+                  formIK.errors.password
+                    ? {
+                        text: formIK.errors.password,
+                        type: "error",
+                      }
+                    : undefined
+                }
               />
             </Grid>
             <Grid className="buttons-wrapper">
               <CustomButton
+                disabled={isPending}
+                type="submit"
                 className="button"
                 variant="contained"
                 customColor={COLOR_SECEONDRY}

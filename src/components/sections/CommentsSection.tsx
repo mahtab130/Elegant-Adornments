@@ -46,7 +46,8 @@ export const CommentsSection = memo(() => {
       content={
         <>
           {map(commendData, ({ productId, comment, rate, userId }, index) => {
-            const { firstName, lastName, email, imageUrl } = userMap[userId];
+            const { firstName, lastName, email, imageUrl } =
+              userMap[userId] ?? {};
 
             return (
               <SwiperSlide key={index} className="swiper-slide">
