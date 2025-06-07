@@ -46,9 +46,16 @@ export const Navbar = memo(() => {
   const { data: categoryData } = useCategoriesSearch();
 
   const userJsonData = localStorage.getItem("user");
-  const user = JSON.parse(userJsonData || "") || {};
+  let user = {};
 
-  const { data: userGetById } = useGetUserById(user["id"]);
+  try {
+    user = userJsonData ? JSON.parse(userJsonData) : {};
+  } catch (e) {
+    console.error("Failed to parse user from localStorage:", e);
+    user = {};
+  }
+
+  const { data: userGetById } = useGetUserById((user as TAny)["id"]);
 
   const { imageUrl, id } =
     (userGetById as unknown as { data: Users & { password: string } })?.data ??
