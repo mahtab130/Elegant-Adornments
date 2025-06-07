@@ -31,7 +31,7 @@ const Carts: FC = () => {
 
   const { data: productData } = useProductSearch();
 
-  const tableCells: ITableHeadCell<Products>[] = [
+  const tableCells: ITableHeadCell[] = [
     {
       id: "name",
       label: "Product",
