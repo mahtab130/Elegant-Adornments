@@ -1,5 +1,10 @@
-interface ICustomSwiperComment {
-  data: IUserComment[];
+interface IUserComment {
+  productId: string;
+  comment: string;
+  rate: number;
+  imageUrl: string;
+  userName: string;
+  userEmail: string;
 }
 
 interface IContentComment extends Omit<IUserComment, "id"> {
@@ -66,7 +71,7 @@ interface ICategoryCard {
   description?: string;
 }
 interface IBlogCard {
-  id: number;
+  id: string;
   image: string;
   title: string;
   description: string;

@@ -35,8 +35,8 @@ import {
 } from "../../helper/constants/fonts";
 import { CustomImage } from "./CustomImage";
 import { CustomButton } from "./CustomButton";
-import { categoryData } from "../../data/category";
 import { useNavigate } from "react-router-dom";
+import { handleImageUrl } from "../../helper/utils/handlers";
 
 export interface ICustomPopover {
   open: boolean;
@@ -53,7 +53,6 @@ export const CustomPopover: FC<ICustomPopover> = ({
   onClose,
   anchorEl,
   children,
-  anchorOrigin,
 }) => {
   return (
     <Popover
@@ -61,12 +60,10 @@ export const CustomPopover: FC<ICustomPopover> = ({
       open={open}
       onClose={onClose}
       anchorEl={anchorEl}
-      anchorOrigin={
-        {
-          vertical: "bottom",
-          horizontal: "left",
-        } || anchorOrigin
-      }
+      anchorOrigin={{
+        vertical: "bottom",
+        horizontal: "left",
+      }}
       className="notification"
     >
       {children}
@@ -78,20 +75,24 @@ export const CategoryPaper = ({
   open,
   setOpen,
   anchorEl,
+  data,
 }: {
   open: ICustomPopover["open"];
   anchorEl: ICustomPopover["anchorEl"];
   setOpen: (open: ICustomPopover["open"]) => void;
+  data: Categories[];
 }) => {
-  const [categoryId, setCategoryId] = useState<number>(1);
+  const [categoryId, setCategoryId] = useState<string>(
+    "aa4c7b5e-efc3-4a24-b1fb-ee2we6era8wq"
+  );
   const navigate = useNavigate();
 
   const {
     name,
-    image,
+    imageUrl,
     description,
     id: currentId,
-  } = find(categoryData, ({ id }) => id == categoryId) ?? {};
+  } = find(data, ({ id }) => id == categoryId) ?? {};
 
   const GridMotion = motion(Grid);
 
@@ -104,13 +105,13 @@ export const CategoryPaper = ({
     >
       <Grid className="cotnainer">
         <Grid className="list-category">
-          {map(categoryData, ({ name, id }) => (
+          {map(data, ({ name, id }) => (
             <Typography
               key={id}
               className={
                 currentId == id ? "category-name active" : "category-name"
               }
-              onClick={() => setCategoryId(id)}
+              onClick={() => setCategoryId(id || "")}
             >
               {name}
             </Typography>
@@ -126,7 +127,10 @@ export const CategoryPaper = ({
           animate={categoryId !== undefined ? { opacity: 1 } : { opacity: 0 }}
         >
           <Grid item xs={12} md={5.5} className="image-wrapper">
-            <CustomImage className="image-category" src={image || ""} />
+            <CustomImage
+              className="image-category"
+              src={handleImageUrl(imageUrl || "")}
+            />
           </Grid>
           <Grid item xs={12} md={5.9} className="text-container">
             <Typography className="title">

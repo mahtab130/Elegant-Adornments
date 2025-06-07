@@ -13,25 +13,29 @@ import { AnimationFadeIn } from "../common/AnimateComponent";
 import { CustomTextfield } from "../controller/CustomTextfield";
 
 import { loginSX } from "../../helper/styleObjects/login";
-import { useLogin } from "../../helper/services/hooks/all";
 import { useFormik } from "formik";
+import { validationRegister } from "../../helper/utils/validations/register";
+import { createUser } from "../../helper/services/configs/api";
 import { errorAlert, successAlert } from "../../helper/utils/messege";
-import { LoginValidation } from "../../helper/utils/validations/login";
 
-const Login: FC = () => {
+const Register: FC = () => {
   const navigate = useNavigate();
 
-  const { mutateAsync: loginUser, isPending } = useLogin();
-
   const formIK = useFormik({
-    initialValues: { email: "", password: "" },
+    initialValues: {
+      email: "",
+      password: "",
+      firstName: "",
+      lastName: "",
+      userName: "",
+    },
     enableReinitialize: true,
     validateOnChange: false,
     validateOnBlur: false,
-    validationSchema: LoginValidation(),
+    validationSchema: validationRegister(),
     onSubmit: async (values) => {
       try {
-        const res = await loginUser(values);
+        const res = await createUser(values);
 
         const token = res?.data?.token;
         const user = res?.data?.user;
@@ -58,34 +62,28 @@ const Login: FC = () => {
         <Grid container xs={12} md={5.5} className="container">
           <Box
             component="form"
-            className="inputs-wrapper"
             onSubmit={formIK.handleSubmit}
+            className="inputs-wrapper"
           >
             <Grid className="title-wrapper">
-              <Typography className="title">Login</Typography>
+              <Typography className="title">Sign Up</Typography>
               <Typography className="subtitle">
-                Dont have an acount?
-                <Box component="span" onClick={() => navigate("/sign-up")}>
-                  Create now
-                </Box>
+                join us now to access unlimited features and seamless user
+                experience
               </Typography>
             </Grid>
             <Grid className="inputs">
               <CustomTextfield
                 className="input"
                 variant="outlined"
+                placeholder={"name"}
+                customLabel="Name"
+              />
+              <CustomTextfield
+                className="input"
+                variant="outlined"
                 placeholder="Email"
                 customLabel="Email"
-                value={formIK.values.email}
-                onChange={formIK.handleChange}
-                errorMessage={
-                  formIK.errors.email
-                    ? {
-                        text: formIK.errors.email,
-                        type: "error",
-                      }
-                    : undefined
-                }
               />
               <CustomTextfield
                 type="password"
@@ -93,32 +91,14 @@ const Login: FC = () => {
                 variant="outlined"
                 placeholder="Password"
                 customLabel="Password"
-                value={formIK.values.password}
-                onChange={formIK.handleChange}
-                errorMessage={
-                  formIK.errors.password
-                    ? {
-                        text: formIK.errors.password,
-                        type: "error",
-                      }
-                    : undefined
-                }
               />
-              <Grid className="checkbox-wrapper">
-                {/* <CustomCheckbox label={"Save Account"} /> */}
-                <Typography className="forgot-pass-text">
-                  Forgot password?
-                </Typography>
-              </Grid>
             </Grid>
             <Grid className="buttons-wrapper">
               <CustomButton
-                disabled={isPending}
-                type="submit"
                 className="button"
                 variant="contained"
                 customColor={COLOR_SECEONDRY}
-                text={"Login"}
+                text={"Sign In"}
                 onClick={() => navigate("/")}
               />
               <Typography className="or">
@@ -134,6 +114,13 @@ const Login: FC = () => {
                 text="Continue with Google"
                 customColor={COLOR_TEXT_GRAY}
               />
+
+              <Typography className="have-account">
+                Already have an acount?{" "}
+                <Box component="span" onClick={() => navigate("/login")}>
+                  Login
+                </Box>
+              </Typography>
             </Grid>
           </Box>
         </Grid>
@@ -142,4 +129,4 @@ const Login: FC = () => {
   );
 };
 
-export default Login;
+export default Register;

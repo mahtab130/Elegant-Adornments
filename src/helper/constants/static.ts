@@ -9,3 +9,5 @@ export const MAX_WIDTH = {
 export const MAX_WIDTH_SWIPER = "1250px";
 
 export const MAX_WIDTH_BLOG_CARD = { xs: "", sm: "", md: "480px", lg: "400px" };
+
+export const API_URL = "https://jewlery-api.onrender.com";

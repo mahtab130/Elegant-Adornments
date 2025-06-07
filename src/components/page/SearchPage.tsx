@@ -1,34 +1,29 @@
-import { FC, useMemo, useState } from "react";
+import { FC, useState } from "react";
 
 import { Box, Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { filter, includes, map, toLower } from "lodash";
+import { map } from "lodash";
 
 import {
   NoOptionsComponent,
   EmptyLastCenterJustify,
 } from "../common/NoOptions";
 import { ProductCard } from "../common/ProductCard";
-import { productData } from "../../data/product";
 import { searchOutlineIcon } from "../other/SvgComponent";
 import { AnimationSlideIn } from "../common/AnimateComponent";
 import { CustomTextfield } from "../controller/CustomTextfield";
 
 import noOptions from "../../assets/images/vectors/404.webp";
+import { handleImageUrl } from "../../helper/utils/handlers";
 import { searchSX } from "../../helper/styleObjects/searchPage";
+import { useProductSearch } from "../../helper/services/hooks/all";
 
 const SearchPage: FC = () => {
   const navigate = useNavigate();
 
   const [keyword, setKeyword] = useState<string | undefined>(undefined);
 
-  const filteredData = useMemo(
-    () =>
-      filter(productData, ({ name }) =>
-        includes(toLower(name), toLower(keyword))
-      ),
-    [keyword]
-  );
+  const { data: productData } = useProductSearch({ search: keyword });
 
   return (
     <Grid sx={searchSX}>
@@ -42,22 +37,22 @@ const SearchPage: FC = () => {
           onChange={(e) => setKeyword(e.target.value)}
         />
         {keyword ? (
-          filteredData?.length > 0 ? (
+          productData?.length > 0 ? (
             <Grid container className="products-wrapper">
-              {map(filteredData, ({ id, image, name, price }, index) => (
+              {map(productData, ({ id, imageUrl, name, price }, index) => (
                 <Grid
                   item
                   xs={12}
                   key={id + index}
                   md={2.85}
-                  onClick={() => navigate("/")}
+                  onClick={() => navigate(`/products/${id}`)}
                 >
-                  <AnimationSlideIn direction={index < 2 ? "left" : "right"}>
+                  <AnimationSlideIn direction={"right"}>
                     <ProductCard
                       id={id}
                       name={name}
                       price={price}
-                      image={image}
+                      image={handleImageUrl(imageUrl)}
                       variant="search"
                     />
                   </AnimationSlideIn>
@@ -66,7 +61,7 @@ const SearchPage: FC = () => {
               <EmptyLastCenterJustify
                 even
                 md={2.85}
-                length={filteredData?.length}
+                length={productData?.length}
               />
             </Grid>
           ) : (

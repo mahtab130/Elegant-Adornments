@@ -104,7 +104,7 @@ export const homeSectionSX: SxProps<Theme> = {
       "& .vector-arrow-img": {
         left: "70px",
         width: { xs: "0", md: "470px" },
-        bottom: "-160px",
+        bottom: "-190px",
         position: "absolute",
       },
     },

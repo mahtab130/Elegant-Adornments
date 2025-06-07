@@ -2,7 +2,6 @@ import { memo, useMemo } from "react";
 
 import { Box, Grid } from "@mui/material";
 
-import { faq } from "../../data/faq";
 import { SPACE_D1 } from "../../helper/constants/spaces";
 import { ContentSection } from "../common/ContentSection";
 import { CustomAccordion } from "../controller/CustomAccordion";
@@ -10,8 +9,11 @@ import { CustomAccordion } from "../controller/CustomAccordion";
 import image from "../../assets/images/home/image-faq.webp";
 import vector1 from "../../assets/images/vectors/vector-flower-orange.webp";
 import vector2 from "../../assets/images/vectors/vector-crooked-line.webp";
+import { useFaqSearch } from "../../helper/services/hooks/all";
 
 export const FaqSection = memo(() => {
+  const { data: faqData } = useFaqSearch();
+
   const imageComponent = useMemo(
     () => (
       <>
@@ -53,7 +55,7 @@ export const FaqSection = memo(() => {
       title={"Frequently Asked Questions"}
       content={
         <Grid sx={{ mt: SPACE_D1 }}>
-          <CustomAccordion data={faq} />
+          <CustomAccordion data={faqData} />
         </Grid>
       }
     />

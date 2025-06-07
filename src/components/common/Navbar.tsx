@@ -13,7 +13,6 @@ import {
 } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import { navbarValues } from "../../data/other";
 import { CategoryPaper } from "../controller/CustomPopover";
 import { drawerSX, navbarSX } from "../../helper/styleObjects/navbar";
 import {
@@ -24,16 +23,35 @@ import {
 } from "../other/SvgComponent";
 
 import logo from "../../assets/images/vectors/logo.webp";
+import { navbarValues } from "../../helper/constants/other";
+import {
+  useCategoriesSearch,
+  useGetUserById,
+} from "../../helper/services/hooks/all";
+import { CustomAvatar } from "../controller/CustomImage";
+import { handleImageUrl } from "../../helper/utils/handlers";
 
 export const Navbar = memo(() => {
   const [openCategoryPopper, setOpenCategoryPopper] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
+
   const { totalItems } = useCart();
   const ref = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
 
   const handleDrawerToggle = () => setDrawerOpen(!drawerOpen);
+
+  const { data: categoryData } = useCategoriesSearch();
+
+  const userJsonData = localStorage.getItem("user");
+  const user = JSON.parse(userJsonData || "");
+
+  const { data: userGetById } = useGetUserById(user["id"]);
+
+  const { imageUrl, id } =
+    (userGetById as unknown as { data: Users & { password: string } })?.data ??
+    {};
 
   return (
     <>
@@ -69,6 +87,7 @@ export const Navbar = memo(() => {
           </Grid>
 
           <CategoryPaper
+            data={categoryData}
             anchorEl={ref.current}
             open={openCategoryPopper}
             setOpen={setOpenCategoryPopper}
@@ -86,20 +105,25 @@ export const Navbar = memo(() => {
             <Box
               component="div"
               className="icon-navbar"
-              onClick={() => navigate("/login")}
-            >
-              {userIcon()}
-            </Box>
-
-            <Box
-              component="div"
-              className="icon-navbar"
               onClick={() => navigate("/carts")}
             >
               <Box component="span">{totalItems || 0}</Box>
               {shoppingIcon()}
             </Box>
 
+            <Box
+              component="div"
+              className="icon-navbar"
+              onClick={() =>
+                navigate(userJsonData ? `/view/${id || ""}` : "/login")
+              }
+            >
+              {userJsonData ? (
+                <CustomAvatar src={handleImageUrl(imageUrl || "")} />
+              ) : (
+                userIcon()
+              )}
+            </Box>
             <Box
               sx={{ display: { xs: "flex", md: "none" } }}
               onClick={handleDrawerToggle}

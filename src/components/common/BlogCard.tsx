@@ -6,6 +6,7 @@ import { arrowLeft2Icon } from "../other/SvgComponent";
 import { CustomButton } from "../controller/CustomButton";
 import { blogCardSX } from "../../helper/styleObjects/common";
 import { useNavigate } from "react-router-dom";
+import { slice } from "lodash";
 
 export const BlogCard = memo<IBlogCard>(
   ({ image, description, title, navigateString }) => {
@@ -21,7 +22,9 @@ export const BlogCard = memo<IBlogCard>(
         <Grid className="text-section">
           <Grid className="text-wrapper">
             <Typography className="title">{title}</Typography>
-            <Typography className="description">{description}</Typography>
+            <Typography className="description">
+              {slice(description, 0, 100)} ...
+            </Typography>
           </Grid>
           <Grid className="button-wrapper">
             <CustomButton

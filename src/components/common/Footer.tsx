@@ -13,13 +13,13 @@ import {
   messangerIcon,
   copyRightIcon,
 } from "../other/SvgComponent";
-import { navbarValues } from "../../data/other";
 import { AnimationSlideIn } from "./AnimateComponent";
 import { CustomImage } from "../controller/CustomImage";
 import { footerSX } from "../../helper/styleObjects/footer";
 import { CustomTextfield } from "../controller/CustomTextfield";
 
 import logo from "../../assets/images/vectors/logo-white.webp";
+import { navbarValues } from "../../helper/constants/other";
 
 export const Footer = memo(() => {
   const navigate = useNavigate();

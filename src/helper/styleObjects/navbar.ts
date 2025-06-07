@@ -75,7 +75,7 @@ export const navbarSX = (openCategoryPopper?: boolean): SxProps<Theme> => ({
     gap: { xs: "14px", md: SPACE_S1 },
     display: "flex",
     position: "relative",
-    alignItems: "flex-start",
+    alignItems: "center",
     "& .icon-navbar": {
       zIndex: "33",
       cursor: "pointer",

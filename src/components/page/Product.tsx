@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { useCart } from "react-use-cart";
-import { find, map, slice } from "lodash";
+import { filter, map } from "lodash";
 import { useNavigate, useParams } from "react-router-dom";
 import { Grid, SxProps, Theme, Typography } from "@mui/material";
 
@@ -17,17 +17,20 @@ import {
   SPACE_M2,
   SPACE_XM1,
 } from "../../helper/constants/spaces";
-import { productData } from "../../data/product";
+import {
+  useGetProductById,
+  useProductSearch,
+} from "../../helper/services/hooks/all";
 import { CustomTitle } from "../common/CustomTitle";
 import { ProductCard } from "../common/ProductCard";
 import { CustomImage } from "../controller/CustomImage";
 import { MAX_WIDTH } from "../../helper/constants/static";
 import { CustomRating } from "../controller/CustomRating";
 import { CustomButton } from "../controller/CustomButton";
+import { CustomSelect } from "../controller/CustomSelect";
+import { handleImageUrl } from "../../helper/utils/handlers";
 import { AnimationSlideIn } from "../common/AnimateComponent";
-import { CustomTextfield } from "../controller/CustomTextfield";
 import { ShoppingModalProduct } from "../common/CategoryComponents";
-import { CustomBreadcrumbs } from "../controller/CustomBreadcrumbs";
 import { COLOR_TEXT, COLOR_WHITE } from "../../helper/constants/colors";
 
 const Product = () => {
@@ -39,35 +42,45 @@ const Product = () => {
 
   const [openModal, setOpenModal] = useState<boolean>(false);
 
-  const { name, image, price, rate } =
-    find(productData, ({ id }) => id == +(currentId || 0)) ?? {};
+  const { data: productById } = useGetProductById(currentId);
+  const { data: productData } = useProductSearch();
+
+  const { name, imageUrl, price, rate, categoryId, detail, size } =
+    (productById as unknown as { data: Products })?.data ?? {};
+
+  const productsByCategoryId = filter(
+    productData,
+    (p) => p?.categoryId == categoryId && p?.id !== currentId
+  );
 
   return (
     <Grid sx={productSX}>
       <Grid className="background"></Grid>
       <Grid container xs={12} className="container">
         <Grid xs={12} md={6} className="product">
-          <CustomBreadcrumbs
-            breadcrumbs={[
-              { name: "Home", link: "/" },
-              { name: "Especially for girls and women", link: "/" },
-              { name: "Especially for girls and women", link: "/" },
-            ]}
-          />
           <Typography className="title">{name}</Typography>
           <Grid className="image-wrapper">
-            <CustomImage src={image || ""} className="image" />
+            <CustomImage
+              src={handleImageUrl(imageUrl || "")}
+              className="image"
+            />
           </Grid>
         </Grid>
         <Grid xs={12} md={6} className="price-box">
           <Grid className="properties-wrapper">
-            <Typography className="properties">
-              Fixed color | anti-allergenic |zirconia gem
-            </Typography>
+            <Typography className="properties">{detail || "______"}</Typography>
             <Typography className="price">{price} $</Typography>
           </Grid>
           <CustomRating readOnly value={rate} size="large" className="rating" />
-          <CustomTextfield customLabel="Size" className="textfield" />
+          <CustomSelect
+            customLabel="Size"
+            className="textfield"
+            items={map(size, (item) =>
+              size && size?.length > 0
+                ? { label: item, value: +item }
+                : { label: "no Size", value: 0 }
+            )}
+          />
           <Grid className="button-wrapper">
             <CustomButton
               text="Add To Cart"
@@ -81,8 +94,8 @@ const Product = () => {
         <CustomTitle title="Related products" />
         <Grid container className="product-cards-wrapper">
           {map(
-            slice(productData, 11, 15),
-            ({ id, image, name, price, quantity, itemTotal }, index) => (
+            productsByCategoryId,
+            ({ id, imageUrl, name, price, quantity, itemTotal }, index) => (
               <Grid
                 item
                 xs={12}
@@ -95,14 +108,14 @@ const Product = () => {
                     id={id}
                     name={name}
                     price={price}
-                    image={image}
+                    image={handleImageUrl(imageUrl)}
                     onClickAddItem={() => {
                       addItem({
                         itemTotal: itemTotal,
                         price: price,
                         id: String(id),
                         quantity: (quantity || 0) + 1,
-                        image: image,
+                        image: imageUrl,
                         name: name,
                       });
                       setOpenModal(true);

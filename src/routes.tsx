@@ -11,6 +11,10 @@ import SearchPage from "./components/page/SearchPage";
 import BillingDetails from "./components/page/BillingDetails";
 import { BlogDetail } from "./components/page/blogs/BlogDetail";
 import Product from "./components/page/Product";
+import Register from "./components/page/Register";
+import { UserView } from "./components/page/UserView";
+import { UserEdit } from "./components/page/UserEdit";
+import { NotFound } from "./components/page/NotFound";
 
 export const routes: RouteObject[] = [
   {
@@ -29,11 +33,19 @@ export const routes: RouteObject[] = [
       { path: "billing-detail", element: <BillingDetails /> },
       { path: "about-us", element: <AboutUs /> },
       { path: "services", element: <Services /> },
-      { path: "sign-up", element: <Login isSignUp /> },
+      { path: "sign-up", element: <Register /> },
       { path: "category", children: [{ path: ":id", element: <Category /> }] },
       {
         path: "products",
         children: [{ path: ":id", element: <Product /> }],
+      },
+      {
+        path: "view",
+        children: [{ path: ":id", element: <UserView /> }],
+      },
+      {
+        path: "edit",
+        children: [{ path: ":id", element: <UserEdit /> }],
       },
       {
         path: "search",
@@ -41,7 +53,7 @@ export const routes: RouteObject[] = [
       },
       {
         path: "*",
-        element: <h1>Route Not Found!!</h1>,
+        element: <NotFound />,
       },
     ],
   },

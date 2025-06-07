@@ -17,7 +17,7 @@ import {
   FONT_WEIGHT_BLOD,
 } from "../../helper/constants/fonts";
 import { SPACE_M1 } from "../../helper/constants/spaces";
-import { uniqueIdGenerator } from "../../data/other";
+import { uniqueIdGenerator } from "../../helper/constants/other";
 
 export interface ITableHeadCell<T = TAny> {
   id: keyof T;

@@ -17,15 +17,6 @@ interface ICategoryData {
   description?: string;
 }
 
-interface IUserComment {
-  id: number;
-  name: string;
-  rate: number;
-  image: string;
-  carear: string;
-  comment: string;
-}
-
 interface IBlogData {
   id: number;
   image: string;

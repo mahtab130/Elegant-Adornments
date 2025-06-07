@@ -1,7 +1,7 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect } from "react";
 
 import { useLocation, useRoutes } from "react-router-dom";
-import { Grid, ThemeProvider } from "@mui/material";
+import { Grid, IconButton, ThemeProvider } from "@mui/material";
 
 import {
   createTheme,
@@ -19,9 +19,19 @@ import { Footer } from "../common/Footer";
 import { Navbar } from "../common/Navbar";
 import { FONT_FAMILY } from "../../helper/constants/static";
 import { mainLayoutSX } from "../../helper/styleObjects/main";
-import { FONT_WEIGHT_REGULAR } from "../../helper/constants/fonts";
-import { COLOR_PRIMARY, COLOR_TEXT } from "../../helper/constants/colors";
+import {
+  FONT_WEIGHT_BLOD,
+  FONT_WEIGHT_REGULAR,
+} from "../../helper/constants/fonts";
+import {
+  COLOR_PRIMARY,
+  COLOR_TEXT,
+  COLOR_WHITE,
+} from "../../helper/constants/colors";
 import { Loading } from "../common/Loading";
+import { SnackbarProvider } from "notistack";
+import { errorAlertICON, successAlertICON } from "../other/SvgComponent";
+import { useProductSearch } from "../../helper/services/hooks/all";
 
 const MainLayout: FC = () => {
   const children = useRoutes(routes);
@@ -38,24 +48,7 @@ const MainLayout: FC = () => {
 
   const materialTheme = materialExtendTheme(themeMUI);
 
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    setIsLoading(true);
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, [pathname]);
+  const { isLoading } = useProductSearch();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -66,15 +59,42 @@ const MainLayout: FC = () => {
       <MaterialCssVarsProvider theme={{ [MATERIAL_THEME_ID]: materialTheme }}>
         <MotionConfig>
           <CartProvider>
-            {isLoading ? (
-              <Loading />
-            ) : (
-              <Grid sx={mainLayoutSX} className="main-layout">
-                {includes(emptyContainerNav, pathname) || <Navbar />}
-                {children}
-                {includes(emptyContainerFooter, pathname) || <Footer />}
-              </Grid>
-            )}
+            <SnackbarProvider
+              iconVariant={{
+                success: (
+                  <IconButton className="alert-icon">
+                    {successAlertICON()}
+                  </IconButton>
+                ),
+
+                error: (
+                  <IconButton className="alert-icon">
+                    {errorAlertICON()}
+                  </IconButton>
+                ),
+              }}
+              style={{
+                direction: "ltr",
+                backgroundColor: COLOR_WHITE,
+                color: COLOR_TEXT,
+                fontSize: "14px",
+                fontStyle: "normal",
+                fontWeight: FONT_WEIGHT_BLOD,
+                lineHeight: "normal",
+                borderRadius: "12px",
+                boxShadow: "0px 8px 16px 0px rgba(145, 158, 171, 0.16)",
+              }}
+            >
+              {isLoading ? (
+                <Loading />
+              ) : (
+                <Grid sx={mainLayoutSX} className="main-layout">
+                  {includes(emptyContainerNav, pathname) || <Navbar />}
+                  {children}
+                  {includes(emptyContainerFooter, pathname) || <Footer />}
+                </Grid>
+              )}
+            </SnackbarProvider>
           </CartProvider>
         </MotionConfig>
       </MaterialCssVarsProvider>

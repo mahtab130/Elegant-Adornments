@@ -2,7 +2,6 @@ import { memo } from "react";
 
 import { Grid, Box, Typography } from "@mui/material";
 
-import { CustomButton } from "../controller/CustomButton";
 import { AnimationSlideIn } from "../common/AnimateComponent";
 import { homeSectionSX } from "../../helper/styleObjects/homeSection";
 
@@ -22,9 +21,9 @@ export const HomeSection = memo(() => {
               Elevate your style with our elegant and timelessjewelry pieces,
               perfect for any occasion.
             </Typography>
-            <Grid className="button-wrapper">
+            {/* <Grid className="button-wrapper">
               <CustomButton text="Buy Now" variant="contained" />
-            </Grid>
+            </Grid> */}
             <Box component="img" src={Vector} className="vector-arrow-img" />
           </Grid>
         </AnimationSlideIn>

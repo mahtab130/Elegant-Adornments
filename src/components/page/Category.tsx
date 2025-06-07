@@ -18,8 +18,6 @@ import {
   FONT_WEIGHT_BLOD,
   FONT_BODY_MEDIUM2,
 } from "../../helper/constants/fonts";
-import { productData } from "../../data/product";
-import { categoryData } from "../../data/category";
 import { ProductCard } from "../common/ProductCard";
 import { arrowDownIcon } from "../other/SvgComponent";
 import { CustomRadio } from "../controller/CustomRadio";
@@ -30,6 +28,11 @@ import { CustomBreadcrumbs } from "../controller/CustomBreadcrumbs";
 import { AnimationSlideIn } from "../common/AnimateComponent";
 import { useCart } from "react-use-cart";
 import { ShoppingModalProduct } from "../common/CategoryComponents";
+import {
+  useCategoriesSearch,
+  useProductSearch,
+} from "../../helper/services/hooks/all";
+import { handleImageUrl } from "../../helper/utils/handlers";
 
 const Category = () => {
   const { id: currentId } = useParams();
@@ -39,12 +42,15 @@ const Category = () => {
 
   const [openModal, setOpenModal] = useState<boolean>(false);
 
+  const { data: categoryData } = useCategoriesSearch();
+  const { data: productData } = useProductSearch();
+
   const { name, id } =
-    find(categoryData, ({ id }) => id == +(currentId || 0)) ?? {};
+    find(categoryData, ({ id }) => id == currentId || "") ?? {};
 
   const productsByCategory = filter(
     productData,
-    ({ catergoryId }) => catergoryId == id
+    ({ categoryId }) => categoryId === id
   );
 
   const filters = [
@@ -144,8 +150,8 @@ const Category = () => {
                 </Typography>
                 <Grid container className="products-wrapper">
                   {map(
-                    slice(productsByCategory, 9),
-                    ({ id, image, name, price, itemTotal, quantity }) => (
+                    productsByCategory,
+                    ({ id, imageUrl, name, price, itemTotal, quantity }) => (
                       <Grid
                         item
                         xs={12}
@@ -157,14 +163,14 @@ const Category = () => {
                           id={id}
                           name={name}
                           price={price}
-                          image={image}
+                          image={handleImageUrl(imageUrl)}
                           onClickAddItem={() => {
                             addItem({
                               itemTotal: itemTotal,
                               price: price,
                               id: String(id),
                               quantity: (quantity || 0) + 1,
-                              image: image,
+                              image: imageUrl,
                               name: name,
                             });
                             setOpenModal(true);

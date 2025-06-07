@@ -79,17 +79,6 @@ export const productCardSX = (
   borderRadius: "14px",
   boxShadow: variant == "cart" ? "none" : "0px 1px 2px 0px #1018280D  ",
   "&:hover": {
-    "& .texts-wrapper": {
-      "& .price-wrapper": {
-        "& .add-to-cart": {
-          "&:before": {
-            width: "100%",
-            height: "40px",
-            borderRadius: "50px",
-          },
-        },
-      },
-    },
     "& .image-wrapper": {
       "& .image-product": {
         transform: "scale(1.13)",
@@ -168,6 +157,13 @@ export const productCardSX = (
           transition: "all .4s ease",
           backgroundColor: COLOR_PRIMARY,
         },
+        "&:hover": {
+          "&:before": {
+            width: "100%",
+            height: "40px",
+            borderRadius: "50px",
+          },
+        },
       },
       "& .price": {
         color: variant == "sale" ? COLOR_WHITE : COLOR_TEXT,
@@ -201,6 +197,7 @@ export const blogCardSX: SxProps<Theme> = {
       width: "100%",
       height: "225px",
       transition: "all 0.4s",
+      objectFit: "cover",
     },
   },
   "& .text-section": {

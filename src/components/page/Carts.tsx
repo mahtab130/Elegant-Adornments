@@ -9,7 +9,6 @@ import {
   NoOptionsComponent,
   EmptyLastCenterJustify,
 } from "../common/NoOptions";
-import { productData } from "../../data/product";
 import { trashIcon } from "../other/SvgComponent";
 import { CustomTitle } from "../common/CustomTitle";
 import { ProfileCard } from "../common/ProfileCard";
@@ -22,18 +21,22 @@ import { CustomTextfield } from "../controller/CustomTextfield";
 import { CustomTable, ITableHeadCell } from "../controller/CustomTable";
 
 import noCarts from "../../assets/images/vectors/no-carts.webp";
+import { useProductSearch } from "../../helper/services/hooks/all";
+import { handleImageUrl } from "../../helper/utils/handlers";
 
 const Carts: FC = () => {
   const { items, removeItem, updateItemQuantity } = useCart();
   console.log("🚀 ~ items:", items);
   const navigate = useNavigate();
 
-  const tableCells: ITableHeadCell<IProductData>[] = [
+  const { data: productData } = useProductSearch();
+
+  const tableCells: ITableHeadCell<Products>[] = [
     {
       id: "name",
       label: "Product",
       ComponentRow: ({ row: { image, name } }) => (
-        <ProfileCard image={image} name={name} />
+        <ProfileCard image={handleImageUrl(image || "")} name={name || ""} />
       ),
     },
     {
@@ -110,17 +113,20 @@ const Carts: FC = () => {
             <Grid className="other-product">
               <CustomTitle title="You may be interested in" />
               <Grid container className="other-product-wrapper">
-                {map(slice(productData, 3, 8), ({ id, image, name, price }) => (
-                  <Grid item xs={12} key={id} md={2.85}>
-                    <ProductCard
-                      id={id}
-                      name={name}
-                      price={price}
-                      image={image}
-                      variant="cart"
-                    />
-                  </Grid>
-                ))}
+                {map(
+                  slice(productData, 3, 8),
+                  ({ id, imageUrl, name, price }) => (
+                    <Grid item xs={12} key={id} md={2.85}>
+                      <ProductCard
+                        id={id}
+                        name={name}
+                        price={price}
+                        variant="cart"
+                        image={handleImageUrl(imageUrl)}
+                      />
+                    </Grid>
+                  )
+                )}
                 <EmptyLastCenterJustify
                   even
                   md={2.85}

@@ -1,15 +1,7 @@
-import { memo, useCallback } from "react";
+import { memo, ReactElement } from "react";
 
 import { map } from "lodash";
-import {
-  Box,
-  Grid,
-  SxProps,
-  Theme,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { Box, Grid, SxProps, Theme } from "@mui/material";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -17,12 +9,7 @@ import "swiper/css/pagination";
 import { SwiperSlide, Swiper } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 
-import {
-  customerIcon,
-  arrowLeftIcon,
-  arrowRightIcon,
-  arrowLeft2Icon,
-} from "../other/SvgComponent";
+import { arrowLeft2Icon } from "../other/SvgComponent";
 import {
   SPACE_H2,
   SPACE_D1,
@@ -36,24 +23,16 @@ import {
   FONT_WEIGHT_BLOD,
 } from "../../helper/constants/fonts";
 import { BlogCard } from "../common/BlogCard";
-import { ContentSection } from "../common/ContentSection";
-import { CustomRating } from "../controller/CustomRating";
 import { COLOR_SECEONDRY, COLOR_WHITE } from "../../helper/constants/colors";
 
-import vectorYellow from "../../assets/images/vectors/vector-flower-orange.webp";
 import { MAX_WIDTH_SWIPER } from "../../helper/constants/static";
+import { handleImageUrl } from "../../helper/utils/handlers";
 
-export const CustomSwiperComment = memo<ICustomSwiperComment>(({ data }) => {
-  const imageComponent = useCallback(
-    (src: string) => (
-      <>
-        <Box component="img" className="image" src={src} />
-        <Box component="img" src={vectorYellow} className="vector-wrapper" />
-      </>
-    ),
-    []
-  );
+interface ICustomSwiperComment {
+  content?: ReactElement;
+}
 
+export const CustomSwiperComment = memo<ICustomSwiperComment>(({ content }) => {
   return (
     <Grid sx={SwiperSectionSx}>
       <Swiper
@@ -67,70 +46,13 @@ export const CustomSwiperComment = memo<ICustomSwiperComment>(({ data }) => {
         }}
         slidesPerView={1}
       >
-        {map(data, ({ carear, comment, id, image, name, rate }) => (
-          <SwiperSlide key={id} className="swiper-slide">
-            <ContentSection
-              image={imageComponent(image)}
-              title={"Customers comments"}
-              setting={{
-                sx: {
-                  "& .left-section": { display: { xs: "none", md: "flex" } },
-                },
-              }}
-              content={
-                <ContentComment
-                  name={name}
-                  rate={rate}
-                  carear={carear}
-                  comment={comment}
-                  image={image}
-                  classNames={{ next: "swiper-next", prev: "swiper-prev" }}
-                />
-              }
-            />
-          </SwiperSlide>
-        ))}
+        {content}
       </Swiper>
     </Grid>
   );
 });
 
-const ContentComment = memo<IContentComment>(
-  ({ carear, comment, name, rate, image, classNames: { next, prev } }) => {
-    const theme = useTheme();
-
-    const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-    return (
-      <Grid className="content">
-        <CustomRating readOnly value={rate} />
-        <Typography className="description">{comment}</Typography>
-        <Grid className="personal-info">
-          {isMobile ? (
-            <Box component="img" className="image-xs" src={image} />
-          ) : (
-            ""
-          )}
-          <Grid className="texts-wrapper">
-            <Typography className="name">
-              {customerIcon()} {name}
-            </Typography>
-            <Typography className="job">{carear}</Typography>
-          </Grid>
-        </Grid>
-        <Grid className="swip-buttons">
-          <Box component="div" className={prev}>
-            {arrowLeftIcon()}
-          </Box>
-          <Box component="div" className={next}>
-            {arrowRightIcon()}
-          </Box>
-        </Grid>
-      </Grid>
-    );
-  }
-);
-
-export const CustomSwiperBlog = memo<{ data: IBlogCard[] }>(({ data }) => {
+export const CustomSwiperBlog = memo<{ data: Blogs[] }>(({ data }) => {
   return (
     <Grid sx={customSwiperBlogSX}>
       <Swiper
@@ -159,14 +81,14 @@ export const CustomSwiperBlog = memo<{ data: IBlogCard[] }>(({ data }) => {
         modules={[Navigation, Pagination]}
         navigation={{ prevEl: ".swiper-prev", nextEl: ".swiper-next" }}
       >
-        {map(data, ({ description, id, image, title }) => (
+        {map(data, ({ shortDescription, id, imageUrl, title }) => (
           <SwiperSlide key={id} className="swiper-slide">
             <BlogCard
-              id={id}
-              image={image}
-              title={title}
-              description={description}
+              id={id || ""}
+              title={title || ""}
               navigateString={`blogs/${id}`}
+              description={shortDescription || ""}
+              image={handleImageUrl(imageUrl || "")}
             />
           </SwiperSlide>
         ))}

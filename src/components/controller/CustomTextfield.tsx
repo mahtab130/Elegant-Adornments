@@ -5,6 +5,7 @@ import {
   useState,
   useCallback,
   ChangeEvent,
+  FC,
 } from "react";
 
 import {
@@ -15,6 +16,7 @@ import {
   TextField,
   TextFieldProps,
   TextFieldVariants,
+  Typography,
 } from "@mui/material";
 
 import {
@@ -29,7 +31,18 @@ import {
 } from "../../helper/constants/fonts";
 import { CustomLabel } from "./CustomLabel";
 import { SPACE_S4 } from "../../helper/constants/spaces";
-import { clearIcon, eyeIcon } from "../other/SvgComponent";
+import {
+  clearIcon,
+  errorIcon,
+  eyeIcon,
+  warningIcon,
+} from "../other/SvgComponent";
+
+export interface IErrorMessage {
+  text: string;
+  type: "error" | "warning";
+  disabled?: boolean;
+}
 
 export type TCustomTextfield =
   | {
@@ -46,6 +59,7 @@ export type TCustomTextfield =
           isIconButton?: boolean;
           labelSize?: ICustomLabel["size"];
         };
+        errorMessage?: IErrorMessage;
         endIcon?: JSX.Element;
         startIcon?: JSX.Element;
       };
@@ -59,6 +73,7 @@ export const CustomTextfield = memo<TCustomTextfield>(
     onChange,
     startIcon,
     customLabel,
+    errorMessage,
     ...props
   }) => {
     const {
@@ -146,10 +161,54 @@ export const CustomTextfield = memo<TCustomTextfield>(
             startAdornment: <>{startIcon}</>,
           }}
         />
+        {errorMessage && (
+          <ErrorMessage
+            text={errorMessage?.text || ""}
+            type={errorMessage?.type || "error"}
+            disabled={false}
+          />
+        )}
       </Grid>
     );
   }
 );
+
+export const ErrorMessage: FC<IErrorMessage> = ({ text, type, disabled }) => {
+  return (
+    <Box
+      component="div"
+      sx={ERROR_MESSAGE_STYLE(disabled)}
+      className="error-message"
+    >
+      {text && type === "warning"
+        ? warningIcon()
+        : text && type === "error"
+        ? errorIcon()
+        : ""}
+      <Typography variant="body1" className="text-icon">
+        {text}
+      </Typography>
+    </Box>
+  );
+};
+
+const ERROR_MESSAGE_STYLE = (disabled?: boolean): SxProps<Theme> => ({
+  width: "100%",
+  gap: "4px",
+  display: "flex",
+  marginTop: "4px",
+  alignItems: "center",
+  opacity: disabled ? 0.3 : 1,
+  "& .text-icon": {
+    color: "#919EAB",
+    fontSize: "12px",
+    fontWeight: "600",
+  },
+  "& .icon": {
+    width: "20px",
+    height: "20px",
+  },
+});
 
 const textfieldSX = (
   hasIcon?: boolean,

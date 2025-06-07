@@ -12,7 +12,6 @@ import {
 } from "../constants/spaces";
 import {
   FONT_BODY_SMALL,
-  FONT_BODY_LARGE,
   FONT_WEIGHT_BLOD,
   FONT_TITLE_LARGE,
   FONT_BODY_MEDIUM2,
@@ -22,19 +21,8 @@ import { COLOR_TEXT, COLOR_SECEONDRY, COLOR_WHITE } from "../constants/colors";
 
 export const contentBlogSX: SxProps<Theme> = {
   width: "100%",
-  "& .description": {
-    mb: SPACE_M1,
-    mt: SPACE_M1,
-    width: "100%",
-    color: "#6A6A6A",
-    fontSize: { xs: "18px !important", md: FONT_BODY_MEDIUM2 },
-    fontWeight: FONT_WEIGHT_BLOD,
-  },
-  "& .title": {
-    mt: SPACE_M1,
-    fontSize: { xs: "18px !important", md: FONT_BODY_LARGE },
-    fontWeight: FONT_WEIGHT_BLOD,
-  },
+  "& .description": {},
+  "& .title": {},
   "& .bullet-point-wrapper": {
     mt: SPACE_M4,
     display: "flex",
@@ -81,6 +69,7 @@ export const blogDetailSX = (image?: string): SxProps<Theme> => ({
   pt: SPACE_H3,
   my: SPACE_H2,
   width: "100%",
+  height: "100vh",
   maxWidth: MAX_WIDTH,
   "& .container": {
     width: "100%",
@@ -148,7 +137,7 @@ export const blogSX: SxProps<Theme> = {
     flexDirection: { xs: "column", md: "unset" },
     rowGap: SPACE_XM1,
     justifyContent: "space-between",
-    maxWidth: `calc(${MAX_WIDTH} + -80px)`,
+    maxWidth: `calc(${MAX_WIDTH?.lg} + -80px)`,
     "& .pagination-wrapper": {
       width: "100%",
       display: "flex",
