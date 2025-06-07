@@ -37,6 +37,7 @@ export const Navbar = memo(() => {
 
   const { totalItems } = useCart();
   const ref = useRef(null);
+
   const navigate = useNavigate();
   const location = useLocation();
 

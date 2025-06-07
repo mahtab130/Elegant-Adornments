@@ -18,10 +18,10 @@ const obj: {
     initialY?: number;
   };
 } = {
-  left: { x: -50, y: undefined, initailX: 1, initialY: undefined },
-  right: { x: 50, y: undefined, initailX: 1, initialY: undefined },
-  up: { y: -50, x: undefined, initailX: undefined, initialY: 1 },
-  down: { y: 50, x: undefined, initailX: undefined, initialY: 1 },
+  left: { x: -20, y: undefined, initailX: 1, initialY: undefined },
+  right: { x: 20, y: undefined, initailX: 1, initialY: undefined },
+  up: { y: -20, x: undefined, initailX: undefined, initialY: 1 },
+  down: { y: 20, x: undefined, initailX: undefined, initialY: 1 },
 };
 
 export const AnimationSlideIn = memo<IAnimation>(

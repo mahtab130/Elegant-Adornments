@@ -7,6 +7,7 @@ import {
   SPACE_M1,
   SPACE_M2,
   SPACE_M3,
+  SPACE_S1,
 } from "../constants/spaces";
 import { FONT_BODY_MEDIUM1, FONT_WEIGHT_BLOD } from "../constants/fonts";
 import { MAX_WIDTH } from "../constants/static";
@@ -21,9 +22,10 @@ export const userViewSX: SxProps<Theme> = {
     display: "flex",
     gap: SPACE_M2,
     flexDirection: "column",
+    alignItems: { xs: "center", md: "unset" },
     "& .box-item": {
       display: "flex",
-      gap: SPACE_D1,
+      gap: { xs: SPACE_M2, md: SPACE_D1 },
       "& p": {
         fontSize: FONT_BODY_MEDIUM1,
       },
@@ -32,7 +34,7 @@ export const userViewSX: SxProps<Theme> = {
       },
     },
     "& .button-wrapper": {
-      mt: SPACE_M1,
+      mt: { xs: SPACE_S1, md: SPACE_M1 },
     },
   },
 };

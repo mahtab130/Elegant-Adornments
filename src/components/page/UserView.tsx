@@ -1,4 +1,4 @@
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { userViewSX } from "../../helper/styleObjects/users";
 import { ContentSection } from "../common/ContentSection";
 import { useNavigate, useParams } from "react-router-dom";
@@ -6,6 +6,7 @@ import { handleImageUrl } from "../../helper/utils/handlers";
 import { useGetUserById } from "../../helper/services/hooks/all";
 import { SPACE_H3 } from "../../helper/constants/spaces";
 import { CustomButton } from "../controller/CustomButton";
+import { CustomImage } from "../controller/CustomImage";
 
 export const UserView = () => {
   const { id: currentId } = useParams();
@@ -15,6 +16,9 @@ export const UserView = () => {
 
   const { lastName, email, firstName, imageUrl, userName } =
     (userById as unknown as { data: Users & { password: string } })?.data ?? {};
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <Grid sx={userViewSX}>
@@ -36,6 +40,14 @@ export const UserView = () => {
         }}
         content={
           <Grid className="content-view">
+            {isMobile ? (
+              <CustomImage
+                sx={{ borderRadius: "12px", mt: "8px", maxWidth: "400px" }}
+                src={handleImageUrl(imageUrl || "")}
+              />
+            ) : (
+              ""
+            )}
             <Grid className="box-item">
               <Typography>Name:</Typography>
               <Typography className="value">
@@ -43,11 +55,11 @@ export const UserView = () => {
               </Typography>
             </Grid>
             <Grid className="box-item">
-              <Typography>Name:</Typography>
+              <Typography>User Name:</Typography>
               <Typography className="value">{userName}</Typography>
             </Grid>
             <Grid className="box-item">
-              <Typography>Name:</Typography>
+              <Typography>User Email:</Typography>
               <Typography className="value">{email}</Typography>
             </Grid>
             <Grid className="button-wrapper">
