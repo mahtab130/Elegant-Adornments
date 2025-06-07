@@ -46,7 +46,7 @@ export const Navbar = memo(() => {
   const { data: categoryData } = useCategoriesSearch();
 
   const userJsonData = localStorage.getItem("user");
-  const user = JSON.parse(userJsonData || "");
+  const user = JSON.parse(userJsonData || "") || {};
 
   const { data: userGetById } = useGetUserById(user["id"]);
 
