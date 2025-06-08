@@ -1,27 +1,27 @@
 import { SxProps, Theme } from "@mui/material";
 
 import {
+  COLOR_WHITE,
   COLOR_PRIMARY,
   COLOR_SECEONDRY,
-  COLOR_WHITE,
 } from "../constants/colors";
 import {
   FONT_BODY_SMALL,
-  FONT_CAPTION_LARGE,
   FONT_WEIGHT_BLOD,
+  FONT_CAPTION_LARGE,
 } from "../constants/fonts";
-import { SPACE_H2, SPACE_M2, SPACE_D2, SPACE_S1 } from "../constants/spaces";
 import { MAX_WIDTH } from "../constants/static";
+import { SPACE_H2, SPACE_M2, SPACE_D2, SPACE_S1 } from "../constants/spaces";
 
 export const navbarSX = (openCategoryPopper?: boolean): SxProps<Theme> => ({
   mx: "auto",
   px: SPACE_H2,
   py: SPACE_M2,
   top: SPACE_H2,
-  zIndex: 1000,
+  zIndex: 1000000,
   display: "flex",
   width: MAX_WIDTH,
-  position: "absolute",
+  position: "fixed",
   alignItems: "center",
   borderRadius: "12px",
   animation: "fadeIn 1s",

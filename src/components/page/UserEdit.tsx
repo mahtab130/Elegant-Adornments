@@ -1,15 +1,16 @@
-import { Box, Grid } from "@mui/material";
-import { userEditSX } from "../../helper/styleObjects/users";
-import { CustomTextfield } from "../controller/CustomTextfield";
 import { useFormik } from "formik";
-import { validationRegister } from "../../helper/utils/validations/register";
-import { updateUser } from "../../helper/services/configs/api";
-import { errorAlert, successAlert } from "../../helper/utils/messege";
+import { Box, Grid } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
-import { useGetUserById } from "../../helper/services/hooks/all";
-import { CustomSelect } from "../controller/CustomSelect";
+
 import { CustomTitle } from "../common/CustomTitle";
+import { CustomSelect } from "../controller/CustomSelect";
 import { CustomButton } from "../controller/CustomButton";
+import { userEditSX } from "../../helper/styleObjects/users";
+import { updateUser } from "../../helper/services/configs/api";
+import { CustomTextfield } from "../controller/CustomTextfield";
+import { useGetUserById } from "../../helper/services/hooks/all";
+import { errorAlert, successAlert } from "../../helper/utils/messege";
+import { validationRegister } from "../../helper/utils/validations/register";
 
 export const UserEdit = () => {
   const navigate = useNavigate();
@@ -33,20 +34,10 @@ export const UserEdit = () => {
     validationSchema: validationRegister(),
     onSubmit: async (values) => {
       try {
-        const res = await updateUser(currentId || "", values);
-
-        const token = res?.data?.token;
-        const user = res?.data?.user;
-
-        if (!token || !user) {
-          throw new Error("Invalid login response");
-        }
-
-        localStorage.setItem("token", token);
-        localStorage.setItem("user", JSON.stringify(user));
+        await updateUser(currentId || "", values);
 
         successAlert({ title: "Edit was Successful" });
-        navigate("/");
+        navigate(`/view/${currentId}`);
       } catch (err) {
         errorAlert({ title: "Edit failed. Check credentials." });
         console.error("Login error:", err);
@@ -138,12 +129,11 @@ export const UserEdit = () => {
             </Grid>
             <Grid xs={12} md={5.9}>
               <CustomSelect
-                className="input"
-                variant="outlined"
+                // className="input"
                 placeholder="gender"
                 customLabel="gender"
                 name="gender"
-                value={(formIK && formIK.values["gender"]) ?? 0}
+                value={(formIK && +formIK.values["gender"]) ?? ""}
                 onChange={formIK && formIK.handleChange}
                 items={[
                   { label: "female", value: 1 },

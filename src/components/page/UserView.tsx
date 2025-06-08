@@ -1,12 +1,13 @@
-import { Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { userViewSX } from "../../helper/styleObjects/users";
-import { ContentSection } from "../common/ContentSection";
 import { useNavigate, useParams } from "react-router-dom";
+import { Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
+
+import { CustomImage } from "../controller/CustomImage";
+import { SPACE_H3 } from "../../helper/constants/spaces";
+import { ContentSection } from "../common/ContentSection";
+import { CustomButton } from "../controller/CustomButton";
+import { userViewSX } from "../../helper/styleObjects/users";
 import { handleImageUrl } from "../../helper/utils/handlers";
 import { useGetUserById } from "../../helper/services/hooks/all";
-import { SPACE_H3 } from "../../helper/constants/spaces";
-import { CustomButton } from "../controller/CustomButton";
-import { CustomImage } from "../controller/CustomImage";
 
 export const UserView = () => {
   const { id: currentId } = useParams();
@@ -64,9 +65,14 @@ export const UserView = () => {
             </Grid>
             <Grid className="button-wrapper">
               <CustomButton
-                text={"Edit the user"}
+                text={"Edit "}
                 variant="contained"
                 onClick={() => navigate(`/edit/${currentId}`)}
+              />
+              <CustomButton
+                text={"Logout"}
+                variant="contained"
+                onClick={() => navigate(`/logout`)}
               />
             </Grid>
           </Grid>

@@ -1,22 +1,22 @@
 import { memo } from "react";
 import {
-  Select,
-  SelectProps,
-  MenuItem,
-  SxProps,
   Grid,
   Theme,
+  Select,
+  SxProps,
+  MenuItem,
   Typography,
   InputLabel,
   FormControl,
+  SelectProps,
 } from "@mui/material";
-import { CustomLabel } from "./CustomLabel";
-import { ErrorMessage, IErrorMessage } from "./CustomTextfield";
 import {
-  COLOR_PRIMARY,
   COLOR_TEXT,
   COLOR_WHITE,
+  COLOR_PRIMARY,
 } from "../../helper/constants/colors";
+import { CustomLabel } from "./CustomLabel";
+import { ErrorMessage, IErrorMessage } from "./CustomTextfield";
 import { FONT_WEIGHT_BLOD } from "../../helper/constants/fonts";
 
 interface IOption {
@@ -105,7 +105,7 @@ const customSelectSX = (disabled: boolean | undefined): SxProps<Theme> => ({
     borderRadius: "12px",
     fontWeight: "600",
     "& fieldset": {
-      backgroundColor: COLOR_WHITE,
+      // backgroundColor: COLOR_WHITE,
       borderColor: "#c4c4c4",
     },
     "&.Mui-focused": {

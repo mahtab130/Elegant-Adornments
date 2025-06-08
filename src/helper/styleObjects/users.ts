@@ -9,8 +9,8 @@ import {
   SPACE_M3,
   SPACE_S1,
 } from "../constants/spaces";
-import { FONT_BODY_MEDIUM1, FONT_WEIGHT_BLOD } from "../constants/fonts";
 import { MAX_WIDTH } from "../constants/static";
+import { FONT_BODY_MEDIUM1, FONT_WEIGHT_BLOD } from "../constants/fonts";
 
 export const userViewSX: SxProps<Theme> = {
   width: "100%",
@@ -35,6 +35,8 @@ export const userViewSX: SxProps<Theme> = {
     },
     "& .button-wrapper": {
       mt: { xs: SPACE_S1, md: SPACE_M1 },
+      display: "flex",
+      gap: SPACE_M2,
     },
   },
 };

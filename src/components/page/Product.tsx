@@ -16,6 +16,7 @@ import {
   SPACE_D1,
   SPACE_M2,
   SPACE_XM1,
+  SPACE_M4,
 } from "../../helper/constants/spaces";
 import {
   useGetProductById,
@@ -45,8 +46,18 @@ const Product = () => {
   const { data: productById } = useGetProductById(currentId);
   const { data: productData } = useProductSearch();
 
-  const { name, imageUrl, price, rate, categoryId, detail, size } =
-    (productById as unknown as { data: Products })?.data ?? {};
+  const {
+    name,
+    imageUrl,
+    price,
+    rate,
+    categoryId,
+    detail,
+    size,
+    brand,
+    color,
+    material,
+  } = (productById as unknown as { data: Products })?.data ?? {};
 
   const productsByCategoryId = filter(
     productData,
@@ -68,19 +79,43 @@ const Product = () => {
         </Grid>
         <Grid xs={12} md={6} className="price-box">
           <Grid className="properties-wrapper">
-            <Typography className="properties">{detail || "______"}</Typography>
-            <Typography className="price">{price} $</Typography>
+            <Grid className="item-box">
+              <Typography className="item">Price:</Typography>
+              <Typography className="price">{price} $</Typography>
+            </Grid>
+            <Grid className="item-box">
+              <Typography className="item">Details:</Typography>
+              <Typography className="properties">
+                {detail || "______"}
+              </Typography>
+            </Grid>
+            <Grid className="item-box">
+              <Typography className="item">Material:</Typography>
+              <Typography className="price">{material}</Typography>
+            </Grid>
+            <Grid className="item-box">
+              <Typography className="item">Brand:</Typography>
+              <Typography className="price">{brand}</Typography>
+            </Grid>
+            <Grid className="item-box">
+              <Typography className="item">Color:</Typography>
+              <Typography className="price">{color}</Typography>
+            </Grid>
           </Grid>
           <CustomRating readOnly value={rate} size="large" className="rating" />
-          <CustomSelect
-            customLabel="Size"
-            className="textfield"
-            items={map(size, (item) =>
-              size && size?.length > 0
-                ? { label: item, value: +item }
-                : { label: "no Size", value: 0 }
-            )}
-          />
+          {size ? (
+            <CustomSelect
+              customLabel="Size"
+              className="textfield"
+              items={map(size, (item) =>
+                size && size?.length > 0
+                  ? { label: item, value: +item }
+                  : { label: "no Size", value: 0 }
+              )}
+            />
+          ) : (
+            ""
+          )}
           <Grid className="button-wrapper">
             <CustomButton
               text="Add To Cart"
@@ -168,7 +203,7 @@ const productSX: SxProps<Theme> = {
         position: "relative",
         justifyContent: "center",
         "& .image": {
-          width: "370px",
+          width: "200px",
           position: "absolute",
         },
       },
@@ -180,16 +215,27 @@ const productSX: SxProps<Theme> = {
         mt: SPACE_H3,
         display: "flex",
         alignItems: "center",
-        justifyContent: "space-between",
-        "& .properties": {
-          color: "#686868",
-          fontSize: FONT_BODY_MEDIUM2,
-          fontWeight: FONT_WEIGHT_BLOD,
-        },
-        "& .price": {
-          color: COLOR_TEXT,
-          fontSize: FONT_BODY_MEDIUM2,
-          fontWeight: FONT_WEIGHT_BLOD,
+        flexDirection: "column",
+        gap: SPACE_M4,
+        "& .item-box": {
+          display: "flex",
+          width: "100%",
+          justifyContent: "space-between",
+          "& .item": {
+            color: "#686868",
+            fontSize: FONT_BODY_MEDIUM2,
+            fontWeight: FONT_WEIGHT_BLOD,
+          },
+          "& .properties": {
+            color: "#686868",
+            fontSize: FONT_BODY_MEDIUM2,
+            fontWeight: FONT_WEIGHT_BLOD,
+          },
+          "& .price": {
+            color: COLOR_TEXT,
+            fontSize: FONT_BODY_MEDIUM2,
+            fontWeight: FONT_WEIGHT_BLOD,
+          },
         },
       },
       "& .rating": {

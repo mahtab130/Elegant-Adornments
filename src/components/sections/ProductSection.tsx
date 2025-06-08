@@ -1,6 +1,6 @@
 import { memo, useState } from "react";
 
-import { map, slice } from "lodash";
+import { filter, map } from "lodash";
 import { useCart } from "react-use-cart";
 import { Box, Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -20,6 +20,8 @@ export const ProductSection = memo(() => {
 
   const { data: productData } = useProductSearch();
 
+  const productDataByMaster = filter(productData, (p) => p?.isMaster == true);
+
   const [openModal, setOpenModal] = useState<boolean>(false);
 
   return (
@@ -31,7 +33,7 @@ export const ProductSection = memo(() => {
         </AnimationSlideIn>
         <Grid container className="product-cards-wrapper">
           {map(
-            slice(productData, 0, 4),
+            productDataByMaster,
             ({ id, imageUrl, name, price, quantity, itemTotal }, index) => {
               return (
                 <Grid

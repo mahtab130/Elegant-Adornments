@@ -15,6 +15,7 @@ import Register from "./components/page/Register";
 import { UserView } from "./components/page/UserView";
 import { UserEdit } from "./components/page/UserEdit";
 import { NotFound } from "./components/page/NotFound";
+import Logout from "./components/page/Logout";
 
 export const routes: RouteObject[] = [
   {
@@ -29,6 +30,7 @@ export const routes: RouteObject[] = [
         ],
       },
       { path: "login", element: <Login /> },
+      { path: "logout", element: <Logout /> },
       { path: "carts", element: <Carts /> },
       { path: "billing-detail", element: <BillingDetails /> },
       { path: "about-us", element: <AboutUs /> },

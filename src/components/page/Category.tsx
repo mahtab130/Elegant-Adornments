@@ -1,7 +1,8 @@
 import { memo, useCallback, useState } from "react";
 
-import { filter, find, map, slice } from "lodash";
+import { useCart } from "react-use-cart";
 import { useNavigate, useParams } from "react-router-dom";
+import { filter, find, includes, map, slice } from "lodash";
 import { Box, Collapse, Grid, SxProps, Theme, Typography } from "@mui/material";
 
 import {
@@ -24,15 +25,20 @@ import { CustomRadio } from "../controller/CustomRadio";
 import { MAX_WIDTH } from "../../helper/constants/static";
 import { COLOR_TEXT } from "../../helper/constants/colors";
 import { EmptyLastCenterJustify } from "../common/NoOptions";
-import { CustomBreadcrumbs } from "../controller/CustomBreadcrumbs";
 import { AnimationSlideIn } from "../common/AnimateComponent";
-import { useCart } from "react-use-cart";
+import { CustomBreadcrumbs } from "../controller/CustomBreadcrumbs";
 import { ShoppingModalProduct } from "../common/CategoryComponents";
 import {
   useCategoriesSearch,
   useProductSearch,
 } from "../../helper/services/hooks/all";
 import { handleImageUrl } from "../../helper/utils/handlers";
+
+type FilterCategory = "Material" | "Size" | "Brand" | "Style" | "Color";
+
+type SelectedFilters = {
+  [key in FilterCategory]: string[];
+};
 
 const Category = () => {
   const { id: currentId } = useParams();
@@ -41,6 +47,13 @@ const Category = () => {
   const { addItem } = useCart();
 
   const [openModal, setOpenModal] = useState<boolean>(false);
+  const [selectedFilters, setSelectedFilters] = useState<SelectedFilters>({
+    Material: [],
+    Size: [],
+    Brand: [],
+    Style: [],
+    Color: [],
+  });
 
   const { data: categoryData } = useCategoriesSearch();
   const { data: productData } = useProductSearch();
@@ -53,69 +66,46 @@ const Category = () => {
     ({ categoryId }) => categoryId === id
   );
 
-  const filters = [
-    {
-      id: 1,
-      name: "Order by",
-      items: [
-        { id: 1, label: "Most Expensive" },
-        { id: 2, label: "Cheapest" },
-        { id: 3, label: "Best seller" },
-        { id: 4, label: "Most Popular" },
-        { id: 5, label: "Most visited" },
-        { id: 6, label: "Newest" },
-      ],
-    },
-    {
-      id: 2,
-      name: "Material",
-      items: [
-        { id: 1, label: "copper" },
-        { id: 2, label: "aluminium" },
-      ],
-    },
-    {
-      id: 3,
-      name: "Size",
-      items: [
-        { id: 1, label: "Free Size" },
-        { id: 2, label: "1" },
-        { id: 3, label: "2" },
-        { id: 4, label: "3" },
-        { id: 5, label: "4" },
-        { id: 6, label: "5" },
-        { id: 7, label: "6" },
-        { id: 8, label: "7" },
-        { id: 9, label: "8" },
-        { id: 10, label: "9" },
-        { id: 11, label: "10" },
-        { id: 12, label: "11" },
-      ],
-    },
-    {
-      id: 4,
-      name: "Brand",
-      items: [
-        { id: 1, label: "Zhuping" },
-        { id: 2, label: "pandora" },
-        { id: 3, label: "NJ" },
-      ],
-    },
-    {
-      id: 5,
-      name: "Style",
-      items: [{ id: 1, label: "Gold design" }],
-    },
-    {
-      id: 6,
-      name: "Color",
-      items: [
-        { id: 1, label: "golden" },
-        { id: 2, label: "silver" },
-        { id: 3, label: "Diamond" },
-      ],
-    },
-  ];
+  const getUniqueFilterValues = (products: Products[]) => {
+    const filterMap = {
+      Material: new Set<string>(),
+      Brand: new Set<string>(),
+      Color: new Set<string>(),
+    };
+
+    products.forEach((product) => {
+      filterMap.Material.add(product.material || "");
+      filterMap.Brand.add(product.brand || "");
+      filterMap.Color.add(product.color || "");
+    });
+
+    return Object.entries(filterMap).map(([name, values]) => ({
+      name,
+      items: Array.from(values).map((label, index) => ({ id: index, label })),
+    }));
+  };
+
+  const filters = getUniqueFilterValues(productsByCategory);
+
+  const handleFilterClick = (category: FilterCategory, value: string) => {
+    setSelectedFilters((prev) => {
+      const alreadySelected = includes(prev[category], value);
+      return {
+        ...prev,
+        [category]: alreadySelected
+          ? filter(prev[category], (v: TAny) => v !== value)
+          : [...prev[category], value],
+      };
+    });
+  };
+
+  const filteredProducts = productsByCategory.filter((product) => {
+    return Object.entries(selectedFilters).every(([key, selectedValues]) => {
+      if (selectedValues.length === 0) return true;
+      const productValue = product[key.toLowerCase()];
+      return selectedValues.includes(productValue);
+    });
+  });
 
   return (
     <Grid sx={categoryPageSX}>
@@ -134,14 +124,19 @@ const Category = () => {
             <Typography className="title">Filter products</Typography>
             <Grid className="filter-items-wrapper">
               {map(filters, ({ name, items }) => (
-                <FilterItems label={name} items={items} />
+                <FilterItems
+                  onClick={(label) =>
+                    handleFilterClick(name as FilterCategory, label)
+                  }
+                  label={name}
+                  items={items}
+                />
               ))}
-              <CustomRadio sx={{ my: SPACE_M3 }} label={"Available goods"} />
             </Grid>
           </Grid>
 
           <Grid xs={12} md={8.6} className="products">
-            {productsByCategory?.length <= 0 ? (
+            {filteredProducts?.length <= 0 ? (
               <Typography>There is no Option</Typography>
             ) : (
               <>
@@ -150,7 +145,7 @@ const Category = () => {
                 </Typography>
                 <Grid container className="products-wrapper">
                   {map(
-                    productsByCategory,
+                    filteredProducts,
                     ({ id, imageUrl, name, price, itemTotal, quantity }) => (
                       <Grid
                         item
@@ -204,8 +199,10 @@ export default Category;
 const FilterItems = memo<{
   label: string;
   items: { id: number; label: string }[];
-}>(({ label, items }) => {
+  onClick: (label: string) => void;
+}>(({ label, items, onClick }) => {
   const [openItem, setOpenItem] = useState<boolean>(false);
+  const [selectedValue, setSelectedValue] = useState<string>("");
 
   const handleOpenItems = useCallback(() => {
     setOpenItem(!openItem);
@@ -213,16 +210,23 @@ const FilterItems = memo<{
 
   return (
     <Grid sx={filterItemsSX(openItem)}>
-      <Grid className="label-wrapper">
+      <Grid className="label-wrapper" onClick={handleOpenItems}>
         <Typography className="label">{label}</Typography>
-        <Box component="span" className="icon-arrow" onClick={handleOpenItems}>
+        <Box component="span" className="icon-arrow">
           {arrowDownIcon()}
         </Box>
       </Grid>
       <Collapse in={openItem}>
         <Grid className="items-wrapper">
           {map(items, ({ label }) => (
-            <CustomRadio label={label} />
+            <CustomRadio
+              onClick={() => (
+                onClick(label),
+                setSelectedValue((prev) => (prev === label ? "" : label))
+              )}
+              label={label}
+              checked={selectedValue === label}
+            />
           ))}
         </Grid>
       </Collapse>
@@ -288,9 +292,9 @@ const categoryPageSX: SxProps<Theme> = {
     justifyContent: "space-between",
     "& .filter-box": {
       width: "100%",
-      minHeight: "540px",
+      minHeight: "fit-content",
       position: { xs: "unset", md: "sticky" },
-      top: "40px",
+      top: "140px",
       borderRadius: "14px",
       height: "fit-content",
       boxShadow: "0px 0px 16px 0px #9F9F9F29",
