@@ -1,5 +1,6 @@
 import { FC } from "react";
 
+import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { Box, Grid, Typography } from "@mui/material";
 
@@ -8,15 +9,13 @@ import {
   COLOR_TEXT_GRAY,
 } from "../../helper/constants/colors";
 import { googleIcon } from "../other/SvgComponent";
+import { loginSX } from "../../helper/styleObjects/login";
 import { CustomButton } from "../controller/CustomButton";
 import { AnimationFadeIn } from "../common/AnimateComponent";
 import { CustomTextfield } from "../controller/CustomTextfield";
-
-import { loginSX } from "../../helper/styleObjects/login";
-import { useFormik } from "formik";
-import { validationRegister } from "../../helper/utils/validations/register";
-import { errorAlert, successAlert } from "../../helper/utils/messege";
 import { useCreateUser } from "../../helper/services/hooks/all";
+import { errorAlert, successAlert } from "../../helper/utils/messege";
+import { validationRegister } from "../../helper/utils/validations/register";
 
 const Register: FC = () => {
   const navigate = useNavigate();

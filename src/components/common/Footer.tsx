@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { Box, Grid, Typography } from "@mui/material";
 
 import {
-  sendIcon,
   tweeterIcon,
   youtubeIcon,
   facebookIcon,
@@ -15,11 +14,10 @@ import {
 } from "../other/SvgComponent";
 import { AnimationSlideIn } from "./AnimateComponent";
 import { CustomImage } from "../controller/CustomImage";
+import { navbarValues } from "../../helper/constants/other";
 import { footerSX } from "../../helper/styleObjects/footer";
-import { CustomTextfield } from "../controller/CustomTextfield";
 
 import logo from "../../assets/images/vectors/logo-white.webp";
-import { navbarValues } from "../../helper/constants/other";
 
 export const Footer = memo(() => {
   const navigate = useNavigate();
@@ -71,21 +69,6 @@ export const Footer = memo(() => {
               <Typography className="text">+989383823445</Typography>
               <Typography className="text">WWW.abc.com</Typography>
               <Typography className="text">abc@gmail.com</Typography>
-            </>
-          </AnimationSlideIn>
-        </Grid>
-        <Grid item md={3} className="send-email-content">
-          <AnimationSlideIn className="send-email-content" direction="right">
-            <>
-              <Typography className="title">
-                Get the latest information
-              </Typography>
-              <CustomTextfield
-                className="email-input"
-                placeholder="Email address"
-                endIcon={sendIcon()}
-                setting={{ noBorder: true, isIconButton: true }}
-              />
             </>
           </AnimationSlideIn>
         </Grid>
